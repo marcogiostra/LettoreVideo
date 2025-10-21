@@ -3,7 +3,15 @@
   "WorkspaceRootPath": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|d:\\svil_giosh\\005_lettorevideo\\lettorevideo\\lettorevideo\\changes.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|solutionrelative:lettorevideo\\changes.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|LettoreVideo||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|d:\\svil_giosh\\005_lettorevideo\\lettorevideo\\lettorevideo\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|solutionrelative:lettorevideo\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|d:\\svil_giosh\\005_lettorevideo\\lettorevideo\\lettorevideo\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
@@ -16,18 +24,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "LettoreVideo",
               "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\LettoreVideo.csproj",
               "RelativeDocumentMoniker": "LettoreVideo\\LettoreVideo.csproj",
-              "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\LettoreVideo.csproj",
-              "RelativeToolTip": "LettoreVideo\\LettoreVideo.csproj",
+              "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\LettoreVideo.csproj*",
+              "RelativeToolTip": "LettoreVideo\\LettoreVideo.csproj*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-10-20T14:37:08.612Z",
+              "WhenOpened": "2025-10-21T19:53:33.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CHANGES.md",
+              "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\CHANGES.md",
+              "RelativeDocumentMoniker": "LettoreVideo\\CHANGES.md",
+              "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\CHANGES.md",
+              "RelativeToolTip": "LettoreVideo\\CHANGES.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-21T19:51:43.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Resources.resx",
+              "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\Properties\\Resources.resx",
+              "RelativeDocumentMoniker": "LettoreVideo\\Properties\\Resources.resx",
+              "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\Properties\\Resources.resx",
+              "RelativeToolTip": "LettoreVideo\\Properties\\Resources.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2025-10-21T19:48:50.949Z",
               "EditorCaption": ""
             }
           ]

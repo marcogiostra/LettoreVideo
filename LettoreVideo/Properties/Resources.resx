@@ -121,38 +121,23 @@
   <data name="semplice_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\semplice_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="db" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\db.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="little_save_yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\little_save_yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cestino_stilizzato" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\cestino_stilizzato.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Movie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\movie.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cestino_stilizzato1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\cestino_stilizzato.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FrecciaOpen_Blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="volumeoff_giallo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\volumeoff_giallo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="organize_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\organize_list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="semplice_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\semplice_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="check_list_true1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\check_list_true.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ShowList" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\ShowList.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FrecciaOpen_Arancione" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Arancione.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FrecciaOpen_GrigioChiaro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_GrigioChiaro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="check_list_true" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\check_list_true.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,20 +148,17 @@
   <data name="bm_AvantiVeloce" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\bm_AvantiVeloce.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FrecciaOpen_Bluetto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Bluetto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="open_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\open_file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bm_StopRosso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\bm_StopRosso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FrecciaOpen_Fuctia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Fuctia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gomma_biamcablue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\gomma_biamcablue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bm_Next" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\bm_Next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FrecciaOpen_Azzurro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Azzurro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bm_DaCapo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\bm_DaCapo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,23 +169,17 @@
   <data name="plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="choose_video" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\choose_video.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="do_list_freccia_verede_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\do_list_freccia_verede_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FrecciaOpen_Rosso" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Rosso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="choose_item_from_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\choose_item_from_list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="volumeup_giallo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\volumeup_giallo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FrecciaOpen_Bianco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Bianco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="gomma" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\gomma.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FrecciaOpen_Azzurro2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Azzurro2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bm_Play" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\bm_Play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,31 +190,25 @@
   <data name="bm_Pausa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\bm_Pausa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FrecciaOpen_Verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FrecciaOpen_Giallone" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Giallone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FrecciaOpen_Nero" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Nero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="volumeoff_giallo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\volumeoff_giallo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Exit_Quadrato_Rosso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\Exit_Quadrato_Rosso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="open_cartella" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\open_cartella.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bm_Previous" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\bm_Previous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FrecciaOpen_Giallo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\FrecciaOpen_Giallo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="check_list_false" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\check_list_false.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="volumeup_bianco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\volumeup_bianco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Movie" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\movie.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gestione" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\gestione.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

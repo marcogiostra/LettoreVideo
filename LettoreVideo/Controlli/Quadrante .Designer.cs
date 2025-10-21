@@ -1,6 +1,6 @@
-﻿namespace LettoreVideo
+﻿namespace LettoreVideo.Controlli
 {
-    partial class KnobGioshControl
+    partial class Quadrante
     {
         /// <summary> 
         /// Variabile di progettazione necessaria.
@@ -30,14 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // KnobGioshControl
+            // Quadrante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "KnobGioshControl";
-            this.Size = new System.Drawing.Size(63, 63);
+            this.Name = "Quadrante";
+            this.Size = new System.Drawing.Size(100, 100);
             this.ResumeLayout(false);
 
+       
         }
 
         #endregion

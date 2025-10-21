@@ -1,137 +1,4 @@
-﻿/*
-using LettoreVideo.Classi;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace LettoreVideo
-{
-  
-    public partial class OverlayFormFlottante : Form
-    {
-        private GlobalMouseMoveFilter mouseFilter;
-
-        private Button closeButton;
-        private Timer slideTimer;
-        private bool isVisibleTarget = false;
-        private int targetX, hiddenX;
-        private int slideSpeed = 20;
-
-        public int TriggerZoneSize { get; set; } = 80;
-
-        public OverlayFormFlottante()
-        {
-
-            // Form senza bordi
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.TopMost = true;
-            this.ShowInTaskbar = false;
-
-            this.Size = new Size(40, 40);
-            this.BackColor = Color.Black;
-
-            closeButton = new Button
-            {
-                Text = "X",
-                Size = new Size(40, 40),
-                Location = new Point(0, 0),
-                Font = new Font("Tahoma", 10, FontStyle.Bold),
-                BackColor = Color.DarkRed,
-                ForeColor = Color.White
-            };
-            this.Controls.Add(closeButton);
-            closeButton.Click += (s, e) => this.Owner?.Close();
-
-            slideTimer = new Timer { Interval = 15 };
-            slideTimer.Tick += SlideTimer_Tick;
-        }
-
-   
-        public void AttachToForm(Form parent)
-        {
-            this.Owner = parent;
-            this.StartPosition = FormStartPosition.Manual;
-
-            targetX = parent.Right - this.Width - 5;
-            hiddenX = parent.Right + 5;
-            this.Location = new Point(hiddenX, parent.Top + 5);
-            this.Show(parent);
-
-            parent.Resize += Parent_Resize;
-
-            mouseFilter = new GlobalMouseMoveFilter();
-            mouseFilter.MouseMove += Parent_MouseMove;
-            Application.AddMessageFilter(mouseFilter);
-        }
-
-        private void Parent_Resize(object sender, EventArgs e)
-        {
-            var parent = this.Owner;
-            targetX = parent.Right - this.Width - 5;
-            hiddenX = parent.Right + 5;
-        }
-
-        private void Parent_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.BringToFront();
-            bool inTopRight = false;
-            var parent = this.Owner;
-            Point mousePos = parent.PointToClient(Cursor.Position);
-            inTopRight = (mousePos.X >= parent.ClientSize.Width - TriggerZoneSize &&
-                               mousePos.Y <= TriggerZoneSize);
-            if (inTopRight)
-            {
-                isVisibleTarget = true;
-                slideTimer.Start();
-            }
-
-            if (inTopRight && !isVisibleTarget)
-            {
-                isVisibleTarget = true;
-                slideTimer.Start();
-            }
-            else if (!inTopRight && isVisibleTarget)
-            {
-                isVisibleTarget = false;
-                slideTimer.Start();
-            }
-        }
-
-        private void SlideTimer_Tick(object sender, EventArgs e)
-        {
-            if (isVisibleTarget)
-            {
-                if (this.Left > targetX)
-                {
-                    this.Left -= slideSpeed;
-                    if (this.Left < targetX) this.Left = targetX;
-                }
-                else slideTimer.Stop();
-            }
-            else
-            {
-                if (this.Left < hiddenX)
-                {
-                    this.Left += slideSpeed;
-                    if (this.Left > hiddenX) this.Left = hiddenX;
-                }
-                else slideTimer.Stop();
-            }
-        }
-    }
-
-}
-*/
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
@@ -156,7 +23,7 @@ namespace LettoreVideo
 
     public partial class OverlayFormFlottante : Form
     {
-        private frmVideo _OwnerForm;
+        private frmVideoNEW _OwnerForm;
         private Button closeButton;
         private Timer slideTimer;
         private bool isVisibleTarget = false;
@@ -167,7 +34,7 @@ namespace LettoreVideo
         private Timer mouseCheckTimer;
         public int TriggerZoneSize { get; set; } = 80;
 
-        public OverlayFormFlottante(frmVideo pOwnrForm)
+        public OverlayFormFlottante(frmVideoNEW pOwnrForm)
         {
             _OwnerForm = pOwnrForm;
 

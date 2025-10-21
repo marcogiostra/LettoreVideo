@@ -1,111 +1,325 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LettoreVideo.Controlli;
+using System;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Windows.Media.Animation;
+
 
 namespace LettoreVideo
 {
-    public partial class OverLayForm : Form
+    public partial class OverlayForm : Form
     {
-        public enum OverlayType
+        Form _owner = new Form();
+        bool IsMute = false;
+
+        public OverlayForm()
         {
-            Top,
-            Right,
-            Botton,
-            Left
-        }
+            InitializeComponent();
 
-        #region DICHIARAZIONI
+         
+            #region LETTOREVIDEO
 
-        #region PARAMETRI
-        private frmVideo _parentForm;
-        private OverlayType _type;
-        private int _overlayPixelMisure;
-        private double _opacity;
-        #endregion PARAMTRI
-
-        //private TextBox txtInput;
-        #endregion DICHIARAZIONI
-
-        public OverLayForm(frmVideo pParentForm, OverlayType pType, int pOverlayPixelMisure, double pOpacity)
-        {
-            //memorizza i paramtri
-            _parentForm = pParentForm;
-            _type = pType;
-            _overlayPixelMisure = pOverlayPixelMisure;
-            _opacity = pOpacity;
-            if (_opacity > 1)
-                _opacity = 1;
-            else if (_opacity <= 0)
-                    _opacity = 0.5;
-
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.StartPosition = FormStartPosition.Manual;
-            this.TopMost = true;
-            this.ShowInTaskbar = false;
-            this.BackColor = Color.Black;
-            this.Opacity = 0.7; // semi trasparente
-
-            switch (_type)
+            btnMusicalePlay.Click += (s, e) =>
             {
-                case OverlayType.Top:
-                    this.Height =   _overlayPixelMisure;   //per esempio 80;
-                    break;
-
-                case OverlayType.Right:
-                    this.Width = _overlayPixelMisure;   //per esempio 200;
-                    break;
-
-                case OverlayType.Botton:
-                    this.Height = _overlayPixelMisure;   //per esempio 60;
-                    break;
-
-                case OverlayType.Left:
-                    this.Width = _overlayPixelMisure;   //per esempio 200;
-                    break;
-            }
-
-
-
-            //InitializeComponent();
-
-            /*
-            // esempio di pulsanti
-            FlowLayoutPanel panel = new FlowLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                Padding = new Padding(10),
-                FlowDirection = FlowDirection.LeftToRight
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_PLAY();
             };
 
-            Button okBtn = new Button { Text = "OK-Top", Width = 100 };
-            okBtn.Click += (s, e) => parentForm.DoOkFromTop();
+            btnMusicaleStopRosso.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_STOP();
+            };
 
-            txtInput = new TextBox { Width = 150 };
+            btnMusicaDaCapo.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_DA_CAPO();
+            };
 
-            panel.Controls.Add(new Label { Text = "Overlay Top", ForeColor = Color.White, AutoSize = true });
-            panel.Controls.Add(txtInput);
-            panel.Controls.Add(okBtn);
+            btnMusicalePrecedente.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_PRECEDENTE();
+            };
 
-            this.Controls.Add(panel);
-            */
+            btnMusicaleIndietroVeloce.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_INDIETRO_VELOCE();
+            };
+
+            btnMusicxalePausa.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_PAUSA();
+            };
+
+            btnMusicaleAvantiVeloce.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_AVANTI_VELOCE();
+            };
+
+            btnMusicaleAvantiVeloce.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_AVANTI_VELOCE();
+            };
+
+            btnMusicaleNext.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_PROSSIMO();
+            };
+
+            btnVolume.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                {
+                    //VIDEO_STOP();
+
+                    if (IsMute)
+                    {
+                        btnVolume.Image = picVolumeUP.Image;
+                    }
+                    else
+                    {
+                        btnVolume.Image = picVolumeMute.Image;
+                    }
+
+                    IsMute = !IsMute;
+
+                    main.External_MUTE(IsMute);
+                }
+            };
+
+            mediaSeekBar1.ValueChanged += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                {
+                    long _length = main.GetLenght();
+
+                    if (_length > 0 && mediaSeekBar1.IsDragging)
+                    {
+                        long newTime = mediaSeekBar1.Value * _length / mediaSeekBar1.Maximum;
+
+                        main.External_POSITION_MOVIE(newTime);
+                    }
+                }
+            };
+
+            knobVelocita.ValueChanged += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                {
+                    float _value = 0;
+
+                    switch (knobVelocita.Value)
+                    {
+                        case 0:
+                            _value = 1;
+                            break;
+
+                        case int n when n > 0:
+                            _value = 1 * knobVelocita.Value;
+                            Application.DoEvents();
+                            break;
+
+                        case int n when n < 0:
+                            int newValue = 10 + knobVelocita.Value;
+                            _value = (float)Decimal.Divide(1, Decimal.Divide(10, newValue));
+                            Application.DoEvents(); break;
+                    }
+                    main.External_IMPOSTSA_VELOCITA(_value);
+
+                   
+                }
+            };
+            #endregion LETTOREVIDEO
+
+            #region GESTORE
+            btnOpenFile.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_OPEN_FILE();
+            };
+
+            btnOpenDirectory.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_OPEN_DIR();
+            };
+
+            btnShowList.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_SHOW_LIST();
+                    
+            };
+
+            btnClear.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_CLAER();
+
+            };
+
+            btnSave.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_SAVE();
+
+            };
+
+            btnGeationeArchivio.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_GESTIONE_ARCHIVIO();
+
+            };
+
+            btnScegliFromArchivio.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_SCEGLI_VIDEO_DA_ARCHIVIO();
+
+            };
+
+            #endregion GESTORE
+
 
 
         }
 
-        /*esempio di valorizzazione di un controllo
-         * 
-         * public string InputText
+        #region f()
+
+        public void SetOwner(Form owner)
         {
-            get => txtInput.Text;
-            set => txtInput.Text = value;
+            if (owner != null)
+            {
+                _owner.Owner = owner;
+            }
         }
-         */
+
+        public void SetSeekBarMinimum(int pMinimum)
+        {
+            mediaSeekBar1.Minimum = pMinimum;
+        }
+
+        public void SetSeekBarMaximum(int pMaximum)
+        {
+            mediaSeekBar1.Maximum = pMaximum;
+        }
+
+        public int GetSeekBarMaximum()
+        {
+            return mediaSeekBar1.Maximum;
+        }
+
+        public void SetSeekBarValue(int pValue)
+        {
+            mediaSeekBar1.Value = pValue;
+        }
+        public int GetSeekBarValue()
+        {
+            return mediaSeekBar1.Value;
+        }
+
+        public bool GetSeekBarIsDragging()
+        {
+            return mediaSeekBar1.IsDragging;
+        }
+
+        public void SetContaBrani(string pValue)
+        {
+            txtContaBrani.Text = pValue;
+        }
+
+        public void SetTotalTime(string pValue)
+        {
+            txtTotalTime.Text = pValue;
+        }
+
+        public void SetElapsedTime(string pValue)
+        {
+            txtElapsedTime.Text = pValue;
+        }
+
+        public int GetVelocita()
+        {
+            return knobVelocita.Value;
+        }
+
+        private void OverlayForm_Load(object sender, EventArgs e)
+        {
+
+        }
+        #endregion f()
+
+        /*
+
+         
+
+              private void knobVelocita_ValueChanged(object sender, KnobGioshControl.ValueChangedEventArgs e)
+              {
+
+              }
+
+              private void picOpenFile_Click(object sender, EventArgs e)
+              {
+
+              }
+
+              private void picOpenDirectory_Click(object sender, EventArgs e)
+              {
+
+              }
+
+              private void picShowList_Click(object sender, EventArgs e)
+              {
+
+              }
+
+              private void picClear_Click(object sender, EventArgs e)
+              {
+
+              }
+
+              private void picSaveArchivio_Click(object sender, EventArgs e)
+              {
+
+              }
+
+              private void picGeationeArchivio_Click(object sender, EventArgs e)
+              {
+
+              }
+
+              private void picScegliFromArchivio_Click(object sender, EventArgs e)
+              {
+
+              }
+        */
     }
 }

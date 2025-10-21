@@ -19,7 +19,7 @@ namespace LettoreVideo
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmMain());
             List<VideoFile> videoFiles = new List<VideoFile>();
-            Application.Run(new frmVideo());
+            Application.Run(new frmVideoNEW());
         }
     }
 

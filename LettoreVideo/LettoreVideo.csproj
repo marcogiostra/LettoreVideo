@@ -87,6 +87,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -139,6 +140,12 @@
     <Compile Include="Controlli\MediaSeekBar.Designer.cs">
       <DependentUpon>MediaSeekBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlli\Quadrante .cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlli\Quadrante .Designer.cs">
+      <DependentUpon>Quadrante .cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGestoreArchivio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,23 +164,23 @@
     <Compile Include="frmScegliFiles.Designer.cs">
       <DependentUpon>frmScegliFiles.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVideo.cs">
+    <Compile Include="frmVideoNEW.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVideo.Designer.cs">
-      <DependentUpon>frmVideo.cs</DependentUpon>
+    <Compile Include="frmVideoNEW.Designer.cs">
+      <DependentUpon>frmVideoNEW.cs</DependentUpon>
     </Compile>
-    <Compile Include="KnobGioshControl.cs">
+    <Compile Include="Controlli\KnobGioshControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KnobGioshControl.Designer.cs">
+    <Compile Include="Controlli\KnobGioshControl.Designer.cs">
       <DependentUpon>KnobGioshControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="OverLayForm.cs">
+    <Compile Include="OverlayForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OverLayForm.Designer.cs">
-      <DependentUpon>OverLayForm.cs</DependentUpon>
+    <Compile Include="OverlayForm.Designer.cs">
+      <DependentUpon>OverlayForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OverlayFormFlottante.cs" />
     <Compile Include="OverlayFormFlottante.Designer.cs">
@@ -184,6 +191,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Config.cs" />
+    <EmbeddedResource Include="Controlli\Quadrante .resx">
+      <DependentUpon>Quadrante .cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestoreArchivio.resx">
       <DependentUpon>frmGestoreArchivio.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,14 +203,14 @@
     <EmbeddedResource Include="frmScegliFiles.resx">
       <DependentUpon>frmScegliFiles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVideo.resx">
-      <DependentUpon>frmVideo.cs</DependentUpon>
+    <EmbeddedResource Include="frmVideoNEW.resx">
+      <DependentUpon>frmVideoNEW.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KnobGioshControl.resx">
+    <EmbeddedResource Include="Controlli\KnobGioshControl.resx">
       <DependentUpon>KnobGioshControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OverLayForm.resx">
-      <DependentUpon>OverLayForm.cs</DependentUpon>
+    <EmbeddedResource Include="OverlayForm.resx">
+      <DependentUpon>OverlayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OverlayFormFlottante.resx">
       <DependentUpon>OverlayFormFlottante.cs</DependentUpon>
@@ -249,7 +259,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icona_Programma.ico" />
+    <None Include="Magazzion_Immagini\open_cartella.png" />
+    <None Include="Magazzion_Immagini\open_file.png" />
+    <None Include="Magazzion_Immagini\organize_list.png" />
+    <None Include="Magazzion_Immagini\choose_item_from_list.png" />
+    <None Include="Magazzion_Immagini\gomma_biamca_blue.png" />
+    <None Include="Magazzion_Immagini\gomma_biamcablue.png" />
+    <None Include="Magazzion_Immagini\save.png" />
+    <None Include="Magazzion_Immagini\choose_video.png" />
+    <None Include="Magazzion_Immagini\gestione.png" />
     <Content Include="movie.ico" />
     <None Include="Magazzion_Immagini\movie.ico" />
     <None Include="Magazzion_Immagini\gomma.png" />

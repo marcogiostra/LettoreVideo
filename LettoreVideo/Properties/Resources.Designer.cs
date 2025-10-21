@@ -203,9 +203,19 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap db {
+        internal static System.Drawing.Bitmap choose_item_from_list {
             get {
-                object obj = ResourceManager.GetObject("db", resourceCulture);
+                object obj = ResourceManager.GetObject("choose_item_from_list", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap choose_video {
+            get {
+                object obj = ResourceManager.GetObject("choose_video", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +243,9 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Arancione {
+        internal static System.Drawing.Bitmap gestione {
             get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Arancione", resourceCulture);
+                object obj = ResourceManager.GetObject("gestione", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,139 +253,9 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Azzurro {
+        internal static System.Drawing.Bitmap gomma_biamcablue {
             get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Azzurro", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Azzurro2 {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Azzurro2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Bianco {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Bianco", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Blue {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Blue", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Bluetto {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Bluetto", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Fuctia {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Fuctia", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Giallo {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Giallo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Giallone {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Giallone", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_GrigioChiaro {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_GrigioChiaro", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Nero {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Nero", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Rosso {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Rosso", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FrecciaOpen_Verde {
-            get {
-                object obj = ResourceManager.GetObject("FrecciaOpen_Verde", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap gomma {
-            get {
-                object obj = ResourceManager.GetObject("gomma", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap little_save_yellow {
-            get {
-                object obj = ResourceManager.GetObject("little_save_yellow", resourceCulture);
+                object obj = ResourceManager.GetObject("gomma_biamcablue", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -393,9 +273,49 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap open_cartella {
+            get {
+                object obj = ResourceManager.GetObject("open_cartella", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_file {
+            get {
+                object obj = ResourceManager.GetObject("open_file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap organize_list {
+            get {
+                object obj = ResourceManager.GetObject("organize_list", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap plus {
             get {
                 object obj = ResourceManager.GetObject("plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save {
+            get {
+                object obj = ResourceManager.GetObject("save", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -433,29 +353,9 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShowList {
-            get {
-                object obj = ResourceManager.GetObject("ShowList", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap volumeoff_giallo {
             get {
                 object obj = ResourceManager.GetObject("volumeoff_giallo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap volumeup_bianco {
-            get {
-                object obj = ResourceManager.GetObject("volumeup_bianco", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
