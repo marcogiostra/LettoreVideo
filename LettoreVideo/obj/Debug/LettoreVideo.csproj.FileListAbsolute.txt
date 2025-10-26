@@ -2928,13 +2928,11 @@ D:\svil_Giosh\005_LettoreVideo_@@@\LettoreVideo\LettoreVideo\bin\Debug\DevExpres
 D:\svil_Giosh\005_LettoreVideo_@@@\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmScegliFiles.resources
 D:\svil_Giosh\005_LettoreVideo_@@@\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.exe.config
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.csproj.AssemblyReference.cache
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.Controlli.Quadrante.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmGestoreArchivio.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmLista.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmScegliFiles.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmVideoNEW.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.Controlli.KnobGioshControl.resources
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.OverlayForm.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.GlobalMouseMoveFilter.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.Properties.Resources.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.csproj.GenerateResource.cache
@@ -3919,3 +3917,7 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\Xamarin.Forms
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\DevExpress.Pdf.v22.2.Core.xml
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\DevExpress.Pdf.v22.2.Drawing.xml
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreV.672004D4.Up2Date
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.Controlli.ExtendedPictureBox.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.exe.licenses
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.OverlayForm2.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.exe.config

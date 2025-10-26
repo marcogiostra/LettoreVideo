@@ -145,6 +145,7 @@ namespace LettoreVideo
 
         private void picExit_Click(object sender, EventArgs e)
         {
+            this.Tag = "KO";
             this.Close();
         }
 

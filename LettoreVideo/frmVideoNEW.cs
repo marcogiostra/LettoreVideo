@@ -1,22 +1,16 @@
-﻿using LettoreVideo;
-using LettoreVideo.Classi;
+﻿using LettoreVideo.Classi;
 using LettoreVideo.Controlli;
 using LettoreVideo.Utility;
 using LibVLCSharp.Shared;
-using LibVLCSharp.WinForms;
-using MaterialSkin;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace LettoreVideo
 {
@@ -26,8 +20,12 @@ namespace LettoreVideo
         Play = 1,
         Stop = 2,
 
-        FastBackward = 3,
-        FastNext = 4,
+        FastBackward5 = 30,
+        FastBackward10 = 31,
+        FastBackward30 = 32,
+        FastNext5 = 40,
+        FastNext10 = 41,
+        FastNext30 = 42,
 
         Previous = 5,
         Next = 6,
@@ -63,7 +61,7 @@ namespace LettoreVideo
         #region VIDEO
         //VLC stuff
         public LibVLC _libVLC;
-        public MediaPlayer _mp;
+        public LibVLCSharp.Shared.MediaPlayer _mp;
         public Media media;
 
         public bool isFullscreen = false;
@@ -84,43 +82,33 @@ namespace LettoreVideo
 
         #endregion DICHIARAZIONI
 
-        private OverlayForm overlay2;
+        private OverlayForm2 overlay2;
         private Timer timerMouse;
 
-
+       
         #region Class
         public frmVideoNEW()
         {
             InitializeComponent();
 
             InizializzaLista();
-
-
-
+         
             //Inizializzazione VLC
             InizializzaVLC();
 
             //Inizializza la lettura del file di configurazione
             config.cfgFile = "MyConfig.config";
             dirVideo = config.GetValue("//appDIR//add[@key='DIR_VIDEO']");
-
-            /*
-            // Crei un manager pe tooltip
-            TooltipManager2 tooltip = new TooltipManager2();
-            tooltip.SetTooltip(picOpenFile, "Seleziona nuovi file da aggiungere alla play-list.", false);
-            tooltip.SetTooltip(picOpenDirectory, "Seleziona la cartella per aggiungere nuovi file da aggiungere alla play-list.", false);
-            */
-
-     
-            Icon myIcon = LettoreVideo.Properties.Resources.Movie;
+          
+            Icon myIcon = global::LettoreVideo.Properties.Resources.movie;
             this.Icon = myIcon;
 
             // Forza l'icona sulla taskbar
             TaskbarIconHelper.SetTaskbarIcon(this, myIcon);
 
-
+            
             // OverlayForm
-            overlay2 = new OverlayForm();
+            overlay2 = new OverlayForm2();
             overlay2.Owner = this;
             overlay2.SetOwner(this);
             //overlay2.Top = this.Height;
@@ -131,11 +119,11 @@ namespace LettoreVideo
             timerMouse = new Timer { Interval = 50 };
             timerMouse.Tick += timerMouse_Tick;
             //timerMouse.Start();
-
-   
+     
 
         }
 
+ 
         private void frmVideoNEW_Load(object sender, EventArgs e)
         {
             try
@@ -161,6 +149,12 @@ namespace LettoreVideo
             }
             timer2.Enabled = true;
             //@@@timerMouse.Enabled = true;
+
+  
+
+  
+
+          
         }
 
         private void frmVideoNEW_FormClosing(object sender, FormClosingEventArgs e)
@@ -204,6 +198,11 @@ namespace LettoreVideo
 
         }
 
+
+ 
+    
+
+      
         #endregion Class
 
         #region f()
@@ -229,7 +228,7 @@ namespace LettoreVideo
             if (Index > -1 && Totale > 0)
                 tempValue = (Index + 1).ToString() + " / " + Totale.ToString();
             else
-                tempValue = "-";
+                tempValue = "0 video";
 
             overlay2.SetContaBrani(tempValue);
             
@@ -240,13 +239,17 @@ namespace LettoreVideo
         private void InizializzaVLC()
         {
             Core.Initialize();
+
+       
+
             oldVideoSize = videoView1.Size;
             oldFormSize = this.Size;
             oldVideoLocation = videoView1.Location;
             //VLC stuff
-            _libVLC = new LibVLC();
+            //_libVLC = new LibVLC();
+            _libVLC = new LibVLC("--no-video-title-show", "--vout=directx", "--no-overlay");
             Application.DoEvents();
-            _mp = new MediaPlayer(_libVLC);
+            _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
             Application.DoEvents();
             videoView1.MediaPlayer = _mp;
             Application.DoEvents();
@@ -266,8 +269,6 @@ namespace LettoreVideo
                         }
                         break;
 
-
-
                     case VideoPlayAction.Play:
                         timer1.Enabled = true;
                         if (!(_mp.State == VLCState.Playing))
@@ -282,12 +283,30 @@ namespace LettoreVideo
                         isPlaying = false;
                         break;
 
-                    case VideoPlayAction.FastBackward:
-                        _mp.Position -= 0.02f;
+                    case VideoPlayAction.FastBackward5:
+                        _mp.Time -= 5000;
                         break;
 
-                    case VideoPlayAction.FastNext:
-                        _mp.Position += 0.02f;
+                    case VideoPlayAction.FastBackward10:
+                        _mp.Time -= 10000;
+                        break;
+
+
+                    case VideoPlayAction.FastBackward30:
+                        _mp.Time -= 30000;
+                        break;
+
+
+                    case VideoPlayAction.FastNext5:
+                        _mp.Time -= 5000;
+                        break;
+
+                    case VideoPlayAction.FastNext10:
+                        _mp.Time -= 10000;
+                        break;
+
+                    case VideoPlayAction.FastNext30:
+                        _mp.Time -= 30000;
                         break;
 
                     case VideoPlayAction.Previous:
@@ -303,7 +322,7 @@ namespace LettoreVideo
                                 _mp.Dispose();
                                 isPlaying = false;
                                 AggiornaBranoSuovato();
-                                _mp = new MediaPlayer(_libVLC);
+                                _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
                                 videoView1.MediaPlayer = _mp;
                                 PlayFile(VIDs[Index].Filename);
                             }
@@ -332,7 +351,7 @@ namespace LettoreVideo
                                 _mp.Dispose();
                                 isPlaying = false;
                                 AggiornaBranoSuovato();
-                                _mp = new MediaPlayer(_libVLC);
+                                _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
                                 videoView1.MediaPlayer = _mp;
                                 PlayFile(VIDs[Index].Filename);
                             }
@@ -404,9 +423,20 @@ namespace LettoreVideo
                 VideoAction(VideoPlayAction.Previous);
         }
 
-        private void VIDEO_INDIETRO_VELOCE()
+        private void VIDEO_INDIETRO_VELOCE(int pSecondi)
         {
-            VideoAction(VideoPlayAction.FastBackward);
+            switch (pSecondi)
+            {
+                case 5:
+                    VideoAction(VideoPlayAction.FastBackward5);
+                    break;
+                case 10:
+                    VideoAction(VideoPlayAction.FastBackward10);
+                    break;
+                case 30:
+                    VideoAction(VideoPlayAction.FastBackward30);
+                    break;
+            }
         }
 
         private void VIDEO_PLAY()
@@ -422,7 +452,7 @@ namespace LettoreVideo
                         //
                         timer1.Enabled = true;
                         //
-                        _mp = new MediaPlayer(_libVLC);
+                        _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
                         videoView1.MediaPlayer = _mp;
                         PlayFile(VIDs[Index].Filename);
                         Application.DoEvents();
@@ -463,9 +493,20 @@ namespace LettoreVideo
             VideoAction(VideoPlayAction.Stop);
         }
 
-        private void VIDEO_AVANTI_VELOCE()
+        private void VIDEO_AVANTI_VELOCE(int pSecondi)
         {
-            VideoAction(VideoPlayAction.FastNext);
+            switch (pSecondi)
+            {
+                case 5:
+                    VideoAction(VideoPlayAction.FastNext5);
+                    break;
+                case 10:
+                    VideoAction(VideoPlayAction.FastNext10);
+                    break;
+                case 30:
+                    VideoAction(VideoPlayAction.FastNext30);
+                    break;
+            }
         }
 
         private void VIDEO_NEXT()
@@ -631,16 +672,24 @@ namespace LettoreVideo
 
             //InizializzaOverLAy();
 
+ 
             overlay = new OverlayFormFlottante(this);
             overlay.AttachToForm(this);
             overlay.BringToFront();
             overlay.Opacity = 0.7;
 
+            
             overlay2.Show();
             frmVideoNEW_Resize(null, null);
             timerMouse.Start();
+            
+
+       
+
 
         }
+
+
 
         /*
         private void timerMouse_Tick(object sender, EventArgs e)
@@ -683,7 +732,6 @@ namespace LettoreVideo
         #endregion TIMER
 
       
-
         #region EXTERNAL
 
         #region LETTOREVIDEO
@@ -695,9 +743,9 @@ namespace LettoreVideo
         {
             VIDEO_PRECEDENTE();
         }
-        public void External_INDIETRO_VELOCE()
+        public void External_INDIETRO_VELOCE(int pSecondi)
         {
-            VIDEO_INDIETRO_VELOCE();
+            VIDEO_INDIETRO_VELOCE(pSecondi);
         }
         public void External_PAUSA()
         {
@@ -711,9 +759,9 @@ namespace LettoreVideo
         {
             VIDEO_STOP();
         }
-        public void External_AVANTI_VELOCE()
+        public void External_AVANTI_VELOCE(int pSecondi)
         {
-            VIDEO_AVANTI_VELOCE();
+            VIDEO_AVANTI_VELOCE(pSecondi);
         }
         public void External_PROSSIMO()
         {
@@ -1014,6 +1062,19 @@ namespace LettoreVideo
         public void External_SHOW_LIST()
         {
             VIDEO_STOP();
+
+            Form frmLista = Application.OpenForms
+                          .OfType<frmLista>()
+                          .FirstOrDefault();
+
+            if (frmLista != null)
+            {
+                // Porta la finestra esistente in primo piano
+                frmLista.BringToFront();
+                frmLista.Focus();
+                return;
+            }
+
             frmLista f = new frmLista(VIDs);
             f.ShowDialog(this);
             if (f.Tag.ToString() == "OK")
@@ -1105,6 +1166,18 @@ namespace LettoreVideo
         {
             VIDEO_STOP();
 
+            Form frmGestoreArchivio = Application.OpenForms
+                               .OfType<frmGestoreArchivio>()
+                               .FirstOrDefault();
+
+            if (frmGestoreArchivio != null)
+            {
+                // Porta la finestra esistente in primo piano
+                frmGestoreArchivio.BringToFront();
+                frmGestoreArchivio.Focus();
+                return;
+            }
+
             frmGestoreArchivio f = new frmGestoreArchivio(VID_DBs);
             f.ShowDialog(this);
             if (f.Tag.ToString() == "OK")
@@ -1117,6 +1190,18 @@ namespace LettoreVideo
         public void External_SCEGLI_VIDEO_DA_ARCHIVIO()
         {
             VIDEO_STOP();
+
+            Form frmScegliFiles = Application.OpenForms
+                         .OfType<frmScegliFiles>()
+                         .FirstOrDefault();
+
+            if (frmScegliFiles != null)
+            {
+                // Porta la finestra esistente in primo piano
+                frmScegliFiles.BringToFront();
+                frmScegliFiles.Focus();
+                return;
+            }
 
             frmScegliFiles f = new frmScegliFiles(VID_DBs);
             f.ShowDialog(this);
@@ -1144,5 +1229,8 @@ namespace LettoreVideo
         #endregion EXTERNAL
 
     }
+
+  
+
 }
 
