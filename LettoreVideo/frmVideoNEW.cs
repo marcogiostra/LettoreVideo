@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
 
@@ -36,7 +37,7 @@ namespace LettoreVideo
 
     public partial class frmVideoNEW : Form
     {
-     
+
 
         #region DICHIARAZIONI
         private PrivateFontCollection privateFontCollection = new PrivateFontCollection();
@@ -69,12 +70,12 @@ namespace LettoreVideo
         public Size oldVideoSize;
         public Size oldFormSize;
         public Point oldVideoLocation;
-
+        public List<Traccia> AUDIOs = new List<Traccia>();
         #endregion VIDEO
 
         OverlayFormFlottante overlay;
 
-       
+
 
 
         private bool quadranteVisibile = false;
@@ -85,28 +86,31 @@ namespace LettoreVideo
         private OverlayForm2 overlay2;
         private Timer timerMouse;
 
-       
+
         #region Class
         public frmVideoNEW()
         {
             InitializeComponent();
 
             InizializzaLista();
-         
+
             //Inizializzazione VLC
             InizializzaVLC();
 
             //Inizializza la lettura del file di configurazione
             config.cfgFile = "MyConfig.config";
             dirVideo = config.GetValue("//appDIR//add[@key='DIR_VIDEO']");
-          
+
             Icon myIcon = global::LettoreVideo.Properties.Resources.movie;
             this.Icon = myIcon;
 
             // Forza l'icona sulla taskbar
             TaskbarIconHelper.SetTaskbarIcon(this, myIcon);
 
-            
+
+
+
+
             // OverlayForm
             overlay2 = new OverlayForm2();
             overlay2.Owner = this;
@@ -115,15 +119,16 @@ namespace LettoreVideo
 
 
 
+
             // Timer mouse per animazione Quadrante
             timerMouse = new Timer { Interval = 50 };
             timerMouse.Tick += timerMouse_Tick;
             //timerMouse.Start();
-     
+
 
         }
 
- 
+
         private void frmVideoNEW_Load(object sender, EventArgs e)
         {
             try
@@ -150,11 +155,11 @@ namespace LettoreVideo
             timer2.Enabled = true;
             //@@@timerMouse.Enabled = true;
 
-  
 
-  
 
-          
+
+
+
         }
 
         private void frmVideoNEW_FormClosing(object sender, FormClosingEventArgs e)
@@ -189,20 +194,20 @@ namespace LettoreVideo
                     if (!quadranteVisibile)
                         overlay2.Top = this.Height;
                 }
-             
+
             }
             catch (Exception) { }
 
 
-          
+
 
         }
 
 
- 
-    
 
-      
+
+
+
         #endregion Class
 
         #region f()
@@ -224,14 +229,14 @@ namespace LettoreVideo
         private void AggiornaBranoSuovato()
         {
             string tempValue = string.Empty;
-            
+
             if (Index > -1 && Totale > 0)
                 tempValue = (Index + 1).ToString() + " / " + Totale.ToString();
             else
                 tempValue = "0 video";
 
             overlay2.SetContaBrani(tempValue);
-            
+
         }
         #endregion f()
 
@@ -240,7 +245,7 @@ namespace LettoreVideo
         {
             Core.Initialize();
 
-       
+
 
             oldVideoSize = videoView1.Size;
             oldFormSize = this.Size;
@@ -316,6 +321,8 @@ namespace LettoreVideo
                         }
                         else
                         {
+                            AUDIOs = new List<Traccia>();
+                            overlay2.ComboClear();
                             Index -= 1;
                             if (File.Exists(VIDs[Index].Filename))
                             {
@@ -345,6 +352,8 @@ namespace LettoreVideo
                     case VideoPlayAction.Next:
                         if (Index < VIDs.Count - 1)
                         {
+                            AUDIOs = new List<Traccia>();
+                            overlay2.ComboClear();
                             Index += 1;
                             if (File.Exists(VIDs[Index].Filename))
                             {
@@ -408,7 +417,47 @@ namespace LettoreVideo
             _mp.Play(new Media(_libVLC, file));
             isPlaying = true;
             Application.DoEvents();
-           
+
+            if (AUDIOs.Count == 0)
+                GetTracce();
+
+        }
+
+        private async void GetTracce()
+        {
+            AUDIOs = new List<Traccia>();
+            overlay2.ComboClear();
+
+            // Attendi il caricamento delle tracce
+            await Task.Delay(500);
+
+            // Ottieni il media
+            var media = _mp.Media;
+            if (media == null)
+                return;
+
+            // Ottieni le tracce e filtra audio
+            var tracks = media.Tracks;
+            var audioTracks = tracks.Where(t => t.TrackType == TrackType.Audio).ToList();
+
+            // Mostra le tracce
+            foreach (var t in audioTracks)
+            {
+                Traccia trc = new Traccia();
+                trc.id = t.Id;
+                trc.Description = t.Description;
+
+                AUDIOs.Add(trc);
+                //Console.WriteLine($"ID: {t.Id} - Nome: {t.Description} - Lingua: {t.Language}");
+            }
+            overlay2.ComboLoadTracce(AUDIOs);
+
+            // Esempio: seleziona la prima traccia audio
+            if (audioTracks.Count > 0)
+            {
+                _mp.SetAudioTrack(audioTracks[0].Id);
+                overlay2.ComboSelelectIndex(audioTracks[0].Id);
+            }
         }
 
         #region f()_MACRO_OPERAZIONI_VIDEO
@@ -631,8 +680,8 @@ namespace LettoreVideo
         {
             //mediaSeekBar1.Minimum = 0;
             //mediaSeekBar1.Maximum = 1000;
-            overlay2.SetSeekBarMinimum (0);
-            overlay2.SetSeekBarMaximum (1000);
+            overlay2.SetSeekBarMinimum(0);
+            overlay2.SetSeekBarMaximum(1000);
 
 
             // Time restituisce millisecondi trascorsi
@@ -672,19 +721,19 @@ namespace LettoreVideo
 
             //InizializzaOverLAy();
 
- 
+
             overlay = new OverlayFormFlottante(this);
             overlay.AttachToForm(this);
             overlay.BringToFront();
             overlay.Opacity = 0.7;
 
-            
+
             overlay2.Show();
             frmVideoNEW_Resize(null, null);
             timerMouse.Start();
-            
 
-       
+
+
 
 
         }
@@ -728,10 +777,10 @@ namespace LettoreVideo
             }
         }
 
-   
+
         #endregion TIMER
 
-      
+
         #region EXTERNAL
 
         #region LETTOREVIDEO
@@ -767,8 +816,8 @@ namespace LettoreVideo
         {
             VIDEO_NEXT();
         }
-        public void External_MUTE (bool pIsMute)
-        {           
+        public void External_MUTE(bool pIsMute)
+        {
             _mp.Mute = pIsMute;
         }
         public void External_POSITION_MOVIE(long pNewTime)
@@ -780,7 +829,7 @@ namespace LettoreVideo
                 _mp.Time = pNewTime;
             }
             */
-            if (_mp.Length > 0 && overlay2.GetSeekBarIsDragging() )
+            if (_mp.Length > 0 && overlay2.GetSeekBarIsDragging())
             {
                 long newTime = overlay2.GetSeekBarValue() * _mp.Length / overlay2.GetSeekBarMaximum();
                 _mp.Time = pNewTime;
@@ -790,13 +839,18 @@ namespace LettoreVideo
         public void External_IMPOSTSA_VELOCITA(float pValue)
         {
             _mp.SetRate(pValue);
-            Application.DoEvents(); 
+            Application.DoEvents();
 
+        }
+
+        public void External_SELECT_AUDIO_TRACK(int pIndex)
+        {
+            _mp.SetAudioTrack(pIndex);
         }
 
         public long GetLenght()
         {
-            return _mp.Length;  
+            return _mp.Length;
         }
         #endregion LETTOREVIDEO
 
@@ -857,11 +911,13 @@ namespace LettoreVideo
                         {
                             VideoFile vid = new VideoFile();
                             vid.Filename = filename;
+                            vid.FilenameOriginale = PathHelper.GetRelativeOrDriveTrimmed(filename);
                             // Ottieni la directory che contiene il file
                             string directory = Path.GetDirectoryName(filename);
                             // Prendi solo il nome dell'ultima cartella
                             string folderName = Path.GetFileName(directory);
-                            vid.Cartella = folderName;
+                            vid.Categoria = folderName;
+                            vid.Specifica = folderName;
                             vid.File = Path.GetFileName(filename);
                             string tipoFile = Path.GetExtension(filename);
                             string veraEstensione = tipoFile.Substring(1, tipoFile.Length - 1);
@@ -944,6 +1000,7 @@ namespace LettoreVideo
             }
         }
 
+
         public void External_OPEN_DIR()
         {
             VIDEO_STOP();
@@ -982,11 +1039,13 @@ namespace LettoreVideo
                                 {
                                     VideoFile vid = new VideoFile();
                                     vid.Filename = file;
+                                    vid.FilenameOriginale = PathHelper.GetRelativeOrDriveTrimmed(vid.Filename);
                                     // Ottieni la directory che contiene il file
                                     string directory = Path.GetDirectoryName(file);
                                     // Prendi solo il nome dell'ultima cartella
                                     string folderName = Path.GetFileName(directory);
-                                    vid.Cartella = folderName;
+                                    vid.Categoria = folderName;
+                                    vid.Specifica = folderName;
                                     vid.File = Path.GetFileName(file);
                                     string tipoFile = Path.GetExtension(file);
                                     dirVideo = file.Substring(0, file.Length - vid.File.Length - 1);
@@ -1087,7 +1146,7 @@ namespace LettoreVideo
             f.Close();
         }
 
-        public void External_CLAER ()
+        public void External_CLEAR()
         {
             VIDEO_STOP();
 
@@ -1113,9 +1172,11 @@ namespace LettoreVideo
                         f.Saved = true;
 
                         VideoFileDB vFdb = new VideoFileDB();
-                        vFdb.Cartella = f.Cartella;
+                        vFdb.Categoria = f.Categoria;
+                        vFdb.Specifica = f.Specifica;
                         vFdb.File = f.File;
                         vFdb.Filename = f.Filename;
+                        vFdb.FilenameOriginale = f.FilenameOriginale;
                         vFdb.Titolo = f.Titolo;
 
                         VID_DBs.Add(vFdb);
@@ -1135,23 +1196,7 @@ namespace LettoreVideo
 
             if (ItemAdded)
             {
-                try
-                {
-                    string DbFile = Path.Combine(DataFolder, "db.json");
-                    //string json = JsonConvert.SerializeObject(VID_DBs, Formatting.Indented);
-                    //File.WriteAllText(DbFile, json);
-
-                    Export exportObj = new Export { Data = VID_DBs };
-
-                    string json = JsonConvert.SerializeObject(exportObj, Formatting.Indented);
-                    File.WriteAllText(DbFile, json);
-
-                    PRG.MsgBoxExcvlamation("Il salvataggio ha avuto successo!");
-                }
-                catch (Exception ex)
-                {
-                    PRG.MsgBoxERR(ex, "Errore nella procedura di salvataggio nuovi file in archivio:\r\n\r\n");
-                }
+                JsonOperation.Save_DB(VID_DBs, DataFolder);
             }
             else
             {
@@ -1224,13 +1269,65 @@ namespace LettoreVideo
             }
             f.Close();
         }
+
+        public void External_GESTIONE_CATEGORIE()
+        {
+            VIDEO_STOP();
+
+            VIDs = new List<VideoFile>();
+
+            frmGestioneFilecs f = new frmGestioneFilecs(ref VID_DBs);
+            f.ShowDialog(this);
+            if (f.Tag.ToString() == "OK")
+            {
+               
+            }
+            f.Close();
+
+        }
         #endregion GESTORE_ESTERNO
 
+        #region EXTERNAL_FUNCTIONS
+        public void External_PHOTO()
+        {
+
+
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                            "snapshot_lv_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png");
+
+            bool result = _mp.TakeSnapshot(0, path, 0, 0);
+
+            if (result)
+            {
+                // Suono di click della macchina fotografica
+                PlayCameraClick();
+            }
+            else
+            {
+                // Suono di errore
+                System.Media.SystemSounds.Hand.Play();
+            }
+        }
+        #endregion EXTERNAL_FUNCTIONS
         #endregion EXTERNAL
 
+        private void PlayCameraClick()
+        {
+            string soundPath = Path.Combine(Application.StartupPath, "camera_click_16bit.wav");
+
+            if (File.Exists(soundPath))
+            {
+                var player = new System.Media.SoundPlayer(soundPath);
+                player.Play();
+            }
+            else
+            {
+                MessageBox.Show("File audio non trovato:\n" + soundPath);
+            }
+
+        }
+
+
     }
-
-  
-
 }
 

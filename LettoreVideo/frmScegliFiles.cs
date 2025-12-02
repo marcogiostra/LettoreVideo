@@ -28,6 +28,7 @@ namespace LettoreVideo
         private readonly MaterialSkinManager materialSkinManager;
         private System.Windows.Forms.ToolTip toolTip1 = new System.Windows.Forms.ToolTip();
         private int lastIndex = -1;
+        bool isDark = false;
 
         #region RETURN
         public List<VideoFile> rListaFinale { get; private set; }
@@ -54,18 +55,33 @@ namespace LettoreVideo
                 Primary.BlueGrey500, Accent.Orange200, TextShade.WHITE
             );
 
-            bool isDark = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK;
-            checkedListBox1.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
-            checkedListBox1.ForeColor = isDark ? Color.White : Color.Black;
-            rbtnAll.Checked = true;
+           
 
-            var cartelle = _VID_DBs.Select(v => v.Cartella).Distinct().ToList();
-            cmbCartelle.DataSource = cartelle;
+            isDark = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK;
+            lstFiles.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
+            lstFiles.ForeColor = isDark ? Color.White : Color.Black;
+            cmbCartelle.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
+            cmbCartelle.ForeColor = isDark ? Color.White : Color.Black;
+            rbtnCartella.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
+            rbtnCartella.ForeColor = isDark ? Color.White : Color.Black;
+            rbtnAll.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
+            rbtnAll.ForeColor = isDark ? Color.White : Color.Black;
+            lblTotale.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
+            lblTotale.ForeColor = isDark ? Color.White : Color.Black;
+            label2.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
+            label2.ForeColor = isDark ? Color.White : Color.Black;
+
+            rbtnAll.Checked = false;
+            rbtnCartella.Checked = false; ;
+            var categorie = _VID_DBs.Select(v => v.Categoria).Distinct().ToList();
+            cmbCartelle.DataSource = categorie;
+            cmbCartelle.SelectedIndex = -1;
+            rbtnCartella.Checked = true;
         }
 
         private void frmScegliFiles_Load(object sender, EventArgs e)
         {
-            AggiornaCheckedListBoxWithALL();
+            //AggiornaCheckedListBoxWithALL();
             this.Tag = "KO";
         }
         #endregion Class
@@ -73,28 +89,37 @@ namespace LettoreVideo
         #region f()
         private void AggiornaCheckedListBoxWithALL()
         {
-            checkedListBox1.DataSource = null;   // reset binding
-            checkedListBox1.DataSource = _VID_DBs;
-            checkedListBox1.DisplayMember = "Titolo";
-            checkedListBox1.ValueMember = "FileName";
+            lstFiles.Items.Clear();
+            _VID_DBs = new List<VideoFileDB>(_VID_DBs.OrderBy(f => f.Titolo));
+
+            foreach(VideoFileDB vid in _VID_DBs)
+            {
+                ListViewItem item = new ListViewItem(vid.Titolo);
+                item.SubItems.Add(vid.Categoria);
+                item.SubItems.Add(vid.Specifica);
+                item.SubItems.Add(vid.FilenameOriginale);
+                lstFiles.Items.Add(item);   
+            }
         }
 
-        private void CheckAllItems(CheckedListBox clb)
+        private void CheckAllItems(ListView listView)
         {
-            for (int i = 0; i < clb.Items.Count; i++)
-                clb.SetItemChecked(i, true);
+            foreach (ListViewItem item in listView.Items)
+                item.Checked = true;
         }
+        
+    
 
-        private void UncheckAllItems(CheckedListBox clb)
+        private void UncheckAllItems(ListView listView)
         {
-            for (int i = 0; i < clb.Items.Count; i++)
-                clb.SetItemChecked(i, false);
+            foreach (ListViewItem item in listView.Items)
+                item.Checked = false;
         }
 
         private void AddSelectedItemToList()
         {
             // Colleziono gli item selezionati (CheckedItems) in una lista temporanea
-            var Stelezionati = checkedListBox1.CheckedItems.Cast<VideoFileDB>().ToList();
+            var Stelezionati = lstFiles.CheckedItems.Cast<ListViewItem>().ToList(); 
 
             if (Stelezionati.Count == 0)
                 return;
@@ -102,17 +127,32 @@ namespace LettoreVideo
             // Rimuovo dalla lista originale
             foreach (var item in Stelezionati)
             {
-                VideoFile v = new VideoFile();
-                v.Cartella = item.Cartella;
-                v.Saved = true;
-                index++;
-                v.ID = index;
-                v.Filename = item.Filename;
-                v.File = item.File;
-                v.Titolo = item.Titolo;
+                string col1 = item.SubItems[0].Text;
+                string col2 = item.SubItems[1].Text;
+                string col3 = item.SubItems[2].Text;
+                string col4 = item.SubItems[3].Text;
 
-                _items.Add(v);
-                lblTotale.Text = _items.Count.ToString();
+                foreach (VideoFileDB vid in _VID_DBs)
+                {
+                    if (vid.FilenameOriginale == col4)
+                    {
+                        VideoFile v = new VideoFile();
+                        v.Categoria = vid.Categoria;
+                        v.Specifica = vid.Specifica;
+                        v.Saved = true;
+                        index++;
+                        v.ID = index;
+                        v.FilenameOriginale = vid.FilenameOriginale;
+                        v.Filename = PathHelper.RestoreFullPath(vid.FilenameOriginale);
+                        v.File = vid.File;
+                        v.Titolo = vid.Titolo;
+
+                        _items.Add(v);
+                        lblTotale.Text = _items.Count.ToString();
+
+                    }
+                }
+            
             }
 
             // Rinfresco il CheckedListBox
@@ -128,15 +168,20 @@ namespace LettoreVideo
         {
             if (!rbtnAll.Checked)
             {
-                checkedListBox1.DataSource = null;   // reset binding
+                lstFiles.Items.Clear();
                 if (cmbCartelle.SelectedIndex != -1)
                 {
                     var selectedFolder = cmbCartelle.SelectedItem.ToString();
-                    var filteredVideos = _VID_DBs.Where(v => v.Cartella == selectedFolder).ToList();
+                    var filteredVideos = _VID_DBs.Where(v => v.Categoria == selectedFolder).ToList();
 
-                    checkedListBox1.DataSource = filteredVideos;
-                    checkedListBox1.DisplayMember = "Titolo";
-                    checkedListBox1.ValueMember = "FileName";
+                    foreach (VideoFileDB vid in filteredVideos)
+                    {
+                        ListViewItem item = new ListViewItem(vid.Titolo);
+                        item.SubItems.Add(vid.Categoria);
+                        item.SubItems.Add(vid.Specifica);
+                        item.SubItems.Add(vid.FilenameOriginale);
+                        lstFiles.Items.Add(item);
+                    }
                 }
             }
             
@@ -147,20 +192,20 @@ namespace LettoreVideo
         #region PULSANTIERA
         private void picCheckAll_Click(object sender, EventArgs e)
         {
-            CheckAllItems(checkedListBox1);
+            CheckAllItems(lstFiles );
         }
 
         private void picUncheckAll_Click(object sender, EventArgs e)
         {
 
-            UncheckAllItems(checkedListBox1);
+            UncheckAllItems(lstFiles);
 
         }
 
         private void picPlus_Click(object sender, EventArgs e)
         {
             AddSelectedItemToList(); 
-            UncheckAllItems(checkedListBox1);
+            UncheckAllItems(lstFiles);
         }
 
         private void picSave_Click(object sender, EventArgs e)
@@ -176,31 +221,13 @@ namespace LettoreVideo
         }
         #endregion PULSANTIERA
 
-        private void checkedListBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            int index = checkedListBox1.IndexFromPoint(e.Location);
-            if (index >= 0 && index < checkedListBox1.Items.Count)
-            {
-                if (index != lastIndex) // evita di ricreare tooltip di continuo
-                {
-                    var item = (VideoFileDB)checkedListBox1.Items[index];
-                    Point p = new Point(e.X, e.Y - 20); // sopra al cursore
-                    toolTip1.Show(item.Cartella, checkedListBox1, p, 800);
-                    //toolTip1.SetToolTip(checkedListBox1, item.Cartella);
-                    lastIndex = index;
-                }
-            }
-            else
-            {
-                toolTip1.SetToolTip(checkedListBox1, string.Empty);
-                lastIndex = -1;
-            }
-        }
-
- 
+     
         private void cmbCartelle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AggiornaCheckListBoxFromCartella();
+            if (rbtnCartella.Checked)
+            {
+                AggiornaCheckListBoxFromCartella();
+            }
         }
 
         private void rbtnCartella_CheckedChanged(object sender, EventArgs e)
@@ -209,37 +236,42 @@ namespace LettoreVideo
             {
                 AggiornaCheckListBoxFromCartella();
             }
+            else
+            {
+                AggiornaCheckedListBoxWithALL();
 
+            }
         }
+
+        private void lstFiles_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            // Colori coerenti con quelli che hai usato per gli altri controlli
+            Color backColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
+            Color textColor = isDark ? Color.White : Color.Black;
+
+            using (var brush = new SolidBrush(backColor))
+                e.Graphics.FillRectangle(brush, e.Bounds);
+
+            TextRenderer.DrawText(
+                e.Graphics,
+                e.Header.Text,
+                e.Font,
+                e.Bounds,
+                textColor,
+                TextFormatFlags.Left | TextFormatFlags.VerticalCenter
+            );
+        }
+
+        private void lstFiles_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            // Necessario ma non disegna nulla perché ci pensano le subitem
+        }
+
+        private void lstFiles_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+            e.DrawDefault = true; // Usa il rendering standard per le righe
+        }
+    
     }
 }
-/*
- * 
 
-        private void picSave_Click(object sender, EventArgs e)
-        {
-       
-            try
-            {
-                string DbFile = Path.Combine(DataFolder, "db.json");
-                //string json = JsonConvert.SerializeObject(VID_DBs, Formatting.Indented);
-                //File.WriteAllText(DbFile, json);
-
-                Export exportObj = new Export { Data = _VID_DBs };
-
-                string json = JsonConvert.SerializeObject(exportObj, Formatting.Indented);
-                File.WriteAllText(DbFile, json);
-
-                PRG.MsgBoxExcvlamation("Il salvataggio ha avuto successo!");
-            }
-            catch (Exception ex)
-            {
-                PRG.MsgBoxERR(ex, "Errore nella procedura di salvataggio nuovi file in archivio:\r\n\r\n");
-                return;
-            }
-            
-
-        }
-
-
- */

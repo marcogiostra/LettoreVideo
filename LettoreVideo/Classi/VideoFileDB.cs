@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,12 @@ namespace LettoreVideo.Classi
     {
         public string File { get; set; }
         public string Titolo { get; set; }
-        public string Cartella { get; set; }
+        public string Categoria { get; set; }
+        public string Specifica { get; set; }
+
+        [JsonIgnore] 
         public string Filename { get; set; }
+        public string FilenameOriginale { get; set; }
     }
 
     public class Export

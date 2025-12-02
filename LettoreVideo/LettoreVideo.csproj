@@ -58,13 +58,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Sparkline.v22.2.Core, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="LibVLCSharp, Version=3.8.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LibVLCSharp.3.8.2\lib\net471\LibVLCSharp.dll</HintPath>
     </Reference>
@@ -123,8 +116,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classi\JsonOperation.cs" />
+    <Compile Include="Classi\MyInputBox.cs" />
+    <Compile Include="Classi\PathHelper.cs" />
     <Compile Include="Classi\StrutturaDati.cs" />
     <Compile Include="Classi\TaskbarIconHelper.cs" />
+    <Compile Include="Classi\Traccia.cs" />
     <Compile Include="Classi\VideoFile.cs" />
     <Compile Include="Classi\VideoFileDB.cs" />
     <Compile Include="Controlli\ExtendedPictureBox.cs">
@@ -144,6 +141,12 @@
     </Compile>
     <Compile Include="Controlli\MediaSeekBar.Designer.cs">
       <DependentUpon>MediaSeekBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestioneFilecs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestioneFilecs.Designer.cs">
+      <DependentUpon>frmGestioneFilecs.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGestoreArchivio.cs">
       <SubType>Form</SubType>
@@ -175,6 +178,12 @@
     <Compile Include="Controlli\KnobGioshControl.Designer.cs">
       <DependentUpon>KnobGioshControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="InputBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputBoxForm.Designer.cs">
+      <DependentUpon>InputBoxForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OverlayForm2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +207,9 @@
     <EmbeddedResource Include="Controlli\ExtendedPictureBox.resx">
       <DependentUpon>ExtendedPictureBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGestioneFilecs.resx">
+      <DependentUpon>frmGestioneFilecs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestoreArchivio.resx">
       <DependentUpon>frmGestoreArchivio.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controlli\KnobGioshControl.resx">
       <DependentUpon>KnobGioshControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputBoxForm.resx">
+      <DependentUpon>InputBoxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OverlayForm2.resx">
       <DependentUpon>OverlayForm2.cs</DependentUpon>
@@ -259,108 +274,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Magazzion_Immagini\open_cartella.png" />
-    <None Include="Magazzion_Immagini\open_file.png" />
     <None Include="Magazzion_Immagini\organize_list.png" />
     <None Include="Magazzion_Immagini\choose_item_from_list.png" />
-    <None Include="Magazzion_Immagini\gomma_biamca_blue.png" />
-    <None Include="Magazzion_Immagini\gomma_biamcablue.png" />
-    <None Include="Magazzion_Immagini\save.png" />
-    <None Include="Magazzion_Immagini\choose_video.png" />
-    <None Include="Magazzion_Immagini\gestione.png" />
-    <None Include="Magazzion_Immagini\play.png" />
-    <None Include="Magazzion_Immagini\play_over.png" />
-    <None Include="Magazzion_Immagini\play_over50.png" />
-    <None Include="Magazzion_Immagini\play_over30.png" />
-    <None Include="Magazzion_Immagini\play_lm100.png" />
-    <None Include="Magazzion_Immagini\play_lm50.png" />
-    <None Include="Magazzion_Immagini\play_lm75.png" />
-    <None Include="Magazzion_Immagini\play_lm95.png" />
-    <None Include="Magazzion_Immagini\play_hover.png" />
-    <None Include="Magazzion_Immagini\pause.png" />
     <None Include="Magazzion_Immagini\pause_hoverr.png" />
-    <None Include="Magazzion_Immagini\oraria5.png" />
-    <None Include="Magazzion_Immagini\oraria5_hover.png" />
-    <None Include="Magazzion_Immagini\oraria10.png" />
-    <None Include="Magazzion_Immagini\oraria10_hover.png" />
-    <None Include="Magazzion_Immagini\oraria30.png" />
-    <None Include="Magazzion_Immagini\oraria30_hover.png" />
-    <None Include="Magazzion_Immagini\anti5.png" />
-    <None Include="Magazzion_Immagini\anti5_hover.png" />
-    <None Include="Magazzion_Immagini\anti10.png" />
-    <None Include="Magazzion_Immagini\anti10_hover.png" />
-    <None Include="Magazzion_Immagini\anti30.png" />
-    <None Include="Magazzion_Immagini\anti30_hover.png" />
-    <None Include="Magazzion_Immagini\next.png" />
-    <None Include="Magazzion_Immagini\next_hover.png" />
-    <None Include="Magazzion_Immagini\previouus.png" />
-    <None Include="Magazzion_Immagini\previouus_hover.png" />
-    <None Include="Magazzion_Immagini\dacapo.jpg" />
-    <None Include="Magazzion_Immagini\dacapo_hover.png" />
-    <None Include="Magazzion_Immagini\stop.png" />
-    <None Include="Magazzion_Immagini\stop_hover.png" />
     <None Include="Magazzion_Immagini\bm_StopRosso.png" />
     <None Include="Magazzion_Immagini\do_list_freccia_verede_down.png" />
     <None Include="Magazzion_Immagini\semplice_down.png" />
     <None Include="Magazzion_Immagini\semplice_up.png" />
-    <None Include="Magazzion_Immagini\volumeoff_bianco.png" />
-    <None Include="Magazzion_Immagini\dacapo.png" />
-    <None Include="Magazzion_Immagini\gomma_hover.png" />
-    <None Include="Magazzion_Immagini\floppy.png" />
-    <None Include="Magazzion_Immagini\floppy_hover.png" />
-    <None Include="Magazzion_Immagini\cassa_no.png" />
-    <None Include="Magazzion_Immagini\cassa_no_hover.png" />
-    <None Include="Magazzion_Immagini\cassa_si.png" />
-    <None Include="Magazzion_Immagini\cassa_si_hover.png" />
-    <None Include="Magazzion_Immagini\scegli.png" />
-    <None Include="Magazzion_Immagini\scegli_hosting.png" />
-    <None Include="Magazzion_Immagini\lista.png" />
-    <None Include="Magazzion_Immagini\lista_hover.png" />
-    <None Include="Magazzion_Immagini\gestioneliste.png" />
-    <None Include="Magazzion_Immagini\gestioneliste_hover.png" />
-    <None Include="Magazzion_Immagini\cartella.png" />
-    <None Include="Magazzion_Immagini\cartella_hover.png" />
-    <None Include="Magazzion_Immagini\file.png" />
-    <None Include="Magazzion_Immagini\file_hover.png" />
-    <None Include="Magazzion_Immagini\anti5 - Copia.png" />
-    <None Include="Magazzion_Immagini\anti5_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\anti10 - Copia.png" />
-    <None Include="Magazzion_Immagini\anti10_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\anti30 - Copia.png" />
-    <None Include="Magazzion_Immagini\anti30_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\cartella - Copia.png" />
-    <None Include="Magazzion_Immagini\cartella_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\cassa_no - Copia.png" />
-    <None Include="Magazzion_Immagini\cassa_no_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\cassa_si - Copia.png" />
-    <None Include="Magazzion_Immagini\cassa_si_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\dacapo - Copia.png" />
-    <None Include="Magazzion_Immagini\dacapo_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\file - Copia.png" />
-    <None Include="Magazzion_Immagini\file_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\floppy - Copia.png" />
-    <None Include="Magazzion_Immagini\floppy_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\gestioneliste - Copia.png" />
-    <None Include="Magazzion_Immagini\gestioneliste_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\gomma - Copia.png" />
-    <None Include="Magazzion_Immagini\gomma_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\lista - Copia.png" />
-    <None Include="Magazzion_Immagini\lista_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\next - Copia.png" />
-    <None Include="Magazzion_Immagini\next_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\oraria5 - Copia.png" />
-    <None Include="Magazzion_Immagini\oraria5_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\oraria10 - Copia.png" />
-    <None Include="Magazzion_Immagini\oraria10_hover - Copia.png" />
-    <None Include="Magazzion_Immagini\oraria30 - Copia.png" />
-    <None Include="Magazzion_Immagini\gommabicolore.png" />
-    <None Include="Magazzion_Immagini\gommabicolore_hover.png" />
-    <None Include="Magazzion_Immagini\bi_gomma_ckick.png" />
-    <None Include="Magazzion_Immagini\bi_gomma_hover.png" />
-    <None Include="Magazzion_Immagini\bi_gomma_normal.png" />
-    <None Include="Magazzion_Immagini\bi32_gomma_click.png" />
-    <None Include="Magazzion_Immagini\bi32_gomma_hover.png" />
-    <None Include="Magazzion_Immagini\bi32_gomma_normal.png" />
     <None Include="Magazzion_Immagini\b32_cartella_click.png" />
     <None Include="Magazzion_Immagini\b32_cartella_hover.png" />
     <None Include="Magazzion_Immagini\b32_cartella_normal.png" />
@@ -424,22 +344,48 @@
     <None Include="Magazzion_Immagini\b32_previous_click.png" />
     <None Include="Magazzion_Immagini\b32_previous_hover.png" />
     <None Include="Magazzion_Immagini\b32_previous_normal.png" />
+    <None Include="Magazzion_Immagini\b32_photo_chick.png" />
+    <None Include="Magazzion_Immagini\b32_photo_hover.png" />
+    <None Include="Magazzion_Immagini\b32_photo_normal.png" />
+    <Content Include="camera_click_16bit.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Magazzion_Immagini\b32_category_click.png" />
+    <None Include="Magazzion_Immagini\b32_category_hover.png" />
+    <None Include="Magazzion_Immagini\b32_category_normal.png" />
+    <None Include="Magazzion_Immagini\check_list_false_white.png" />
+    <None Include="Magazzion_Immagini\check_list_true_With.png" />
+    <None Include="Magazzion_Immagini\b32_garbage_click.png" />
+    <None Include="Magazzion_Immagini\b32_garbage_hover.png" />
+    <None Include="Magazzion_Immagini\b32_garbage_normal.png" />
+    <None Include="Magazzion_Immagini\b32_down__normal.png" />
+    <None Include="Magazzion_Immagini\b32_down_click.png" />
+    <None Include="Magazzion_Immagini\b32_down_hover.png" />
+    <None Include="Magazzion_Immagini\b32_up_click.png" />
+    <None Include="Magazzion_Immagini\b32_up_hover.png" />
+    <None Include="Magazzion_Immagini\b32_up_normal.png" />
+    <None Include="Magazzion_Immagini\b32_plusitem__hover.png" />
+    <None Include="Magazzion_Immagini\b32_plusitem_click.png" />
+    <None Include="Magazzion_Immagini\b32_plusitem_normal.png" />
+    <None Include="Magazzion_Immagini\b32_checek_click.png" />
+    <None Include="Magazzion_Immagini\b32_checek_hover.png" />
+    <None Include="Magazzion_Immagini\b32_checek_normal.png" />
+    <None Include="Magazzion_Immagini\b32_unchecek_click.png" />
+    <None Include="Magazzion_Immagini\b32_unchecek_hover.png" />
+    <None Include="Magazzion_Immagini\b32_unchecek_normal.png" />
+    <None Include="Magazzion_Immagini\b32_plus_click.png" />
+    <None Include="Magazzion_Immagini\b32_plus_hover.png" />
+    <None Include="Magazzion_Immagini\b32_plus_normal.png" />
+    <None Include="Magazzion_Immagini\b32_download_click.png" />
+    <None Include="Magazzion_Immagini\b32_download_hover.png" />
+    <None Include="Magazzion_Immagini\b32_download_normal.png" />
     <Content Include="movie.ico" />
-    <None Include="Magazzion_Immagini\movie.ico" />
-    <None Include="Magazzion_Immagini\gomma.png" />
     <None Include="Magazzion_Immagini\save_freccia.png" />
     <None Include="Magazzion_Immagini\plus.png" />
-    <None Include="Magazzion_Immagini\volumeup_bianco.png" />
-    <None Include="Magazzion_Immagini\volumeup_giallo.png" />
-    <None Include="Magazzion_Immagini\volumeoff_giallo.png" />
-    <None Include="Magazzion_Immagini\volumeoff.png" />
-    <None Include="Magazzion_Immagini\volumeup.png" />
-    <None Include="Magazzion_Immagini\db.png" />
     <None Include="Magazzion_Immagini\Exit_Quadrato_Rosso.png" />
     <None Include="Magazzion_Immagini\check_list_false.png" />
     <None Include="Magazzion_Immagini\check_list_true.png" />
     <None Include="Magazzion_Immagini\cestino_stilizzato.png" />
-    <None Include="Magazzion_Immagini\ShowList.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

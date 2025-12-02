@@ -170,7 +170,8 @@ namespace LettoreVideo
                 {
                     var item = (VideoFile)checkedListBox1.Items[index];
                     Point p = new Point(e.X, e.Y - 20); // sopra al cursore
-                    toolTip1.Show(item.Cartella, checkedListBox1, p, 800);
+                    string _tip = "cat:" + item.Categoria + " -  gruppo:" + item.Specifica;
+                    toolTip1.Show(_tip, checkedListBox1, p, 800);
                     //toolTip1.SetToolTip(checkedListBox1, item.Cartella);
                     lastIndex = index;
                 }

@@ -68,25 +68,8 @@ namespace LettoreVideo
         #region PULSANTIERA
         private void picSave_Click(object sender, EventArgs e)
         {
-       
-            try
-            {
-                string DbFile = Path.Combine(DataFolder, "db.json");
-                //string json = JsonConvert.SerializeObject(VID_DBs, Formatting.Indented);
-                //File.WriteAllText(DbFile, json);
 
-                Export exportObj = new Export { Data = _VID_DBs };
-
-                string json = JsonConvert.SerializeObject(exportObj, Formatting.Indented);
-                File.WriteAllText(DbFile, json);
-
-                PRG.MsgBoxExcvlamation("Il salvataggio ha avuto successo!");
-            }
-            catch (Exception ex)
-            {
-                PRG.MsgBoxERR(ex, "Errore nella procedura di salvataggio nuovi file in archivio:\r\n\r\n");
-                return;
-            }
+            JsonOperation.Save_DB(_VID_DBs, DataFolder);
             rListaFinale = _VID_DBs;
             this.Tag = "OK";
             this.Close();
@@ -161,7 +144,8 @@ namespace LettoreVideo
                 {
                     var item = (VideoFileDB)checkedListBox1.Items[index];
                     Point p = new Point(e.X, e.Y - 20); // sopra al cursore
-                    toolTip1.Show(item.Cartella, checkedListBox1, p, 800);
+                    string _tip = "cat:" + item.Categoria + " -  gruppo:" + item.Specifica;
+                    toolTip1.Show(_tip, checkedListBox1, p, 800);
                     //toolTip1.SetToolTip(checkedListBox1, item.Cartella);
                     lastIndex = index;
                 }
