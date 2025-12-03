@@ -9,13 +9,14 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LettoreVideo
 {
-    public partial class frmGestioneFilecs : MaterialForm
+    public partial class frmGestioneFiles : MaterialForm
     {
         #region DICHIARAZIONI
         #region PARAMETRI
@@ -42,7 +43,7 @@ namespace LettoreVideo
 
         #region Class
 
-        public frmGestioneFilecs(ref List<VideoFileDB> pVID_DBs)
+        public frmGestioneFiles(ref List<VideoFileDB> pVID_DBs)
         {
             _VID_DBs = pVID_DBs;
 
@@ -86,6 +87,7 @@ namespace LettoreVideo
                 item.SubItems.Add(vid.Categoria);
                 item.SubItems.Add(vid.Specifica);
                 item.SubItems.Add(vid.FilenameOriginale);
+                item.SubItems.Add(vid.Visto ? "SI" : "NO");
                 lstFiles.Items.Add(item);
             }
         }
@@ -193,8 +195,13 @@ namespace LettoreVideo
 
         private void tsmiDeleteItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Sei sicuro di voler eliminare il file selezionato?", "Conferma eliminazione", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2 ) == DialogResult.Yes)
+            if (MessageBox.Show("Sei sicuro di voler escludere il filmato selezionato dall'archivio?", "Conferma esclusione", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2 ) == DialogResult.Yes)
             {
+                bool deletingFile = false;
+                deletingFile = (MessageBox.Show("Vuoi eliminare fisicamente anche il file del filmato?", "Conferma eliminazione", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes);
+               
+                string fileNameToDelete = string.Empty;
+
                 if (lstFiles.SelectedItems.Count > 0)
                 {
                     int selectedIndex = lstFiles.SelectedIndices[0];
@@ -202,14 +209,29 @@ namespace LettoreVideo
                     {
                         if (vid.FilenameOriginale == lstFiles.SelectedItems[0].SubItems[3].Text)
                         {
+                            fileNameToDelete = PathHelper.RestoreFullPath(vid.FilenameOriginale);
+
                             // Elimina il file fisico se esiste
                             string filePath = Path.Combine(DataFolder, vid.FilenameOriginale);
                             _VID_DBs.Remove(vid);
                             break;
                         }
                     }
+
                     JsonOperation.Save_DB(_VID_DBs, DataFolder);
                     PopateListView();
+                    if (deletingFile)
+                    {
+                        try
+                        {
+                            File.Delete(fileNameToDelete);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Errore durante l'eliminazione del file: " + ex.Message, "Lettore Video", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
                 }
             }
         }
@@ -241,6 +263,31 @@ namespace LettoreVideo
                 e.Cancel = true;
         }
 
-  
+        private void tsmiUpdateVisto_Click(object sender, EventArgs e)
+        {
+            if (lstFiles.SelectedItems.Count > 0)
+            {
+                int selectedIndex = lstFiles.SelectedIndices[0];
+
+                bool isVisto = lstFiles.SelectedItems[0].SubItems[4].Text == "SI";
+
+                string filenameOriginale = lstFiles.SelectedItems[0].SubItems[3].Text;
+
+                foreach (var vid in _VID_DBs)
+                {
+                    if (vid.FilenameOriginale == filenameOriginale)
+                    {
+                        vid.Visto = !isVisto;
+                        break;
+                    }
+                }
+                JsonOperation.Save_DB(_VID_DBs, DataFolder);
+                PopateListView();
+               
+
+
+
+            }
+        }
     }
 }

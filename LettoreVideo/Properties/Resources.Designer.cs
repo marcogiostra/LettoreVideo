@@ -1093,9 +1093,9 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Icon simile a (Icona).
         /// </summary>
-        internal static System.Drawing.Icon movie {
+        internal static System.Drawing.Icon lettorevideoMG {
             get {
-                object obj = ResourceManager.GetObject("movie", resourceCulture);
+                object obj = ResourceManager.GetObject("lettorevideoMG", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

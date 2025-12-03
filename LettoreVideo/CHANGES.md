@@ -9,6 +9,15 @@ Changelog
 -------------------
 VERSIONI e FIX
 -------------------
+v1.3.0 - 03/12/2025
+
+- cambiata icona del programma
+- aggiunto il cambo Visto (bool) per segnbare che lo abbiamo visto
+- al salvataggio pdove prima creava  db.bak ora dopo il salvataggi odi db.jsom, cancella il .bak
+- nella gestione files, l'eliminazione è diventata esclusione dall'archivio, e chiede se deve anche eliminare il file fisico
+- aggiunto il flag Visto al TreeView della maschera di gestione dei files e di scelta
+- corretto la funzione di scrittura del db in formato json per evitare errori nella creazione del file di backup se non esiste quello di db
+
 v1.2.3 - xx/xx/2025
 -----------------------------------------------
 - nel file json non viene salvato il path effettivo di un video, ma quello relativo se sullo steffo drive dell'applicativo

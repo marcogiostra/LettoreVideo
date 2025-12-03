@@ -934,9 +934,6 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\libvlc\win-
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\libvlc\win-x86\plugins\visualization\libvisual_plugin.dll
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\MyConfig.config
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\camera_click_16bit.wav
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\LettoreVideo.exe.config
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\LettoreVideo.exe
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\LettoreVideo.pdb
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\LibVLCSharp.dll
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\LibVLCSharp.WinForms.dll
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\MaterialSkin.dll
@@ -961,7 +958,6 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\Xamarin.For
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\Xamarin.Forms.Xaml.xml
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.csproj.AssemblyReference.cache
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.Controlli.ExtendedPictureBox.resources
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmGestioneFilecs.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmGestoreArchivio.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmLista.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmScegliFiles.resources
@@ -972,8 +968,12 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVide
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.GlobalMouseMoveFilter.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.Properties.Resources.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.csproj.GenerateResource.cache
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.exe.licenses
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.csproj.CoreCompileInputs.cache
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreV.672004D4.Up2Date
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.exe
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.pdb
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\LettoreVIdeoMG.exe.config
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\LettoreVIdeoMG.exe
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\LettoreVIdeoMG.pdb
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmGestioneFiles.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVIdeoMG.exe.licenses
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVIdeoMG.exe
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVIdeoMG.pdb

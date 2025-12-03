@@ -196,9 +196,6 @@
   <data name="b32_anti10_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_anti10_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="movie" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\movie.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="b32_category_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_category_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -444,5 +441,8 @@
   </data>
   <data name="b32_download_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_download_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lettorevideoMG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\lettorevideoMG.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

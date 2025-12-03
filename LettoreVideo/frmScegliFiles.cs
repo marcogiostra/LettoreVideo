@@ -43,7 +43,7 @@ namespace LettoreVideo
         #region Class
         public frmScegliFiles(List<VideoFileDB> pVID_DBs)
         {
-            _VID_DBs = pVID_DBs;
+            _VID_DBs = pVID_DBs;        
             InitializeComponent();
 
             //Configuro MaterialSkin
@@ -98,6 +98,7 @@ namespace LettoreVideo
                 item.SubItems.Add(vid.Categoria);
                 item.SubItems.Add(vid.Specifica);
                 item.SubItems.Add(vid.FilenameOriginale);
+                item.SubItems.Add(vid.Visto ? "SI" : "NO");
                 lstFiles.Items.Add(item);   
             }
         }
@@ -131,6 +132,7 @@ namespace LettoreVideo
                 string col2 = item.SubItems[1].Text;
                 string col3 = item.SubItems[2].Text;
                 string col4 = item.SubItems[3].Text;
+                string col5 = item.SubItems[4].Text;
 
                 foreach (VideoFileDB vid in _VID_DBs)
                 {
@@ -146,6 +148,7 @@ namespace LettoreVideo
                         v.Filename = PathHelper.RestoreFullPath(vid.FilenameOriginale);
                         v.File = vid.File;
                         v.Titolo = vid.Titolo;
+                        v.Visto = vid.Visto;
 
                         _items.Add(v);
                         lblTotale.Text = _items.Count.ToString();
@@ -180,6 +183,7 @@ namespace LettoreVideo
                         item.SubItems.Add(vid.Categoria);
                         item.SubItems.Add(vid.Specifica);
                         item.SubItems.Add(vid.FilenameOriginale);
+                        item.SubItems.Add(vid.Visto ? "SI" : "NO");
                         lstFiles.Items.Add(item);
                     }
                 }

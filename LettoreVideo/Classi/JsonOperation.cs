@@ -18,7 +18,8 @@ namespace LettoreVideo.Classi
 
                 if (Directory.Exists(pDataFolder))
                 {
-                    System.IO.File.Copy(DbFile, Path.Combine(pDataFolder, "db.bak"), true);
+                    if (File.Exists(DbFile))
+                        System.IO.File.Copy(DbFile, Path.Combine(pDataFolder, "db.bak"), true);
                 }
 
                 //string json = JsonConvert.SerializeObject(VID_DBs, Formatting.Indented);
@@ -36,9 +37,10 @@ namespace LettoreVideo.Classi
                     System.IO.File.Copy(Path.Combine(pDataFolder, "db.bak"), DbFile, true);
                 }
                 PRG.MsgBoxERR(ex, "Errore nella procedura di aggiornamento dell'archivio:\r\n\r\n");
+                
             }
 
-            if (Directory.Exists(Path.Combine(pDataFolder, "db.bak")))
+            if (File.Exists(Path.Combine(pDataFolder, "db.bak")))
             {
                 try
                 {

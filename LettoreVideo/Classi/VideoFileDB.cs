@@ -17,6 +17,7 @@ namespace LettoreVideo.Classi
         [JsonIgnore] 
         public string Filename { get; set; }
         public string FilenameOriginale { get; set; }
+        public bool Visto { get; set; }
     }
 
     public class Export

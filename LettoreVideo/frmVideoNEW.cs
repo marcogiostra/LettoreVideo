@@ -101,7 +101,7 @@ namespace LettoreVideo
             config.cfgFile = "MyConfig.config";
             dirVideo = config.GetValue("//appDIR//add[@key='DIR_VIDEO']");
 
-            Icon myIcon = global::LettoreVideo.Properties.Resources.movie;
+            Icon myIcon = global::LettoreVideo.Properties.Resources.lettorevideoMG;
             this.Icon = myIcon;
 
             // Forza l'icona sulla taskbar
@@ -1196,7 +1196,15 @@ namespace LettoreVideo
 
             if (ItemAdded)
             {
-                JsonOperation.Save_DB(VID_DBs, DataFolder);
+                try
+                {
+                    JsonOperation.Save_DB(VID_DBs, DataFolder);
+                }
+                catch (Exception ex)
+                {
+                    PRG.MsgBoxERR(ex, "Errore salvataggio nuovi video in archivio:\r\n\r\n");
+                    return;
+                }
             }
             else
             {
@@ -1276,7 +1284,7 @@ namespace LettoreVideo
 
             VIDs = new List<VideoFile>();
 
-            frmGestioneFilecs f = new frmGestioneFilecs(ref VID_DBs);
+            frmGestioneFiles f = new frmGestioneFiles(ref VID_DBs);
             f.ShowDialog(this);
             if (f.Tag.ToString() == "OK")
             {

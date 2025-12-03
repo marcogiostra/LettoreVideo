@@ -1,6 +1,6 @@
 ﻿namespace LettoreVideo
 {
-    partial class frmGestioneFilecs
+    partial class frmGestioneFiles
     {
         /// <summary>
         /// Required designer variable.
@@ -42,19 +42,22 @@
             this.tsmiUpdateSpecifica = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiDeleteItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colVisto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tsmiUpdateVisto = new System.Windows.Forms.ToolStripMenuItem();
             this.cms.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstFiles
             // 
-            this.lstFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lstFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colFile,
             this.colCategoria,
             this.colSpecifica,
-            this.colFilenameOriginale});
+            this.colFilenameOriginale,
+            this.colVisto});
             this.lstFiles.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstFiles.HideSelection = false;
             listViewItem1.StateImageIndex = 0;
@@ -78,17 +81,17 @@
             // colFile
             // 
             this.colFile.Text = "File";
-            this.colFile.Width = 635;
+            this.colFile.Width = 680;
             // 
             // colCategoria
             // 
             this.colCategoria.Text = "Categoria";
-            this.colCategoria.Width = 177;
+            this.colCategoria.Width = 200;
             // 
             // colSpecifica
             // 
             this.colSpecifica.Text = "Sottocategoria";
-            this.colSpecifica.Width = 186;
+            this.colSpecifica.Width = 200;
             // 
             // colFilenameOriginale
             // 
@@ -104,37 +107,49 @@
             this.cms.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiModificaCateogria,
             this.tsmiUpdateSpecifica,
+            this.tsmiUpdateVisto,
             this.toolStripSeparator1,
             this.tsmiDeleteItem});
             this.cms.Name = "cms";
-            this.cms.Size = new System.Drawing.Size(213, 76);
+            this.cms.Size = new System.Drawing.Size(221, 120);
             this.cms.Opening += new System.ComponentModel.CancelEventHandler(this.cms_Opening);
             // 
             // tsmiModificaCateogria
             // 
             this.tsmiModificaCateogria.Name = "tsmiModificaCateogria";
-            this.tsmiModificaCateogria.Size = new System.Drawing.Size(212, 22);
+            this.tsmiModificaCateogria.Size = new System.Drawing.Size(220, 22);
             this.tsmiModificaCateogria.Text = "Modifica la categoria";
             this.tsmiModificaCateogria.Click += new System.EventHandler(this.tsmiModificaCateogria_Click);
             // 
             // tsmiUpdateSpecifica
             // 
             this.tsmiUpdateSpecifica.Name = "tsmiUpdateSpecifica";
-            this.tsmiUpdateSpecifica.Size = new System.Drawing.Size(212, 22);
+            this.tsmiUpdateSpecifica.Size = new System.Drawing.Size(220, 22);
             this.tsmiUpdateSpecifica.Text = "Modifica la sottocateogria";
             this.tsmiUpdateSpecifica.Click += new System.EventHandler(this.tsmiUpdateSpecifica_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(209, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(217, 6);
             // 
             // tsmiDeleteItem
             // 
             this.tsmiDeleteItem.Name = "tsmiDeleteItem";
-            this.tsmiDeleteItem.Size = new System.Drawing.Size(212, 22);
-            this.tsmiDeleteItem.Text = "Elimina il file dall\'archivio";
+            this.tsmiDeleteItem.Size = new System.Drawing.Size(220, 22);
+            this.tsmiDeleteItem.Text = "Escludi il file dall\'archivio";
             this.tsmiDeleteItem.Click += new System.EventHandler(this.tsmiDeleteItem_Click);
+            // 
+            // colVisto
+            // 
+            this.colVisto.Text = "Visto?";
+            // 
+            // tsmiUpdateVisto
+            // 
+            this.tsmiUpdateVisto.Name = "tsmiUpdateVisto";
+            this.tsmiUpdateVisto.Size = new System.Drawing.Size(220, 22);
+            this.tsmiUpdateVisto.Text = "Modifica se ha visto il video";
+            this.tsmiUpdateVisto.Click += new System.EventHandler(this.tsmiUpdateVisto_Click);
             // 
             // frmGestioneFilecs
             // 
@@ -168,5 +183,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiUpdateSpecifica;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsmiDeleteItem;
+        private System.Windows.Forms.ColumnHeader colVisto;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUpdateVisto;
     }
 }

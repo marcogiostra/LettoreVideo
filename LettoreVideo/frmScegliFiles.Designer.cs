@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.rbtnAll = new System.Windows.Forms.RadioButton();
             this.rbtnCartella = new System.Windows.Forms.RadioButton();
             this.cmbCartelle = new System.Windows.Forms.ComboBox();
@@ -44,6 +44,7 @@
             this.picCheckAll = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picPlus = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picSave = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.colVisto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // rbtnAll
@@ -112,13 +113,14 @@
             this.colFile,
             this.colCategoria,
             this.colSpecifica,
-            this.colFilenameOriginale});
+            this.colFilenameOriginale,
+            this.colVisto});
             this.lstFiles.HideSelection = false;
-            listViewItem3.StateImageIndex = 0;
-            listViewItem4.StateImageIndex = 0;
+            listViewItem1.StateImageIndex = 0;
+            listViewItem2.StateImageIndex = 0;
             this.lstFiles.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3,
-            listViewItem4});
+            listViewItem1,
+            listViewItem2});
             this.lstFiles.Location = new System.Drawing.Point(0, 162);
             this.lstFiles.Name = "lstFiles";
             this.lstFiles.Size = new System.Drawing.Size(1006, 317);
@@ -132,17 +134,17 @@
             // colFile
             // 
             this.colFile.Text = "File";
-            this.colFile.Width = 635;
+            this.colFile.Width = 530;
             // 
             // colCategoria
             // 
             this.colCategoria.Text = "Categoria";
-            this.colCategoria.Width = 177;
+            this.colCategoria.Width = 200;
             // 
             // colSpecifica
             // 
             this.colSpecifica.Text = "Sottocateogria";
-            this.colSpecifica.Width = 186;
+            this.colSpecifica.Width = 200;
             // 
             // colFilenameOriginale
             // 
@@ -213,6 +215,10 @@
             this.picSave.TabStop = false;
             this.picSave.Click += new System.EventHandler(this.picSave_Click);
             // 
+            // colVisto
+            // 
+            this.colVisto.Text = "Visto?";
+            // 
             // frmScegliFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,5 +262,6 @@
         private Controlli.ExtendedPictureBox picCheckAll;
         private Controlli.ExtendedPictureBox picPlus;
         private Controlli.ExtendedPictureBox picSave;
+        private System.Windows.Forms.ColumnHeader colVisto;
     }
 }
