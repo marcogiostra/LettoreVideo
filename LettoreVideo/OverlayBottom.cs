@@ -4,18 +4,34 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Media.Animation;
 
 
 namespace LettoreVideo
 {
-    public partial class OverlayForm2 : Form
+    public partial class OverlayBottom : Form
     {
+        [DllImport("user32.dll")]
+        static extern IntPtr FindWindow(string className, string windowText);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter,
+            int X, int Y, int cx, int cy, uint uFlags);
+
+        static readonly IntPtr HWND_BOTTOM = new IntPtr(1);
+        const uint SWP_NOMOVE = 0x0002;
+        const uint SWP_NOSIZE = 0x0001;
+        const uint SWP_NOACTIVATE = 0x0010;
+
+        //----------------
+
+
         Form _owner = new Form();
         bool IsMute = false;
         bool isPopolatingCombo = false;
-        public OverlayForm2()
+        public OverlayBottom()
         {
             InitializeComponent();
 
@@ -198,72 +214,6 @@ namespace LettoreVideo
             };
             #endregion LETTOREVIDEO
 
-            #region GESTORE
-            picOpenFile.Click += (s, e) =>
-            {
-                // chiama un metodo nel form principale
-                if (this.Owner is frmVideoNEW main)
-                    main.External_OPEN_FILE();
-            };
-
-            picOpenDirectory.Click += (s, e) =>
-            {
-                // chiama un metodo nel form principale
-                if (this.Owner is frmVideoNEW main)
-                    main.External_OPEN_DIR();
-            };
-
-            picShowList.Click += (s, e) =>
-            {
-                // chiama un metodo nel form principale
-                if (this.Owner is frmVideoNEW main)
-                    main.External_SHOW_LIST();
-                    
-            };
-
-            
-            picClear.Click += (s, e) =>
-            {
-                // chiama un metodo nel form principale
-                if (this.Owner is frmVideoNEW main)
-                    main.External_CLEAR();
-
-            };
-            
-
-            picSave.Click += (s, e) =>
-            {
-                // chiama un metodo nel form principale
-                if (this.Owner is frmVideoNEW main)
-                    main.External_SAVE();
-
-            };
-
-            picGestioneArchivio.Click += (s, e) =>
-            {
-                // chiama un metodo nel form principale
-                if (this.Owner is frmVideoNEW main)
-                    main.External_GESTIONE_ARCHIVIO();
-
-            };
-
-            picScegliFromArchivio.Click += (s, e) =>
-            {
-                // chiama un metodo nel form principale
-                if (this.Owner is frmVideoNEW main)
-                    main.External_SCEGLI_VIDEO_DA_ARCHIVIO();
-
-            };
-
-            picCategory.Click += (s, e) =>
-            {
-                // chiama un metodo nel form principale
-                if (this.Owner is frmVideoNEW main)
-                    main.External_GESTIONE_CATEGORIE();
-
-            };
-
-            #endregion GESTORE
 
             #region FUNCTIONS
             picPhoto.Click += (s, e) =>
@@ -272,7 +222,25 @@ namespace LettoreVideo
                 if (this.Owner is frmVideoNEW main)
                     main.External_PHOTO();
             };
+
+            picToMax.Click += (s, e) =>
+            {
+                picToMax.Visible = false;
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_TO_MAX();
+            };
+
+            picFromMax.Click += (s, e) =>
+            {
+                picToMax.Visible = false;
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_FROM_MAX();
+            };
             #endregion FUNCTIONS
+
+       
 
         }
 
@@ -398,19 +366,13 @@ namespace LettoreVideo
             lblTotalTime.Location = new Point(mediaSeekBar1.Right - lblTotalTime.Width, picMusicalePlay.Top);
             //
             picVolume.Location = new Point(lblElapsedTime.Left + ((lblElapsedTime.Width - picVolume.Width ) / 2), lblElapsedTime.Top + lblElapsedTime.Height + spazio);
-            picCategory.Location = new Point(lblTotalTime.Left + lblTotalTime.Width - picScegliFromArchivio.Width - ((lblTotalTime.Width - picScegliFromArchivio.Width) / 2), picMusicaleNext.Top);
-            picScegliFromArchivio.Location = new Point(picCategory.Left - spazio - picCategory.Width, picCategory.Top);
-            picGestioneArchivio.Location = new Point(picScegliFromArchivio.Left - spazio - picScegliFromArchivio.Width, picScegliFromArchivio.Top);
-            picSave.Location = new Point(picGestioneArchivio.Left - spazio - picSave.Width, picScegliFromArchivio.Top);
-            picClear.Location = new Point(picSave.Left - spazio - picClear.Width, picScegliFromArchivio.Top);
-            picShowList.Location = new Point(picClear.Left - spazio - picShowList.Width, picScegliFromArchivio.Top);
-            picOpenDirectory.Location = new Point(picShowList.Left - spazio - picOpenDirectory.Width, picScegliFromArchivio.Top);
-            picOpenFile.Location = new Point(picOpenDirectory.Left - spazio - picOpenFile.Width, picScegliFromArchivio.Top);
-            lblContaBrani.Location = new Point(picMusicaleIndietro10.Left , picMusicalePrecedente.Top + (picMusicalePrecedente.Height - lblContaBrani.Height) / 2);
+            lblContaBrani.Location = new Point(picMusicaleIndietro10.Left, picMusicalePrecedente.Top + (picMusicalePrecedente.Height - lblContaBrani.Height) / 2);
             //
-            cmbAudio.Location = new Point(picOpenFile.Left - spazio - cmbAudio.Width, picOpenFile.Top + (picOpenFile.Height - cmbAudio.Height) / 2);
+            picToMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);
+            picFromMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);
+            picPhoto.Location = new Point(picToMax.Left - spazio - picPhoto.Width, picMusicalePlay.Top);
             //
-            picPhoto.Location = new Point(picSave.Left,picMusicalePlay.Top);
+            cmbAudio.Location = new Point(lblTotalTime.Right - cmbAudio.Width, picMusicaleNext.Top + (picMusicaleNext.Height - cmbAudio.Height) / 2);
         }
 
         private void cmbAudio_KeyDown(object sender, KeyEventArgs e)
@@ -440,6 +402,23 @@ namespace LettoreVideo
         private void cmbAudio_DropDownClosed(object sender, EventArgs e)
         {
             this.ActiveControl = null;  
+        }
+
+        public void SendBehindTaskbar()
+        {
+            var taskbar = FindWindow("Shell_TrayWnd", null);
+
+            SetWindowPos(this.Handle, taskbar,
+                0, 0, 0, 0,
+                SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+        }
+
+        public void BringToFrontOfTaskbar()
+        {
+            this.TopMost = true;
+            this.TopMost = false; // opzionale, se non vuoi che rimanga sempre davanti
+            this.Activate();
+            this.BringToFront();
         }
     }
 }

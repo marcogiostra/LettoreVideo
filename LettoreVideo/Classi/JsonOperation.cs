@@ -49,5 +49,34 @@ namespace LettoreVideo.Classi
                 catch (Exception) { }
             }
         }
-    }
+
+        public static List<VideoFileDB> Laod_DB(string pDB_Folder)
+        {
+            List<VideoFileDB> returnLIST = new List<VideoFileDB>();
+            try
+            {
+                // Controllo e creazione se non esiste
+                if (!Directory.Exists(pDB_Folder))
+                {
+                    Directory.CreateDirectory(pDB_Folder);
+                }
+                string DbFile = Path.Combine(pDB_Folder, "db.json");
+                if (File.Exists(DbFile))
+                {
+                    string json = File.ReadAllText(DbFile);
+                    Export exportObj = JsonConvert.DeserializeObject<Export>(json);
+                    returnLIST = exportObj.Data;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                PRG.MsgBoxERR(ex, "Errore nella procedura di lettura dei file dall'archivio:\r\n\r\n");
+                returnLIST = new List<VideoFileDB>();
+
+            }
+
+            return returnLIST;
+        }
+}
 }

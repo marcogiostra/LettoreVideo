@@ -15,7 +15,7 @@ namespace LettoreVideo.Classi
             {
                 return frm.ShowDialog() == DialogResult.OK
                     ? frm.ResultText
-                    : null;
+                    : string.Empty;
             }
         }
     }

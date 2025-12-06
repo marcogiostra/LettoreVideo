@@ -958,13 +958,11 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\Xamarin.For
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\Xamarin.Forms.Xaml.xml
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.csproj.AssemblyReference.cache
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.Controlli.ExtendedPictureBox.resources
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmGestoreArchivio.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmLista.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmScegliFiles.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmVideoNEW.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.Controlli.KnobGioshControl.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.InputBoxForm.resources
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.OverlayForm2.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.GlobalMouseMoveFilter.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.Properties.Resources.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.csproj.GenerateResource.cache
@@ -977,3 +975,6 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVide
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVIdeoMG.exe.licenses
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVIdeoMG.exe
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVIdeoMG.pdb
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.OverlayTop.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.OverlayBottom.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.OverlayTitle.resources

@@ -243,6 +243,36 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap b32_close_clickr {
+            get {
+                object obj = ResourceManager.GetObject("b32_close_clickr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_close_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_close_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_close_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_close_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap b32_dacapo_click {
             get {
                 object obj = ResourceManager.GetObject("b32_dacapo_click", resourceCulture);
@@ -333,6 +363,36 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap b32_download_verde_click {
+            get {
+                object obj = ResourceManager.GetObject("b32_download_verde_click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_download_verde_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_download_verde_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_download_verde_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_download_verde_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap b32_file_click {
             get {
                 object obj = ResourceManager.GetObject("b32_file_click", resourceCulture);
@@ -386,6 +446,36 @@ namespace LettoreVideo.Properties {
         internal static System.Drawing.Bitmap b32_floppy_normal {
             get {
                 object obj = ResourceManager.GetObject("b32_floppy_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_from_max_click {
+            get {
+                object obj = ResourceManager.GetObject("b32_from_max_click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_from_max_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_from_max_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_from_max_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_from_max_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -896,6 +986,36 @@ namespace LettoreVideo.Properties {
         internal static System.Drawing.Bitmap b32_suono_si_normal {
             get {
                 object obj = ResourceManager.GetObject("b32_suono_si_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_to_max_click {
+            get {
+                object obj = ResourceManager.GetObject("b32_to_max_click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_to_max_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_to_max_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_to_max_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_to_max_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -219,6 +219,14 @@ namespace LettoreVideo
             this.Close();
         }
 
+
+        private void picSaveAndPlay_Click(object sender, EventArgs e)
+        {
+            rListaFinale = _items;
+            this.Tag = "OK+PLAY";
+            this.Close();
+        }
+
         private void picExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -275,7 +283,7 @@ namespace LettoreVideo
         {
             e.DrawDefault = true; // Usa il rendering standard per le righe
         }
-    
+
     }
 }
 

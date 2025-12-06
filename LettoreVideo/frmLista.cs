@@ -159,29 +159,10 @@ namespace LettoreVideo
                 clb.SetItemChecked(i, false);
         }
 
-        #endregion f()
 
-        private void checkedListBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            int index = checkedListBox1.IndexFromPoint(e.Location);
-            if (index >= 0 && index < checkedListBox1.Items.Count)
-            {
-                if (index != lastIndex) // evita di ricreare tooltip di continuo
-                {
-                    var item = (VideoFile)checkedListBox1.Items[index];
-                    Point p = new Point(e.X, e.Y - 20); // sopra al cursore
-                    string _tip = "cat:" + item.Categoria + " -  gruppo:" + item.Specifica;
-                    toolTip1.Show(_tip, checkedListBox1, p, 800);
-                    //toolTip1.SetToolTip(checkedListBox1, item.Cartella);
-                    lastIndex = index;
-                }
-            }
-            else
-            {
-                toolTip1.SetToolTip(checkedListBox1, string.Empty);
-                lastIndex = -1;
-            }
-        }
+
+
+        #endregion f()
 
    
     }

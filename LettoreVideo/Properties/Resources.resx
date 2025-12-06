@@ -130,8 +130,8 @@
   <data name="b32_pausa_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_pausa_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="check_list_false1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\check_list_false.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="b32_plus_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_plus_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_orario10_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_orario10_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -144,9 +144,6 @@
   </data>
   <data name="b32_down_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_down_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="b32_lista_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\b32_lista_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_stop_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_stop_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,6 +163,9 @@
   <data name="b32_previous_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_previous_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="check_list_false1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\check_list_false.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b32_orario30_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_orario30_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -181,6 +181,9 @@
   <data name="b32_cartella_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_cartella_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="b32_from_max_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_from_max_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b32_anti5_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_anti5_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -195,6 +198,9 @@
   </data>
   <data name="b32_anti10_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_anti10_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="b32_cartella_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_cartella_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_category_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_category_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -219,9 +225,6 @@
   </data>
   <data name="check_list_true_With" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\check_list_true_With.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="b32_plus_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\b32_plus_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_lista_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_lista_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,14 +265,20 @@
   <data name="b32_checek_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_checek_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="b32_to_max_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_to_max_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b32_plusitem_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_plusitem_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="b32_to_max_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_to_max_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bi32_play_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\bi32_play_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="b32_cartella_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\b32_cartella_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="b32_lista_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_lista_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_orario30_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_orario30_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -295,6 +304,9 @@
   <data name="b32_pausa_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_pausa_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="b32_download_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_download_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b32_stop_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_stop_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -307,11 +319,14 @@
   <data name="b32_dacapo_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_dacapo_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="b32_plus_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\b32_plus_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="b32_plus_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_plus_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_dacapo_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_dacapo_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="b32_download_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_download_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_floppy_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_floppy_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -321,6 +336,9 @@
   </data>
   <data name="b32_checek_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_checek_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="b32_from_max_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_from_max_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_orario10_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_orario10_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -334,6 +352,9 @@
   <data name="semplice_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\semplice_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="b32_floppy_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_floppy_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b32_checek_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_checek_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -346,6 +367,9 @@
   <data name="b32_lista_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_lista_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="b32_close_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_close_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b32_file_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_file_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -354,6 +378,9 @@
   </data>
   <data name="b32_stop_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_stop_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lettorevideoMG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\lettorevideoMG.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_up_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_up_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -367,11 +394,14 @@
   <data name="b32_garbage_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_garbage_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="b32_from_max_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_from_max_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b32_plusitem__hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_plusitem__hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="b32_unchecek_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\b32_unchecek_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="b32_to_max_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_to_max_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_anti10_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_anti10_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -379,8 +409,8 @@
   <data name="b32_plusitem_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_plusitem_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="b32_floppy_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\b32_floppy_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="b32_download_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_download_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_photo_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_photo_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -406,6 +436,9 @@
   <data name="b32_orario5_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_orario5_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="b32_unchecek_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_unchecek_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b32_down_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_down_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -424,8 +457,14 @@
   <data name="b32_anti5_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_anti5_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="b32_close_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_close_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="b32_down__normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_down__normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="b32_close_clickr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_close_clickr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="b32_previous_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\b32_previous_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -433,16 +472,13 @@
   <data name="check_list_true" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Magazzion_Immagini\check_list_true.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="b32_download_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\b32_download_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="b32_download_verde_click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_download_verde_click.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="b32_download_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\b32_download_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="b32_download_verde_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_download_verde_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="b32_download_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Magazzion_Immagini\b32_download_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lettorevideoMG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\lettorevideoMG.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="b32_download_verde_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Magazzion_Immagini\b32_download_verde_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -9,10 +9,27 @@ Changelog
 -------------------
 VERSIONI e FIX
 -------------------
-v1.3.0 - 03/12/2025
+v1.4.0 . 06/12/2025
+-----------------------------------------------
+- nella maschera di gestione dell'archivio, aggiunto la possibilità di modificare il titolo
+- nella maschera di gestione dell'archivio, sistemato i colori del context menu
+- nella maschera di gestione dell'archivio, aggiunto filtraggio dei files: TUTTTI - VISTI SI - VISTI NO
+- nella maschera di gestione dell'archivio, corretto la modifica e il salvataggio dei valori per tennere conto del filtraggio
+- nella maschera di gestione dell'archivio, è sta cambiata la voce del menu relativo al cambio0 del flag VISTO/NON VISTO
+- correto baco sulla chiusra della InputBox senza cambiare nulla
+- aggiunto la visualizzazione del titolo dopo l'avvio del prano dopo 1 sec, rimane visualizzaot per 3 sec
+- cambiato l'opacity del form dei pulsanti (Overlay2) pe renderlo più trasparente
+- ho creato un secondo overlayform che scende dall'alto dove ho messo i bottoni di gestione archivio e il pulsante di chiusura dell'applicativo
+- riscirtta il timer per la comparsa dei due overlay per risolvere i problemi con la modalità schermo video FULL CON TASKBAR
+- dentro il gestore file json creato funzione i caricamento dei video del DB tolta dal maschera principale
+- elimato la funzionalità gestione archivio  vecchia, perchè è diventyata obsoleta con la nuova maschera di gestione dell'archivio (seconda dove può cambiare i dati)
+- corretto piccolo baco della gestione liste da eseguire in modo che adesso ritorni il nomero totale giusto di elementi rimasti in lista
+- nella maschera delal scelta dei file da archivio da aggiungere nella lista ho aggiunto optra la polsante download anche quello di download+play che fa suonare il primo
 
+v1.3.0 - 03/12/2025
+-----------------------------------------------
 - cambiata icona del programma
-- aggiunto il cambo Visto (bool) per segnbare che lo abbiamo visto
+- aggiunto il cambo Visto (bool) per segnare che lo abbiamo visto
 - al salvataggio pdove prima creava  db.bak ora dopo il salvataggi odi db.jsom, cancella il .bak
 - nella gestione files, l'eliminazione è diventata esclusione dall'archivio, e chiede se deve anche eliminare il file fisico
 - aggiunto il flag Visto al TreeView della maschera di gestione dei files e di scelta

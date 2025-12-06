@@ -62,26 +62,7 @@ namespace LettoreVideo
             slideTimer.Tick += SlideTimer_Tick;
         }
 
-        /*
-        public void AttachToForm(Form parent)
-        {
-            this.Owner = parent;
-            this.StartPosition = FormStartPosition.Manual;
-
-            targetX = parent.Right - this.Width - 5;
-            hiddenX = parent.Right + 5;
-            this.Location = new Point(hiddenX, parent.Top + 5);
-            this.Show(parent);
-
-            parent.Resize += Parent_Resize;
-
-            // Attiva il filtro globale per intercettare i movimenti del mouse
-            mouseFilter = new GlobalMouseMoveFilter();
-            mouseFilter.MouseMove += Parent_MouseMove;
-            Application.AddMessageFilter(mouseFilter);
-        }
-        */
-
+ 
         public void AttachToForm(Form parent)
         {
             this.Owner = parent;

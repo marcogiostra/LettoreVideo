@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace LettoreVideo
 {
-    partial class OverlayForm2
+    partial class OverlayBottom
     {
         /// <summary>
         /// Required designer variable.
@@ -35,16 +35,12 @@ namespace LettoreVideo
             this.lblContaBrani = new System.Windows.Forms.Label();
             this.lblElapsedTime = new System.Windows.Forms.Label();
             this.cmbAudio = new System.Windows.Forms.ComboBox();
-            this.picClear = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picOpenFile = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picOpenDirectory = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picGestioneArchivio = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picShowList = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picScegliFromArchivio = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.picToMax = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.picFromMax = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.picPhoto = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picVolume = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.pic_es_no = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.pic_es_si = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picSave = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picMusicaleDaCapo = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picMusicaleStop = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picMusicaleNext = new LettoreVideo.Controlli.ExtendedPictureBox();
@@ -59,8 +55,6 @@ namespace LettoreVideo
             this.knobVelocita = new LettoreVideo.Controlli.KnobGioshControl();
             this.mediaSeekBar1 = new LettoreVideo.Controlli.MediaSeekBar();
             this.picMusicalePause = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picPhoto = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picCategory = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.SuspendLayout();
             // 
             // lblTotalTime
@@ -115,101 +109,53 @@ namespace LettoreVideo
             this.cmbAudio.DropDownClosed += new System.EventHandler(this.cmbAudio_DropDownClosed);
             this.cmbAudio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAudio_KeyDown);
             // 
-            // picClear
+            // picToMax
             // 
-            this.picClear.AutoResize = true;
-            this.picClear.BackColor = System.Drawing.Color.Black;
-            this.picClear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClear.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picClear.ImageClick = global::LettoreVideo.Properties.Resources.b32_gomma_click;
-            this.picClear.ImageHover = global::LettoreVideo.Properties.Resources.b32_gomma_hover;
-            this.picClear.ImageNormal = global::LettoreVideo.Properties.Resources.b32_gomma_normal;
-            this.picClear.Location = new System.Drawing.Point(417, 25);
-            this.picClear.Margin = new System.Windows.Forms.Padding(4);
-            this.picClear.Name = "picClear";
-            this.picClear.Size = new System.Drawing.Size(32, 32);
-            this.picClear.TabIndex = 180;
-            this.picClear.TabStop = false;
+            this.picToMax.AutoResize = true;
+            this.picToMax.BackColor = System.Drawing.Color.Black;
+            this.picToMax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picToMax.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picToMax.ImageClick = global::LettoreVideo.Properties.Resources.b32_to_max_click;
+            this.picToMax.ImageHover = global::LettoreVideo.Properties.Resources.b32_to_max_hover;
+            this.picToMax.ImageNormal = global::LettoreVideo.Properties.Resources.b32_to_max_normal;
+            this.picToMax.Location = new System.Drawing.Point(448, 25);
+            this.picToMax.Margin = new System.Windows.Forms.Padding(4);
+            this.picToMax.Name = "picToMax";
+            this.picToMax.Size = new System.Drawing.Size(32, 32);
+            this.picToMax.TabIndex = 184;
+            this.picToMax.TabStop = false;
             // 
-            // picOpenFile
+            // picFromMax
             // 
-            this.picOpenFile.AutoResize = true;
-            this.picOpenFile.BackColor = System.Drawing.Color.Transparent;
-            this.picOpenFile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picOpenFile.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picOpenFile.ImageClick = global::LettoreVideo.Properties.Resources.b32_file_click;
-            this.picOpenFile.ImageHover = global::LettoreVideo.Properties.Resources.b32_file_hover;
-            this.picOpenFile.ImageNormal = global::LettoreVideo.Properties.Resources.b32_file_normal;
-            this.picOpenFile.Location = new System.Drawing.Point(560, 25);
-            this.picOpenFile.Margin = new System.Windows.Forms.Padding(4);
-            this.picOpenFile.Name = "picOpenFile";
-            this.picOpenFile.Size = new System.Drawing.Size(32, 32);
-            this.picOpenFile.TabIndex = 176;
-            this.picOpenFile.TabStop = false;
+            this.picFromMax.AutoResize = true;
+            this.picFromMax.BackColor = System.Drawing.Color.Black;
+            this.picFromMax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picFromMax.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picFromMax.ImageClick = global::LettoreVideo.Properties.Resources.b32_from_max_click;
+            this.picFromMax.ImageHover = global::LettoreVideo.Properties.Resources.b32_from_max_hover;
+            this.picFromMax.ImageNormal = global::LettoreVideo.Properties.Resources.b32_from_max_normal;
+            this.picFromMax.Location = new System.Drawing.Point(568, 23);
+            this.picFromMax.Margin = new System.Windows.Forms.Padding(4);
+            this.picFromMax.Name = "picFromMax";
+            this.picFromMax.Size = new System.Drawing.Size(32, 32);
+            this.picFromMax.TabIndex = 185;
+            this.picFromMax.TabStop = false;
             // 
-            // picOpenDirectory
+            // picPhoto
             // 
-            this.picOpenDirectory.AutoResize = true;
-            this.picOpenDirectory.BackColor = System.Drawing.Color.Black;
-            this.picOpenDirectory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picOpenDirectory.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picOpenDirectory.ImageClick = global::LettoreVideo.Properties.Resources.b32_gestione_click;
-            this.picOpenDirectory.ImageHover = global::LettoreVideo.Properties.Resources.b32_cartella_hover;
-            this.picOpenDirectory.ImageNormal = global::LettoreVideo.Properties.Resources.b32_cartella_normal;
-            this.picOpenDirectory.Location = new System.Drawing.Point(503, 25);
-            this.picOpenDirectory.Margin = new System.Windows.Forms.Padding(4);
-            this.picOpenDirectory.Name = "picOpenDirectory";
-            this.picOpenDirectory.Size = new System.Drawing.Size(32, 32);
-            this.picOpenDirectory.TabIndex = 175;
-            this.picOpenDirectory.TabStop = false;
-            // 
-            // picGestioneArchivio
-            // 
-            this.picGestioneArchivio.AutoResize = true;
-            this.picGestioneArchivio.BackColor = System.Drawing.Color.Black;
-            this.picGestioneArchivio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picGestioneArchivio.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picGestioneArchivio.ImageClick = global::LettoreVideo.Properties.Resources.b32_gestione_click;
-            this.picGestioneArchivio.ImageHover = global::LettoreVideo.Properties.Resources.b32_gestione_hover;
-            this.picGestioneArchivio.ImageNormal = global::LettoreVideo.Properties.Resources.b32_gestione_nornal;
-            this.picGestioneArchivio.Location = new System.Drawing.Point(435, 57);
-            this.picGestioneArchivio.Margin = new System.Windows.Forms.Padding(4);
-            this.picGestioneArchivio.Name = "picGestioneArchivio";
-            this.picGestioneArchivio.Size = new System.Drawing.Size(32, 32);
-            this.picGestioneArchivio.TabIndex = 174;
-            this.picGestioneArchivio.TabStop = false;
-            // 
-            // picShowList
-            // 
-            this.picShowList.AutoResize = true;
-            this.picShowList.BackColor = System.Drawing.Color.Black;
-            this.picShowList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picShowList.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picShowList.ImageClick = global::LettoreVideo.Properties.Resources.b32_lista_click;
-            this.picShowList.ImageHover = global::LettoreVideo.Properties.Resources.b32_lista_hover;
-            this.picShowList.ImageNormal = global::LettoreVideo.Properties.Resources.b32_lista_normal;
-            this.picShowList.Location = new System.Drawing.Point(396, 58);
-            this.picShowList.Margin = new System.Windows.Forms.Padding(4);
-            this.picShowList.Name = "picShowList";
-            this.picShowList.Size = new System.Drawing.Size(32, 32);
-            this.picShowList.TabIndex = 173;
-            this.picShowList.TabStop = false;
-            // 
-            // picScegliFromArchivio
-            // 
-            this.picScegliFromArchivio.AutoResize = true;
-            this.picScegliFromArchivio.BackColor = System.Drawing.Color.Black;
-            this.picScegliFromArchivio.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picScegliFromArchivio.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picScegliFromArchivio.ImageClick = global::LettoreVideo.Properties.Resources.b32_scegli_click;
-            this.picScegliFromArchivio.ImageHover = global::LettoreVideo.Properties.Resources.b32_scegli_hover;
-            this.picScegliFromArchivio.ImageNormal = global::LettoreVideo.Properties.Resources.b32_scegli_normal;
-            this.picScegliFromArchivio.Location = new System.Drawing.Point(70, 65);
-            this.picScegliFromArchivio.Margin = new System.Windows.Forms.Padding(4);
-            this.picScegliFromArchivio.Name = "picScegliFromArchivio";
-            this.picScegliFromArchivio.Size = new System.Drawing.Size(32, 32);
-            this.picScegliFromArchivio.TabIndex = 172;
-            this.picScegliFromArchivio.TabStop = false;
+            this.picPhoto.AutoResize = true;
+            this.picPhoto.BackColor = System.Drawing.Color.Transparent;
+            this.picPhoto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picPhoto.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picPhoto.ImageClick = global::LettoreVideo.Properties.Resources.b32_photo_chick;
+            this.picPhoto.ImageHover = global::LettoreVideo.Properties.Resources.b32_photo_hover;
+            this.picPhoto.ImageNormal = global::LettoreVideo.Properties.Resources.b32_photo_normal;
+            this.picPhoto.Location = new System.Drawing.Point(618, 25);
+            this.picPhoto.Margin = new System.Windows.Forms.Padding(4);
+            this.picPhoto.Name = "picPhoto";
+            this.picPhoto.Size = new System.Drawing.Size(32, 32);
+            this.picPhoto.TabIndex = 182;
+            this.picPhoto.TabStop = false;
             // 
             // picVolume
             // 
@@ -260,22 +206,6 @@ namespace LettoreVideo
             this.pic_es_si.TabIndex = 169;
             this.pic_es_si.TabStop = false;
             this.pic_es_si.Visible = false;
-            // 
-            // picSave
-            // 
-            this.picSave.AutoResize = true;
-            this.picSave.BackColor = System.Drawing.Color.Black;
-            this.picSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picSave.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picSave.ImageClick = global::LettoreVideo.Properties.Resources.b32_floppy_click;
-            this.picSave.ImageHover = global::LettoreVideo.Properties.Resources.b32_floppy_hover;
-            this.picSave.ImageNormal = global::LettoreVideo.Properties.Resources.b32_floppy_normal;
-            this.picSave.Location = new System.Drawing.Point(842, 28);
-            this.picSave.Margin = new System.Windows.Forms.Padding(4);
-            this.picSave.Name = "picSave";
-            this.picSave.Size = new System.Drawing.Size(32, 32);
-            this.picSave.TabIndex = 168;
-            this.picSave.TabStop = false;
             // 
             // picMusicaleDaCapo
             // 
@@ -366,7 +296,7 @@ namespace LettoreVideo
             this.picMusicaleIndietro10.ImageClick = global::LettoreVideo.Properties.Resources.b32_anti10_click;
             this.picMusicaleIndietro10.ImageHover = global::LettoreVideo.Properties.Resources.b32_anti10_hover;
             this.picMusicaleIndietro10.ImageNormal = global::LettoreVideo.Properties.Resources.b32_anti10_normal;
-            this.picMusicaleIndietro10.Location = new System.Drawing.Point(101, 28);
+            this.picMusicaleIndietro10.Location = new System.Drawing.Point(88, 25);
             this.picMusicaleIndietro10.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicaleIndietro10.Name = "picMusicaleIndietro10";
             this.picMusicaleIndietro10.Size = new System.Drawing.Size(32, 32);
@@ -382,7 +312,7 @@ namespace LettoreVideo
             this.picMusicaleIndietro5.ImageClick = global::LettoreVideo.Properties.Resources.b32_anti5_click;
             this.picMusicaleIndietro5.ImageHover = global::LettoreVideo.Properties.Resources.b32_anti5_hover;
             this.picMusicaleIndietro5.ImageNormal = global::LettoreVideo.Properties.Resources.b32_anti5_normal;
-            this.picMusicaleIndietro5.Location = new System.Drawing.Point(139, 28);
+            this.picMusicaleIndietro5.Location = new System.Drawing.Point(128, 25);
             this.picMusicaleIndietro5.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicaleIndietro5.Name = "picMusicaleIndietro5";
             this.picMusicaleIndietro5.Size = new System.Drawing.Size(32, 32);
@@ -398,7 +328,7 @@ namespace LettoreVideo
             this.picMusicaleAvanti30.ImageClick = global::LettoreVideo.Properties.Resources.b32_orario30_click;
             this.picMusicaleAvanti30.ImageHover = global::LettoreVideo.Properties.Resources.b32_orario30_hover;
             this.picMusicaleAvanti30.ImageNormal = global::LettoreVideo.Properties.Resources.b32_orario30_normal;
-            this.picMusicaleAvanti30.Location = new System.Drawing.Point(329, 28);
+            this.picMusicaleAvanti30.Location = new System.Drawing.Point(328, 23);
             this.picMusicaleAvanti30.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicaleAvanti30.Name = "picMusicaleAvanti30";
             this.picMusicaleAvanti30.Size = new System.Drawing.Size(32, 32);
@@ -414,7 +344,7 @@ namespace LettoreVideo
             this.picMusicaleAvanti10.ImageClick = global::LettoreVideo.Properties.Resources.b32_orario10_click;
             this.picMusicaleAvanti10.ImageHover = global::LettoreVideo.Properties.Resources.b32_orario10_hover;
             this.picMusicaleAvanti10.ImageNormal = global::LettoreVideo.Properties.Resources.b32_orario10_normal;
-            this.picMusicaleAvanti10.Location = new System.Drawing.Point(291, 28);
+            this.picMusicaleAvanti10.Location = new System.Drawing.Point(288, 23);
             this.picMusicaleAvanti10.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicaleAvanti10.Name = "picMusicaleAvanti10";
             this.picMusicaleAvanti10.Size = new System.Drawing.Size(32, 32);
@@ -430,7 +360,7 @@ namespace LettoreVideo
             this.picMusicaleAvanti5.ImageClick = global::LettoreVideo.Properties.Resources.b32_orario5_click;
             this.picMusicaleAvanti5.ImageHover = global::LettoreVideo.Properties.Resources.b32_orario5_hover;
             this.picMusicaleAvanti5.ImageNormal = global::LettoreVideo.Properties.Resources.b32_orario5_normal;
-            this.picMusicaleAvanti5.Location = new System.Drawing.Point(253, 28);
+            this.picMusicaleAvanti5.Location = new System.Drawing.Point(248, 23);
             this.picMusicaleAvanti5.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicaleAvanti5.Name = "picMusicaleAvanti5";
             this.picMusicaleAvanti5.Size = new System.Drawing.Size(32, 32);
@@ -446,7 +376,7 @@ namespace LettoreVideo
             this.picMusicalePlay.ImageClick = global::LettoreVideo.Properties.Resources.bi32_play_click;
             this.picMusicalePlay.ImageHover = global::LettoreVideo.Properties.Resources.bi32_play_hover;
             this.picMusicalePlay.ImageNormal = global::LettoreVideo.Properties.Resources.bi32_play_normal;
-            this.picMusicalePlay.Location = new System.Drawing.Point(177, 28);
+            this.picMusicalePlay.Location = new System.Drawing.Point(168, 25);
             this.picMusicalePlay.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicalePlay.Name = "picMusicalePlay";
             this.picMusicalePlay.Size = new System.Drawing.Size(32, 32);
@@ -462,7 +392,7 @@ namespace LettoreVideo
             this.knobVelocita.KnobBackColor = System.Drawing.Color.White;
             this.knobVelocita.KnobPointerStyle = LettoreVideo.Controlli.KnobGioshControl.KnobPointerStyles.line;
             this.knobVelocita.LargeChange = 1;
-            this.knobVelocita.Location = new System.Drawing.Point(133, 62);
+            this.knobVelocita.Location = new System.Drawing.Point(133, 70);
             this.knobVelocita.Margin = new System.Windows.Forms.Padding(5);
             this.knobVelocita.Maximum = 7;
             this.knobVelocita.Minimum = -7;
@@ -501,67 +431,29 @@ namespace LettoreVideo
             this.picMusicalePause.ImageClick = global::LettoreVideo.Properties.Resources.b32_pausa_click;
             this.picMusicalePause.ImageHover = global::LettoreVideo.Properties.Resources.b32_pausa_hover;
             this.picMusicalePause.ImageNormal = global::LettoreVideo.Properties.Resources.b32_pausa_normal;
-            this.picMusicalePause.Location = new System.Drawing.Point(215, 28);
+            this.picMusicalePause.Location = new System.Drawing.Point(208, 25);
             this.picMusicalePause.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicalePause.Name = "picMusicalePause";
             this.picMusicalePause.Size = new System.Drawing.Size(32, 32);
             this.picMusicalePause.TabIndex = 155;
             this.picMusicalePause.TabStop = false;
             // 
-            // picPhoto
-            // 
-            this.picPhoto.AutoResize = true;
-            this.picPhoto.BackColor = System.Drawing.Color.Transparent;
-            this.picPhoto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picPhoto.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picPhoto.ImageClick = global::LettoreVideo.Properties.Resources.b32_photo_chick;
-            this.picPhoto.ImageHover = global::LettoreVideo.Properties.Resources.b32_photo_hover;
-            this.picPhoto.ImageNormal = global::LettoreVideo.Properties.Resources.b32_photo_normal;
-            this.picPhoto.Location = new System.Drawing.Point(618, 25);
-            this.picPhoto.Margin = new System.Windows.Forms.Padding(4);
-            this.picPhoto.Name = "picPhoto";
-            this.picPhoto.Size = new System.Drawing.Size(32, 32);
-            this.picPhoto.TabIndex = 182;
-            this.picPhoto.TabStop = false;
-            // 
-            // picCategory
-            // 
-            this.picCategory.AutoResize = true;
-            this.picCategory.BackColor = System.Drawing.Color.Black;
-            this.picCategory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picCategory.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picCategory.ImageClick = global::LettoreVideo.Properties.Resources.b32_category_click;
-            this.picCategory.ImageHover = global::LettoreVideo.Properties.Resources.b32_category_hover;
-            this.picCategory.ImageNormal = global::LettoreVideo.Properties.Resources.b32_category_normal;
-            this.picCategory.Location = new System.Drawing.Point(369, 28);
-            this.picCategory.Margin = new System.Windows.Forms.Padding(4);
-            this.picCategory.Name = "picCategory";
-            this.picCategory.Size = new System.Drawing.Size(32, 32);
-            this.picCategory.TabIndex = 183;
-            this.picCategory.TabStop = false;
-            // 
-            // OverlayForm2
+            // OverlayBottom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(903, 102);
-            this.Controls.Add(this.picCategory);
+            this.ClientSize = new System.Drawing.Size(903, 110);
+            this.Controls.Add(this.picToMax);
+            this.Controls.Add(this.picFromMax);
             this.Controls.Add(this.picPhoto);
             this.Controls.Add(this.cmbAudio);
-            this.Controls.Add(this.picClear);
             this.Controls.Add(this.lblElapsedTime);
             this.Controls.Add(this.lblContaBrani);
             this.Controls.Add(this.lblTotalTime);
-            this.Controls.Add(this.picOpenFile);
-            this.Controls.Add(this.picOpenDirectory);
-            this.Controls.Add(this.picGestioneArchivio);
-            this.Controls.Add(this.picShowList);
-            this.Controls.Add(this.picScegliFromArchivio);
             this.Controls.Add(this.picVolume);
             this.Controls.Add(this.pic_es_no);
             this.Controls.Add(this.pic_es_si);
-            this.Controls.Add(this.picSave);
             this.Controls.Add(this.picMusicaleDaCapo);
             this.Controls.Add(this.picMusicaleStop);
             this.Controls.Add(this.picMusicaleNext);
@@ -577,8 +469,8 @@ namespace LettoreVideo
             this.Controls.Add(this.mediaSeekBar1);
             this.Controls.Add(this.picMusicalePause);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "OverlayForm2";
-            this.Opacity = 0.85D;
+            this.Name = "OverlayBottom";
+            this.Opacity = 0.7D;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "OverlayForm";
@@ -604,21 +496,15 @@ namespace LettoreVideo
         private Controlli.ExtendedPictureBox picMusicaleNext;
         private Controlli.ExtendedPictureBox picMusicaleStop;
         private Controlli.ExtendedPictureBox picMusicaleDaCapo;
-        private Controlli.ExtendedPictureBox picSave;
         private Controlli.ExtendedPictureBox pic_es_si;
         private Controlli.ExtendedPictureBox pic_es_no;
         private Controlli.ExtendedPictureBox picVolume;
-        private Controlli.ExtendedPictureBox picScegliFromArchivio;
-        private Controlli.ExtendedPictureBox picShowList;
-        private Controlli.ExtendedPictureBox picGestioneArchivio;
-        private Controlli.ExtendedPictureBox picOpenDirectory;
-        private Controlli.ExtendedPictureBox picOpenFile;
         private Label lblTotalTime;
         private Label lblContaBrani;
         private Label lblElapsedTime;
-        private Controlli.ExtendedPictureBox picClear;
         private ComboBox cmbAudio;
         private Controlli.ExtendedPictureBox picPhoto;
-        private Controlli.ExtendedPictureBox picCategory;
+        private Controlli.ExtendedPictureBox picToMax;
+        private Controlli.ExtendedPictureBox picFromMax;
     }
 }

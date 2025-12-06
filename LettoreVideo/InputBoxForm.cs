@@ -53,6 +53,8 @@ namespace LettoreVideo
             textBox1.Text = defaultValue;   // <<< VALORE PREDEFINITO
             textBox1.SelectionStart = defaultValue.Length;
 
+            ResultText = string.Empty;  
+
         }
 
         private void btnOk_Click(object sender, EventArgs e)

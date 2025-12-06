@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
@@ -35,9 +36,15 @@ namespace LettoreVideo
 
     }
 
+    public enum ScreenMode
+    {
+        Normal = 0,
+        Full = 1,
+        Minimize = 2
+    }
+
     public partial class frmVideoNEW : Form
     {
-
 
         #region DICHIARAZIONI
         private PrivateFontCollection privateFontCollection = new PrivateFontCollection();
@@ -73,29 +80,42 @@ namespace LettoreVideo
         public List<Traccia> AUDIOs = new List<Traccia>();
         #endregion VIDEO
 
-        OverlayFormFlottante overlay;
-
-
-
-
-        private bool quadranteVisibile = false;
-        private int animStep = 10; // velocità di animazione (pixel per ti
-
-        #endregion DICHIARAZIONI
-
-        private OverlayForm2 overlay2;
+        #region OVERLAYS
         private Timer timerMouse;
 
+        float fadeSpeed = 0.1f;  // opacità
+        int moveSpeed = 25;      // velocità base
+        bool topVisible = false;
+        bool bottomVisible = false;
+
+        private OverlayTop overlayButtonTop;
+        private bool topVisibile = false;
+
+        private OverlayBottom overlayButtonBottom;
+        private bool bottonVisibile = false;
+
+        private OverlayTitle ot;
+
+        #endregion OVERLAYS
+
+        #region VIDEO_SCREEN_MODE
+        private ScreenMode MYScreenMode = ScreenMode.Normal;
+        private Rectangle lastBounds;
+        #endregion VIDEO_SCREEN_MODE
+
+        #endregion DICHIARAZIONI
 
         #region Class
         public frmVideoNEW()
         {
             InitializeComponent();
 
+
             InizializzaLista();
 
             //Inizializzazione VLC
             InizializzaVLC();
+
 
             //Inizializza la lettura del file di configurazione
             config.cfgFile = "MyConfig.config";
@@ -108,22 +128,27 @@ namespace LettoreVideo
             TaskbarIconHelper.SetTaskbarIcon(this, myIcon);
 
 
-
-
-
             // OverlayForm
-            overlay2 = new OverlayForm2();
-            overlay2.Owner = this;
-            overlay2.SetOwner(this);
-            //overlay2.Top = this.Height;
-
-
+            overlayButtonBottom = new OverlayBottom();
+            overlayButtonBottom.Owner = this;
+            overlayButtonBottom.SetOwner(this);
+            overlayButtonBottom.ShowInTaskbar = false;
+            //
+            overlayButtonTop = new OverlayTop();
+            overlayButtonTop.Owner = this;
+            overlayButtonTop.SetOwner(this);
+            overlayButtonTop.ShowInTaskbar = false;
+            //
+            ot = new OverlayTitle();
+            ot.Owner = this;
+            ot.SetOwner(this);
+            ot.Visible = false;
+            ot.ShowInTaskbar = false;
 
 
             // Timer mouse per animazione Quadrante
             timerMouse = new Timer { Interval = 50 };
             timerMouse.Tick += timerMouse_Tick;
-            //timerMouse.Start();
 
 
         }
@@ -131,34 +156,10 @@ namespace LettoreVideo
 
         private void frmVideoNEW_Load(object sender, EventArgs e)
         {
-            try
-            {
-                // Controllo e creazione se non esiste
-                if (!Directory.Exists(DataFolder))
-                {
-                    Directory.CreateDirectory(DataFolder);
-                }
-                string DbFile = Path.Combine(DataFolder, "db.json");
-                if (File.Exists(DbFile))
-                {
-                    string json = File.ReadAllText(DbFile);
-                    Export exportObj = JsonConvert.DeserializeObject<Export>(json);
-                    VID_DBs = exportObj.Data;
+            VID_DBs = JsonOperation.Laod_DB(DataFolder);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                PRG.MsgBoxERR(ex, "Errore nella procedura di lettura dei file dall'archivio:\r\n\r\n");
-
-            }
             timer2.Enabled = true;
-            //@@@timerMouse.Enabled = true;
-
-
-
-
-
+      
 
         }
 
@@ -180,25 +181,33 @@ namespace LettoreVideo
 
         private void frmVideoNEW_Resize(object sender, EventArgs e)
         {
-            /*
-            quadrante.Width = this.Width;
-            if (!quadranteVisibile)
-                quadrante.Top = this.Height;
-            */
+     
 
             try
             {
-                if (overlay2 != null)
+                if (overlayButtonBottom != null)
                 {
-                    overlay2.Width = this.Width;
-                    if (!quadranteVisibile)
-                        overlay2.Top = this.Height;
+                    overlayButtonBottom.Width = this.Width;
+                    if (!bottonVisibile)
+                        overlayButtonBottom.Top = this.Height;
                 }
-
             }
             catch (Exception) { }
 
+            try
+            {
+                if (overlayButtonTop != null)
+                {
+                    overlayButtonTop.Width = this.Width;
 
+                    // Se non è visibile, posizionalo fuori dallo schermo in alto
+                    if (!topVisibile)
+                        overlayButtonTop.Top = -overlayButtonTop.Height;
+                }
+            }
+            catch (Exception) { }
+
+            timerOT.Enabled = true;
 
 
         }
@@ -235,10 +244,25 @@ namespace LettoreVideo
             else
                 tempValue = "0 video";
 
-            overlay2.SetContaBrani(tempValue);
+            overlayButtonBottom.SetContaBrani(tempValue);
 
         }
-        #endregion f()
+        private void PlayCameraClick()
+        {
+            string soundPath = Path.Combine(Application.StartupPath, "camera_click_16bit.wav");
+
+            if (File.Exists(soundPath))
+            {
+                var player = new System.Media.SoundPlayer(soundPath);
+                player.Play();
+            }
+            else
+            {
+                MessageBox.Show("File audio non trovato:\n" + soundPath);
+            }
+
+        }
+
 
         #region f()_VIDEO
         private void InizializzaVLC()
@@ -322,7 +346,7 @@ namespace LettoreVideo
                         else
                         {
                             AUDIOs = new List<Traccia>();
-                            overlay2.ComboClear();
+                            overlayButtonBottom.ComboClear();
                             Index -= 1;
                             if (File.Exists(VIDs[Index].Filename))
                             {
@@ -331,7 +355,11 @@ namespace LettoreVideo
                                 AggiornaBranoSuovato();
                                 _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
                                 videoView1.MediaPlayer = _mp;
+                                ot.ShowTitolo(VIDs[Index].Titolo);
+                                //_videoTitle = VIDs[Index].Titolo;
                                 PlayFile(VIDs[Index].Filename);
+                                Application.DoEvents();
+
                             }
                             else
                             {
@@ -353,7 +381,7 @@ namespace LettoreVideo
                         if (Index < VIDs.Count - 1)
                         {
                             AUDIOs = new List<Traccia>();
-                            overlay2.ComboClear();
+                            overlayButtonBottom.ComboClear();
                             Index += 1;
                             if (File.Exists(VIDs[Index].Filename))
                             {
@@ -362,7 +390,13 @@ namespace LettoreVideo
                                 AggiornaBranoSuovato();
                                 _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
                                 videoView1.MediaPlayer = _mp;
+                                ot.ShowTitolo(VIDs[Index].Titolo);
+                                //_videoTitle = VIDs[Index].Titolo;
                                 PlayFile(VIDs[Index].Filename);
+                                Application.DoEvents();
+
+
+
                             }
                             else
                             {
@@ -393,7 +427,7 @@ namespace LettoreVideo
 
         public void PlayFile(string file)
         {
-            int velocita = overlay2.GetVelocita();
+            int velocita = overlayButtonBottom.GetVelocita();
 
             //_mp.SetRate((float)Decimal.Divide(1, Decimal.Divide(10, updw.Value)));
             switch (velocita)
@@ -426,7 +460,7 @@ namespace LettoreVideo
         private async void GetTracce()
         {
             AUDIOs = new List<Traccia>();
-            overlay2.ComboClear();
+            overlayButtonBottom.ComboClear();
 
             // Attendi il caricamento delle tracce
             await Task.Delay(500);
@@ -450,13 +484,13 @@ namespace LettoreVideo
                 AUDIOs.Add(trc);
                 //Console.WriteLine($"ID: {t.Id} - Nome: {t.Description} - Lingua: {t.Language}");
             }
-            overlay2.ComboLoadTracce(AUDIOs);
+            overlayButtonBottom.ComboLoadTracce(AUDIOs);
 
             // Esempio: seleziona la prima traccia audio
             if (audioTracks.Count > 0)
             {
                 _mp.SetAudioTrack(audioTracks[0].Id);
-                overlay2.ComboSelelectIndex(audioTracks[0].Id);
+                overlayButtonBottom.ComboSelelectIndex(audioTracks[0].Id);
             }
         }
 
@@ -503,6 +537,8 @@ namespace LettoreVideo
                         //
                         _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
                         videoView1.MediaPlayer = _mp;
+                        ot.ShowTitolo(VIDs[Index].Titolo);
+                        //_videoTitle = VIDs[Index].Titolo;
                         PlayFile(VIDs[Index].Filename);
                         Application.DoEvents();
 
@@ -598,90 +634,195 @@ namespace LettoreVideo
 
         #endregion f()_FONT
 
-        #region f()_Quadrante
-
-        /*
-        private void MostraQuadrante()
+        #region f()_OVERLAY
+        private void ApplyFade(Form frm, bool visible)
         {
-            quadranteVisibile = true;
-            Timer t = new Timer { Interval = 10 };
-            t.Tick += (s, e) =>
+            if (visible)
             {
-                if (quadrante.Top > this.Height - quadrante.Height)
-                    quadrante.Top -= animStep;
+                if (frm.Opacity < 0.7)
+                    frm.Opacity += fadeSpeed;
                 else
-                {
-                    quadrante.Top = this.Height - quadrante.Height;
-                    t.Stop();
-                    t.Dispose();
-                }
-            };
-            t.Start();
+                    frm.Opacity = 0.7;
+            }
+            else
+            {
+                if (frm.Opacity > 0.0)
+                    frm.Opacity -= fadeSpeed;
+                else
+                    frm.Opacity = 0.0;
+            }
         }
 
-        private void NascondiQuadrante()
+        private void UpdateClickThrough(Form frm)
         {
-            quadranteVisibile = false;
-            Timer t = new Timer { Interval = 10 };
-            t.Tick += (s, e) =>
-            {
-                if (quadrante.Top < this.Height)
-                    quadrante.Top += animStep;
-                else
-                {
-                    quadrante.Top = this.Height;
-                    t.Stop();
-                    t.Dispose();
-                }
-            };
-            t.Start();
-        }
-        */
-
-        private void MostraQuadrante()
-        {
-            quadranteVisibile = true;
-            Timer t = new Timer { Interval = 10 };
-            t.Tick += (s, e) =>
-            {
-                if (overlay2.Top > this.Height - overlay2.Height)
-                    overlay2.Top -= animStep;
-                else
-                {
-                    overlay2.Top = this.Height - overlay2.Height;
-                    t.Stop();
-                    t.Dispose();
-                }
-            };
-            t.Start();
+            if (frm.Opacity <= 0.0)
+                frm.Enabled = false;   // non riceve click
+            else
+                frm.Enabled = true;    // normale
         }
 
-        private void NascondiQuadrante()
+
+        private int SmoothStep(int current, int target)
         {
-            quadranteVisibile = false;
-            Timer t = new Timer { Interval = 10 };
-            t.Tick += (s, e) =>
-            {
-                if (overlay2.Top < this.Height)
-                    overlay2.Top += animStep;
-                else
-                {
-                    overlay2.Top = this.Height;
-                    t.Stop();
-                    t.Dispose();
-                }
-            };
-            t.Start();
+            int distance = target - current;
+            return current + (distance / 4); // (5) più grande → più veloce
         }
-        #endregion f()_Quadrante
+        #endregion f()_OVERLAY
+
+
+
+        #region f()_SCREEN
+
+        // -------------------------
+        // Modalità FULL senza taskbar
+        // -------------------------
+        private void EnterFullScreen()
+        {
+            lastBounds = this.Bounds;
+
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Normal;
+            this.Bounds = Screen.PrimaryScreen.Bounds;     // schermo intero
+            this.TopMost = true;
+
+            videoView1.Dock = DockStyle.Fill;
+
+            // Nascondo il floating sotto lo schermo
+            HideFloatingFormBelowScreen();
+            //HideFloatingBehindTaskbar();
+            overlayButtonBottom.SendBehindTaskbar();
+        }
+
+
+
+        // -------------------------
+        // Modalità FULL con taskbar
+        // -------------------------
+        private void EnterFullWithTaskbar()
+        {
+            lastBounds = this.Bounds;
+
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Normal;
+            this.Bounds = Screen.PrimaryScreen.WorkingArea; // fino sopra la taskbar
+            this.TopMost = true;
+
+            videoView1.Dock = DockStyle.Fill;
+
+            // Mostro il floating sopra la taskbar
+            ShowFloatingFormAboveTaskbar();
+            overlayButtonBottom.BringToFrontOfTaskbar();
+
+        }
+
+
+
+        // -------------------------
+        // Modalità MINI (angolo alto destro)
+        // -------------------------
+        private void EnterMiniMode()
+        {
+            int miniWidth = 400;
+            int miniHeight = 225;
+
+            lastBounds = this.Bounds;
+
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.WindowState = FormWindowState.Normal;
+
+            var area = Screen.PrimaryScreen.WorkingArea;
+
+            this.Size = new Size(miniWidth, miniHeight);
+            this.Location = new Point(
+                area.Right - miniWidth - 10,
+                area.Top + 10
+            );
+
+            videoView1.Dock = DockStyle.Fill;
+
+            // floating sopra la taskbar
+            ShowFloatingFormAboveTaskbar();
+        }
+
+
+
+        // -------------------------
+        // Ripristina modalità normale
+        // -------------------------
+        private void ExitModes()
+        {
+            this.TopMost = false;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.WindowState = FormWindowState.Normal;
+
+            if (!lastBounds.IsEmpty)
+                this.Bounds = lastBounds;
+
+            videoView1.Dock = DockStyle.Fill;
+
+            // floating sopra la taskbar
+            ShowFloatingFormAboveTaskbar();
+        }
+
+
+
+        // -------------------------
+        // Floating Nascosto sotto lo schermo
+        // -------------------------
+        private void HideFloatingFormBelowScreen()
+        {
+            int screenBottom = Screen.PrimaryScreen.Bounds.Bottom;
+
+            overlayButtonBottom.Location = new Point(
+                (Screen.PrimaryScreen.WorkingArea.Width - overlayButtonBottom.Width) / 2,
+                screenBottom
+            );
+        }
+
+
+
+        // -------------------------
+        // Floating visibile sopra la taskbar
+        // -------------------------
+        private void ShowFloatingFormAboveTaskbar()
+        {
+            int workingBottom = Screen.PrimaryScreen.WorkingArea.Bottom;
+
+            overlayButtonBottom.Location = new Point(
+                (Screen.PrimaryScreen.WorkingArea.Width - overlayButtonBottom.Width) / 2,
+                workingBottom - overlayButtonBottom.Height - 5
+            );
+        }
+
+        private void HideFloatingBehindTaskbar()
+        {
+            int screenBottom = Screen.PrimaryScreen.Bounds.Bottom;
+
+            overlayButtonBottom.Location = new Point(
+                (Screen.PrimaryScreen.WorkingArea.Width - overlayButtonBottom.Width) / 2,
+                screenBottom
+            );
+        }
+
+        private void ShowFloatingAboveTaskbar()
+        {
+            int workingBottom = Screen.PrimaryScreen.WorkingArea.Bottom;
+
+            overlayButtonBottom.Location = new Point(
+                (Screen.PrimaryScreen.WorkingArea.Width - overlayButtonBottom.Width) / 2,
+                workingBottom - overlayButtonBottom.Height - 5
+            );
+        }
+
+        #endregion f()_SCREEN
+        #endregion f()
 
         #region TIMER
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //mediaSeekBar1.Minimum = 0;
-            //mediaSeekBar1.Maximum = 1000;
-            overlay2.SetSeekBarMinimum(0);
-            overlay2.SetSeekBarMaximum(1000);
+            overlayButtonBottom.SetSeekBarMinimum(0);
+            overlayButtonBottom.SetSeekBarMaximum(1000);
 
 
             // Time restituisce millisecondi trascorsi
@@ -692,26 +833,18 @@ namespace LettoreVideo
             if (current > 0 && total >= 0)
             {
                 TimeSpan durata = TimeSpan.FromMilliseconds(current);
-                overlay2.SetElapsedTime(durata.ToString(@"hh\:mm\:ss"));
+                overlayButtonBottom.SetElapsedTime(durata.ToString(@"hh\:mm\:ss"));
                 //
                 TimeSpan ts = TimeSpan.FromMilliseconds(total);
                 string testo = ts.ToString(@"hh\:mm\:ss");
-                overlay2.SetTotalTime(testo);
+                overlayButtonBottom.SetTotalTime(testo);
                 Application.DoEvents();
-
-                /*
-                if (_mp.Length > 0 && !mediaSeekBar1.IsDragging)
+           
+                if (_mp.Length > 0 && !overlayButtonBottom.GetSeekBarIsDragging())
                 {
-                    mediaSeekBar1.Value = (int)(_mp.Time * mediaSeekBar1.Maximum / _mp.Length);
+                    overlayButtonBottom.SetSeekBarValue((int)(_mp.Time * overlayButtonBottom.GetSeekBarMaximum() / _mp.Length));
                     Application.DoEvents();
                 }
-                */
-                if (_mp.Length > 0 && !overlay2.GetSeekBarIsDragging())
-                {
-                    overlay2.SetSeekBarValue((int)(_mp.Time * overlay2.GetSeekBarMaximum() / _mp.Length));
-                    Application.DoEvents();
-                }
-
             }
         }
 
@@ -719,143 +852,98 @@ namespace LettoreVideo
         {
             timer2.Enabled = false;
 
-            //InizializzaOverLAy();
+            overlayButtonTop.Owner = this;
+            overlayButtonTop.TopMost = true;
+            overlayButtonTop.Location = new Point(0, -this.Height); // fuori dallo schermo in alto
+            overlayButtonTop.Width = this.Width;
+            overlayButtonTop.BringToFront();
+            overlayButtonTop.Show();
+      
 
-
-            overlay = new OverlayFormFlottante(this);
-            overlay.AttachToForm(this);
-            overlay.BringToFront();
-            overlay.Opacity = 0.7;
-
-
-            overlay2.Show();
+            overlayButtonBottom.Show();
             frmVideoNEW_Resize(null, null);
             timerMouse.Start();
 
 
 
-
-
         }
-
-
-
-        /*
-        private void timerMouse_Tick(object sender, EventArgs e)
-        {
-            Point pos = Cursor.Position;
-            Rectangle screenRect = Screen.PrimaryScreen.Bounds;
-
-            // Se il cursore è vicino al fondo (ultimi 80px)
-            if (pos.Y >= screenRect.Bottom - 80)
-            {
-                if (!quadranteVisibile)
-                    MostraQuadrante();
-            }
-            else if (pos.Y < screenRect.Bottom - quadrante.Height - 100)
-            {
-                if (quadranteVisibile)
-                    NascondiQuadrante();
-            }
-        }
-        */
 
         private void timerMouse_Tick(object sender, EventArgs e)
-        {
-            Point pos = Cursor.Position;
-            Rectangle screenRect = Screen.PrimaryScreen.Bounds;
+        { 
+            Point mouse = Cursor.Position;
 
-            if (pos.Y >= screenRect.Bottom - 80)
-            {
-                if (!quadranteVisibile)
-                    MostraQuadrante();
-            }
-            else if (pos.Y < screenRect.Bottom - overlay2.Height - 100)
-            {
-                if (quadranteVisibile)
-                    NascondiQuadrante();
-            }
+            int formTop = this.Bounds.Top;
+            int formBottom = this.Bounds.Bottom;
+
+            int overlayTopHeight = overlayButtonTop.Height;
+            int overlayBottomHeight = overlayButtonBottom.Height;
+
+            int triggerTop = formTop + 50;
+            int triggerBottom = formBottom - 80;
+
+
+            // LOGICA
+            topVisible = (mouse.Y <= triggerTop);
+            bottomVisible = (mouse.Y >= triggerBottom);
+
+            // ----------------------
+            //   POSIZIONI TARGET
+            // ----------------------
+            int topShownY = this.Top;
+            int topHiddenY = this.Top - overlayButtonTop.Height;
+
+            int bottomShownY = this.Bottom - overlayButtonBottom.Height;
+            int bottomHiddenY = this.Bottom;
+
+            // ----------------------
+            //   EASING TOP
+            // ----------------------
+            int topTarget = topVisible ? topShownY : topHiddenY;
+            overlayButtonTop.Top = SmoothStep(overlayButtonTop.Top, topTarget);
+
+            // ----------------------
+            //   EASING BOTTOM
+            // ----------------------
+            int bottomTarget = bottomVisible ? bottomShownY : bottomHiddenY;
+            overlayButtonBottom.Top = SmoothStep(overlayButtonBottom.Top, bottomTarget);
+
+            // ----------------------
+            //   FADE
+            // ----------------------
+            ApplyFade(overlayButtonTop, topVisible);
+            ApplyFade(overlayButtonBottom, bottomVisible);
+
+            // ----------------------
+            //   CLICK-THROUGH
+            // ----------------------
+            UpdateClickThrough(overlayButtonTop);
+            UpdateClickThrough(overlayButtonBottom);
+            
+
+    
         }
 
+        private void timerOT_Tick(object sender, EventArgs e)
+        {
+            timerOT.Enabled = false;
+            ot.Width = this.Width;
+            ot.Top = this.Height * 3 / 4;
+            ot.Show();
+            ot.Visible = false;
+            ot.BringToFront();
+
+        }
 
         #endregion TIMER
 
-
         #region EXTERNAL
 
-        #region LETTOREVIDEO
-        public void External_DA_CAPO()
-        {
-            VIDEO_DA_CAPO();
-        }
-        public void External_PRECEDENTE()
-        {
-            VIDEO_PRECEDENTE();
-        }
-        public void External_INDIETRO_VELOCE(int pSecondi)
-        {
-            VIDEO_INDIETRO_VELOCE(pSecondi);
-        }
-        public void External_PAUSA()
-        {
-            VIDEO_PAUSA();
-        }
-        public void External_PLAY()
-        {
-            VIDEO_PLAY();
-        }
-        public void External_STOP()
+        #region EXTERNAL_TOP
+        public void External_CLOSE_FORM()
         {
             VIDEO_STOP();
+            this.Close();
         }
-        public void External_AVANTI_VELOCE(int pSecondi)
-        {
-            VIDEO_AVANTI_VELOCE(pSecondi);
-        }
-        public void External_PROSSIMO()
-        {
-            VIDEO_NEXT();
-        }
-        public void External_MUTE(bool pIsMute)
-        {
-            _mp.Mute = pIsMute;
-        }
-        public void External_POSITION_MOVIE(long pNewTime)
-        {
-            /*
-            if (_mp.Length > 0 && mediaSeekBar1.IsDragging)
-            {
-                long newTime = mediaSeekBar1.Value * _mp.Length / mediaSeekBar1.Maximum;
-                _mp.Time = pNewTime;
-            }
-            */
-            if (_mp.Length > 0 && overlay2.GetSeekBarIsDragging())
-            {
-                long newTime = overlay2.GetSeekBarValue() * _mp.Length / overlay2.GetSeekBarMaximum();
-                _mp.Time = pNewTime;
-            }
-        }
-
-        public void External_IMPOSTSA_VELOCITA(float pValue)
-        {
-            _mp.SetRate(pValue);
-            Application.DoEvents();
-
-        }
-
-        public void External_SELECT_AUDIO_TRACK(int pIndex)
-        {
-            _mp.SetAudioTrack(pIndex);
-        }
-
-        public long GetLenght()
-        {
-            return _mp.Length;
-        }
-        #endregion LETTOREVIDEO
-
-        #region GESTORE_ESTERNO
-
         public void External_OPEN_FILE()
         {
             VIDEO_STOP();
@@ -999,8 +1087,6 @@ namespace LettoreVideo
                 PRG.MsgBoxERR(ex, "Errore caricamento nuovi video:\r\n\r\n");
             }
         }
-
-
         public void External_OPEN_DIR()
         {
             VIDEO_STOP();
@@ -1117,7 +1203,6 @@ namespace LettoreVideo
                 PRG.MsgBoxERR(ex, "Errore caricamento nuovi video:\r\n\r\n");
             }
         }
-
         public void External_SHOW_LIST()
         {
             VIDEO_STOP();
@@ -1139,13 +1224,13 @@ namespace LettoreVideo
             if (f.Tag.ToString() == "OK")
             {
                 VIDs = f.rListaFinale;
-                Index = f.rIndiceCorrente;
+                Totale = VIDs.Count;
+                Index = Totale > 0 ? 0 : -1;
 
                 AggiornaBranoSuovato();
-            }
+            }    
             f.Close();
         }
-
         public void External_CLEAR()
         {
             VIDEO_STOP();
@@ -1155,7 +1240,6 @@ namespace LettoreVideo
             Totale = VIDs.Count();
             AggiornaBranoSuovato();
         }
-
         public void External_SAVE()
         {
             VIDEO_STOP();
@@ -1214,32 +1298,7 @@ namespace LettoreVideo
                     PRG.MsgBoxWarning("Tutti i nuovi file esistono in archivio!");
             }
         }
-
-        public void External_GESTIONE_ARCHIVIO()
-        {
-            VIDEO_STOP();
-
-            Form frmGestoreArchivio = Application.OpenForms
-                               .OfType<frmGestoreArchivio>()
-                               .FirstOrDefault();
-
-            if (frmGestoreArchivio != null)
-            {
-                // Porta la finestra esistente in primo piano
-                frmGestoreArchivio.BringToFront();
-                frmGestoreArchivio.Focus();
-                return;
-            }
-
-            frmGestoreArchivio f = new frmGestoreArchivio(VID_DBs);
-            f.ShowDialog(this);
-            if (f.Tag.ToString() == "OK")
-            {
-                VID_DBs = f.rListaFinale;
-            }
-            f.Close();
-        }
-
+ 
         public void External_SCEGLI_VIDEO_DA_ARCHIVIO()
         {
             VIDEO_STOP();
@@ -1275,9 +1334,27 @@ namespace LettoreVideo
                 Totale = VIDs.Count();
                 AggiornaBranoSuovato();
             }
+            else if (f.Tag.ToString() == "OK+PLAY")
+            {
+                int _index = VIDs.Count();
+                VIDs = f.rListaFinale;
+                if (VIDs.Count > 0)
+                {
+
+                    Index = _index;
+                }
+                else
+                {
+
+                    Index = -1;
+                }
+                Totale = VIDs.Count();
+                AggiornaBranoSuovato();
+                if (VIDs.Count > 0)
+                    VIDEO_PLAY();
+            }
             f.Close();
         }
-
         public void External_GESTIONE_CATEGORIE()
         {
             VIDEO_STOP();
@@ -1288,12 +1365,75 @@ namespace LettoreVideo
             f.ShowDialog(this);
             if (f.Tag.ToString() == "OK")
             {
-               
+
             }
             f.Close();
 
         }
-        #endregion GESTORE_ESTERNO
+        #endregion EXTERNAL_TOP
+
+        #region EXTERNAL_BOTTOM
+        #region LETTOREVIDEO
+        public void External_DA_CAPO()
+        {
+            VIDEO_DA_CAPO();
+        }
+        public void External_PRECEDENTE()
+        {
+            VIDEO_PRECEDENTE();
+        }
+        public void External_INDIETRO_VELOCE(int pSecondi)
+        {
+            VIDEO_INDIETRO_VELOCE(pSecondi);
+        }
+        public void External_PAUSA()
+        {
+            VIDEO_PAUSA();
+        }
+        public void External_PLAY()
+        {
+            VIDEO_PLAY();
+        }
+        public void External_STOP()
+        {
+            VIDEO_STOP();
+        }
+        public void External_AVANTI_VELOCE(int pSecondi)
+        {
+            VIDEO_AVANTI_VELOCE(pSecondi);
+        }
+        public void External_PROSSIMO()
+        {
+            VIDEO_NEXT();
+        }
+        public void External_MUTE(bool pIsMute)
+        {
+            _mp.Mute = pIsMute;
+        }
+        public void External_POSITION_MOVIE(long pNewTime)
+        {
+   
+            if (_mp.Length > 0 && overlayButtonBottom.GetSeekBarIsDragging())
+            {
+                long newTime = overlayButtonBottom.GetSeekBarValue() * _mp.Length / overlayButtonBottom.GetSeekBarMaximum();
+                _mp.Time = pNewTime;
+            }
+        }
+        public void External_IMPOSTSA_VELOCITA(float pValue)
+        {
+            _mp.SetRate(pValue);
+            Application.DoEvents();
+
+        }
+        public void External_SELECT_AUDIO_TRACK(int pIndex)
+        {
+            _mp.SetAudioTrack(pIndex);
+        }
+        public long GetLenght()
+        {
+            return _mp.Length;
+        }
+        #endregion LETTOREVIDEO
 
         #region EXTERNAL_FUNCTIONS
         public void External_PHOTO()
@@ -1316,25 +1456,25 @@ namespace LettoreVideo
                 System.Media.SystemSounds.Hand.Play();
             }
         }
-        #endregion EXTERNAL_FUNCTIONS
-        #endregion EXTERNAL
 
-        private void PlayCameraClick()
+        public void External_TO_MAX()
         {
-            string soundPath = Path.Combine(Application.StartupPath, "camera_click_16bit.wav");
-
-            if (File.Exists(soundPath))
-            {
-                var player = new System.Media.SoundPlayer(soundPath);
-                player.Play();
-            }
-            else
-            {
-                MessageBox.Show("File audio non trovato:\n" + soundPath);
-            }
-
+            MYScreenMode = ScreenMode.Full;
+            EnterFullWithTaskbar();
+            HideFloatingFormBelowScreen(); // subito dopo il cambi
         }
 
+        public void External_FROM_MAX()
+        {
+            MYScreenMode = ScreenMode.Normal;
+            EnterFullScreen();
+            HideFloatingFormBelowScreen(); // sempre
+        }
+
+        #endregion EXTERNAL_FUNCTIONS
+
+        #endregion EXTERNAL
+        #endregion EXTERNAL_BOTTOM
 
     }
 }

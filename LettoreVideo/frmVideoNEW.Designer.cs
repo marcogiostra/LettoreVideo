@@ -32,6 +32,7 @@
             this.videoView1 = new LibVLCSharp.WinForms.VideoView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timerOT = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.videoView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,6 +54,10 @@
             // timer2
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timerOT
+            // 
+            this.timerOT.Tick += new System.EventHandler(this.timerOT_Tick);
             // 
             // frmVideoNEW
             // 
@@ -81,5 +86,6 @@
         private LibVLCSharp.WinForms.VideoView videoView1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timerOT;
     }
 }

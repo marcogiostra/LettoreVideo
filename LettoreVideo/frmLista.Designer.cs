@@ -45,7 +45,6 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(442, 344);
             this.checkedListBox1.TabIndex = 59;
-            this.checkedListBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.checkedListBox1_MouseMove);
             // 
             // picCestino
             // 
@@ -101,9 +100,9 @@
             this.picSave.BackColor = System.Drawing.SystemColors.Control;
             this.picSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picSave.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picSave.ImageClick = global::LettoreVideo.Properties.Resources.b32_plusitem_click;
-            this.picSave.ImageHover = global::LettoreVideo.Properties.Resources.b32_plusitem__hover;
-            this.picSave.ImageNormal = global::LettoreVideo.Properties.Resources.b32_plusitem_normal;
+            this.picSave.ImageClick = global::LettoreVideo.Properties.Resources.b32_download_click;
+            this.picSave.ImageHover = global::LettoreVideo.Properties.Resources.b32_download_hover;
+            this.picSave.ImageNormal = global::LettoreVideo.Properties.Resources.b32_download_normal;
             this.picSave.Location = new System.Drawing.Point(12, 66);
             this.picSave.Name = "picSave";
             this.picSave.Size = new System.Drawing.Size(32, 32);

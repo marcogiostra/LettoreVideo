@@ -148,12 +148,6 @@
     <Compile Include="frmGestioneFiles.Designer.cs">
       <DependentUpon>frmGestioneFiles.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGestoreArchivio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmGestoreArchivio.Designer.cs">
-      <DependentUpon>frmGestoreArchivio.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmLista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,15 +178,27 @@
     <Compile Include="InputBoxForm.Designer.cs">
       <DependentUpon>InputBoxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OverlayForm2.cs">
+    <Compile Include="OverlayTop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OverlayForm2.Designer.cs">
-      <DependentUpon>OverlayForm2.cs</DependentUpon>
+    <Compile Include="OverlayTop.Designer.cs">
+      <DependentUpon>OverlayTop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OverlayBottom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OverlayBottom.Designer.cs">
+      <DependentUpon>OverlayBottom.cs</DependentUpon>
     </Compile>
     <Compile Include="OverlayFormFlottante.cs" />
     <Compile Include="OverlayFormFlottante.Designer.cs">
       <DependentUpon>OverlayFormFlottante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OverlayTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OverlayTitle.Designer.cs">
+      <DependentUpon>OverlayTitle.cs</DependentUpon>
     </Compile>
     <Compile Include="PRG.cs" />
     <Compile Include="Classi\Funzioni.cs" />
@@ -210,9 +216,6 @@
     <EmbeddedResource Include="frmGestioneFiles.resx">
       <DependentUpon>frmGestioneFiles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGestoreArchivio.resx">
-      <DependentUpon>frmGestoreArchivio.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLista.resx">
       <DependentUpon>frmLista.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,11 +231,17 @@
     <EmbeddedResource Include="InputBoxForm.resx">
       <DependentUpon>InputBoxForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OverlayForm2.resx">
-      <DependentUpon>OverlayForm2.cs</DependentUpon>
+    <EmbeddedResource Include="OverlayTop.resx">
+      <DependentUpon>OverlayTop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverlayBottom.resx">
+      <DependentUpon>OverlayBottom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OverlayFormFlottante.resx">
       <DependentUpon>OverlayFormFlottante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverlayTitle.resx">
+      <DependentUpon>OverlayTitle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -274,6 +283,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Magazzion_Immagini\b32_download_verde_normal.png" />
+    <None Include="Magazzion_Immagini\b32_download_verde_hover.png" />
+    <None Include="Magazzion_Immagini\b32_download_verde_click.png" />
+    <None Include="Magazzion_Immagini\b32_close_normal.png" />
+    <None Include="Magazzion_Immagini\b32_close_hover.png" />
+    <None Include="Magazzion_Immagini\b32_close_clickr.png" />
+    <None Include="Magazzion_Immagini\b32_from_max_normal.png" />
+    <None Include="Magazzion_Immagini\b32_from_max_hover.png" />
+    <None Include="Magazzion_Immagini\b32_from_max_click.png" />
+    <None Include="Magazzion_Immagini\b32_to_max_normal.png" />
+    <None Include="Magazzion_Immagini\b32_to_max_hover.png" />
+    <None Include="Magazzion_Immagini\b32_to_max_click.png" />
     <None Include="Magazzion_Immagini\organize_list.png" />
     <None Include="Magazzion_Immagini\choose_item_from_list.png" />
     <None Include="Magazzion_Immagini\pause_hoverr.png" />

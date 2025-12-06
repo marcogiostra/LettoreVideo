@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace LettoreVideo.Controlli
 {
-
+    [DefaultEvent("Click")]
     public partial class ExtendedPictureBox : UserControl
     {
         private Image normalImage;

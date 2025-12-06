@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
             this.rbtnAll = new System.Windows.Forms.RadioButton();
             this.rbtnCartella = new System.Windows.Forms.RadioButton();
             this.cmbCartelle = new System.Windows.Forms.ComboBox();
@@ -40,11 +40,12 @@
             this.colCategoria = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSpecifica = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colFilenameOriginale = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colVisto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.picSaveAndPlay = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.picSave = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.picPlus = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picUncheckAll = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picCheckAll = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picPlus = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picSave = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.colVisto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // rbtnAll
@@ -86,7 +87,7 @@
             // 
             this.lblTotale.AutoSize = true;
             this.lblTotale.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotale.Location = new System.Drawing.Point(926, 92);
+            this.lblTotale.Location = new System.Drawing.Point(595, 132);
             this.lblTotale.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotale.Name = "lblTotale";
             this.lblTotale.Size = new System.Drawing.Size(14, 13);
@@ -96,7 +97,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(722, 92);
+            this.label2.Location = new System.Drawing.Point(401, 132);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(170, 13);
@@ -116,11 +117,11 @@
             this.colFilenameOriginale,
             this.colVisto});
             this.lstFiles.HideSelection = false;
-            listViewItem1.StateImageIndex = 0;
-            listViewItem2.StateImageIndex = 0;
+            listViewItem3.StateImageIndex = 0;
+            listViewItem4.StateImageIndex = 0;
             this.lstFiles.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
+            listViewItem3,
+            listViewItem4});
             this.lstFiles.Location = new System.Drawing.Point(0, 162);
             this.lstFiles.Name = "lstFiles";
             this.lstFiles.Size = new System.Drawing.Size(1006, 317);
@@ -150,6 +151,58 @@
             // 
             this.colFilenameOriginale.Text = "Filenameoriginaloe";
             this.colFilenameOriginale.Width = 0;
+            // 
+            // colVisto
+            // 
+            this.colVisto.Text = "Visto?";
+            // 
+            // picSaveAndPlay
+            // 
+            this.picSaveAndPlay.AutoResize = true;
+            this.picSaveAndPlay.BackColor = System.Drawing.SystemColors.Control;
+            this.picSaveAndPlay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picSaveAndPlay.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picSaveAndPlay.ImageClick = global::LettoreVideo.Properties.Resources.b32_download_verde_click;
+            this.picSaveAndPlay.ImageHover = global::LettoreVideo.Properties.Resources.b32_download_verde_hover;
+            this.picSaveAndPlay.ImageNormal = global::LettoreVideo.Properties.Resources.b32_download_verde_normal;
+            this.picSaveAndPlay.Location = new System.Drawing.Point(344, 124);
+            this.picSaveAndPlay.Name = "picSaveAndPlay";
+            this.picSaveAndPlay.Size = new System.Drawing.Size(32, 32);
+            this.picSaveAndPlay.TabIndex = 78;
+            this.picSaveAndPlay.TabStop = false;
+            this.picSaveAndPlay.Click += new System.EventHandler(this.picSaveAndPlay_Click);
+            // 
+            // picSave
+            // 
+            this.picSave.AutoResize = true;
+            this.picSave.BackColor = System.Drawing.SystemColors.Control;
+            this.picSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picSave.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picSave.ImageClick = global::LettoreVideo.Properties.Resources.b32_download_click;
+            this.picSave.ImageHover = global::LettoreVideo.Properties.Resources.b32_download_hover;
+            this.picSave.ImageNormal = global::LettoreVideo.Properties.Resources.b32_download_normal;
+            this.picSave.Location = new System.Drawing.Point(306, 124);
+            this.picSave.Name = "picSave";
+            this.picSave.Size = new System.Drawing.Size(32, 32);
+            this.picSave.TabIndex = 77;
+            this.picSave.TabStop = false;
+            this.picSave.Click += new System.EventHandler(this.picSave_Click);
+            // 
+            // picPlus
+            // 
+            this.picPlus.AutoResize = true;
+            this.picPlus.BackColor = System.Drawing.SystemColors.Control;
+            this.picPlus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picPlus.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picPlus.ImageClick = global::LettoreVideo.Properties.Resources.b32_plus_click;
+            this.picPlus.ImageHover = global::LettoreVideo.Properties.Resources.b32_plus_hover;
+            this.picPlus.ImageNormal = global::LettoreVideo.Properties.Resources.b32_plus_normal;
+            this.picPlus.Location = new System.Drawing.Point(173, 124);
+            this.picPlus.Name = "picPlus";
+            this.picPlus.Size = new System.Drawing.Size(32, 32);
+            this.picPlus.TabIndex = 76;
+            this.picPlus.TabStop = false;
+            this.picPlus.Click += new System.EventHandler(this.picPlus_Click);
             // 
             // picUncheckAll
             // 
@@ -183,47 +236,12 @@
             this.picCheckAll.TabStop = false;
             this.picCheckAll.Click += new System.EventHandler(this.picCheckAll_Click);
             // 
-            // picPlus
-            // 
-            this.picPlus.AutoResize = true;
-            this.picPlus.BackColor = System.Drawing.SystemColors.Control;
-            this.picPlus.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picPlus.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picPlus.ImageClick = global::LettoreVideo.Properties.Resources.b32_plus_click;
-            this.picPlus.ImageHover = global::LettoreVideo.Properties.Resources.b32_plus_hover;
-            this.picPlus.ImageNormal = global::LettoreVideo.Properties.Resources.b32_plus_normal;
-            this.picPlus.Location = new System.Drawing.Point(88, 124);
-            this.picPlus.Name = "picPlus";
-            this.picPlus.Size = new System.Drawing.Size(32, 32);
-            this.picPlus.TabIndex = 76;
-            this.picPlus.TabStop = false;
-            this.picPlus.Click += new System.EventHandler(this.picPlus_Click);
-            // 
-            // picSave
-            // 
-            this.picSave.AutoResize = true;
-            this.picSave.BackColor = System.Drawing.SystemColors.Control;
-            this.picSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picSave.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picSave.ImageClick = global::LettoreVideo.Properties.Resources.b32_download_click;
-            this.picSave.ImageHover = global::LettoreVideo.Properties.Resources.b32_download_hover;
-            this.picSave.ImageNormal = global::LettoreVideo.Properties.Resources.b32_download_normal;
-            this.picSave.Location = new System.Drawing.Point(126, 124);
-            this.picSave.Name = "picSave";
-            this.picSave.Size = new System.Drawing.Size(32, 32);
-            this.picSave.TabIndex = 77;
-            this.picSave.TabStop = false;
-            this.picSave.Click += new System.EventHandler(this.picSave_Click);
-            // 
-            // colVisto
-            // 
-            this.colVisto.Text = "Visto?";
-            // 
             // frmScegliFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 483);
+            this.Controls.Add(this.picSaveAndPlay);
             this.Controls.Add(this.picSave);
             this.Controls.Add(this.picPlus);
             this.Controls.Add(this.picUncheckAll);
@@ -263,5 +281,6 @@
         private Controlli.ExtendedPictureBox picPlus;
         private Controlli.ExtendedPictureBox picSave;
         private System.Windows.Forms.ColumnHeader colVisto;
+        private Controlli.ExtendedPictureBox picSaveAndPlay;
     }
 }

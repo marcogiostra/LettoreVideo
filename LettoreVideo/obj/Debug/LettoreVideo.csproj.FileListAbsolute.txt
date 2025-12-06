@@ -2928,7 +2928,6 @@ D:\svil_Giosh\005_LettoreVideo_@@@\LettoreVideo\LettoreVideo\bin\Debug\DevExpres
 D:\svil_Giosh\005_LettoreVideo_@@@\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmScegliFiles.resources
 D:\svil_Giosh\005_LettoreVideo_@@@\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.exe.config
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.csproj.AssemblyReference.cache
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmGestoreArchivio.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmLista.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmScegliFiles.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmVideoNEW.resources
@@ -3896,7 +3895,6 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\Xamarin.Forms
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\Xamarin.Forms.Xaml.xml
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreV.672004D4.Up2Date
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.Controlli.ExtendedPictureBox.resources
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.OverlayForm2.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\camera_click_16bit.wav
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.InputBoxForm.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\LettoreVIdeoMG.exe.config
@@ -3905,5 +3903,8 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\LettoreVIdeoM
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVIdeoMG.exe.licenses
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVIdeoMG.exe
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVIdeoMG.pdb
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVIdeoMG.exe.config
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmGestioneFiles.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.OverlayTitle.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.OverlayTop.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.OverlayBottom.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVIdeoMG.exe.config
