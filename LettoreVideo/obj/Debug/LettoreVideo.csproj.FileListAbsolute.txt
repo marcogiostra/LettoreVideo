@@ -3908,3 +3908,8 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.OverlayTop.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.OverlayBottom.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVIdeoMG.exe.config
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\Ookii.Dialogs.WinForms.dll
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\System.Resources.Extensions.dll
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\Ookii.Dialogs.WinForms.pdb
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\System.Resources.Extensions.xml
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.FormFolderPicker.resources

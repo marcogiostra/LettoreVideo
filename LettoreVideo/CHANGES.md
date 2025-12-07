@@ -10,10 +10,14 @@ Changelog
 VERSIONI e FIX
 -------------------
 
+v1.4.2 - 07/12/2025
+-----------------------------------------------
+- cambiato il browser folder dialog con uno che faccia vedere il contenutoi della cartella. Elementare ma è un buon inizio
+
 v1.4.1 - 06/12/2025
 -----------------------------------------------
 - CORRETTO RESIZE DEL FORM DI OVERLAY toP CHE SBAGLAIVA IL RIODINAMENTO ,ANASCINDENDI IL save SOTTO UN ALTRO PULSANTE
--
+
 v1.4.0 . 06/12/2025
 -----------------------------------------------
 - nella maschera di gestione dell'archivio, aggiunto la possibilità di modificare il titolo

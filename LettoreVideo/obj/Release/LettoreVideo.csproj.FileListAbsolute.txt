@@ -978,3 +978,6 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVIde
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.OverlayTop.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.OverlayBottom.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.OverlayTitle.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\System.Resources.Extensions.dll
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\System.Resources.Extensions.xml
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.FormFolderPicker.resources

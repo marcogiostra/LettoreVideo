@@ -12,7 +12,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Media;
+using System.Xml.Linq;
 
 namespace LettoreVideo
 {
@@ -1105,14 +1105,24 @@ namespace LettoreVideo
 
             try
             {
-                using (var fbd = new FolderBrowserDialog())
-                {
-                    fbd.Description = "Seleziona una cartella";
-                    fbd.ShowNewFolderButton = true;
 
-                    if (fbd.ShowDialog() == DialogResult.OK)
+                //prepara la cartella iniziale
+                if (string.IsNullOrEmpty(dirVideo))
+                    dirVideo = "C:\\";
+                else
+                {
+                    if (Directory.Exists(dirVideo))
+                        dirVideo = dirVideo + "\\";
+                    else
+                        dirVideo = "C:\\";
+                }
+
+                using (var form = new FormFolderPicker())
+                {
+                    form.ultimaCartella = dirVideo;
+                    if (form.ShowDialog() == DialogResult.OK)
                     {
-                        string selectedPath = fbd.SelectedPath;
+                        string selectedPath = form.CartellaSelezionata;
                         if (Directory.Exists(selectedPath))
                         {
                             string[] files = Directory.GetFiles(selectedPath);
@@ -1186,15 +1196,129 @@ namespace LettoreVideo
                                 AggiornaBranoSuovato();
                             }
 
+                            dirVideo = selectedPath;
+                            //config.SetValue("//appDIR//add[@key='DIR_VIDEO']", dirVideo);
+                            string appPath = AppDomain.CurrentDomain.BaseDirectory;
+                            string configFile = Path.Combine(appPath, "MyConfig.config");
+                            XDocument doc = XDocument.Load(configFile);
+                            XElement dirVideoElement = doc.Root.Element("appDir")?
+                                .Element("add");
+                            if (dirVideoElement != null)
+                            {
+                                // Imposta il valore
+                                dirVideoElement.SetAttributeValue("value", dirVideo);
+
+                                // Salva il file
+                                doc.Save(configFile);
+                            }
+                            else
+                            {
+                            }
                         }
                         else
                         {
                             PRG.MsgBoxWarning("la cartella selezionata, non esiste o non è più raggiungibile!");
                             return;
                         }
-
                     }
                 }
+
+
+
+
+                /*
+
+                var dialog = new VistaFolderBrowserDialog();
+                dialog.Description = "Seleziona una cartella dove ci siano video da riprodurre";                
+                dialog.UseDescriptionForTitle = true;
+                dialog.SelectedPath = dirVideo;                
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedPath = dialog.SelectedPath;
+                    if (Directory.Exists(selectedPath))
+                    {
+                        string[] files = Directory.GetFiles(selectedPath);
+
+                        foreach (string file in files)
+                        {
+                            string estensione = Path.GetExtension(file);
+                            string veraEstensione = estensione.Substring(1, estensione.Length - 1);
+                            if (veraEstensione.ToLower() == "mp4" || veraEstensione.ToLower() == "mkv" || veraEstensione.ToLower() == "dvix" || veraEstensione.ToLower() == "avi")
+                            {
+                                VideoFile vid = new VideoFile();
+                                vid.Filename = file;
+                                vid.FilenameOriginale = PathHelper.GetRelativeOrDriveTrimmed(vid.Filename);
+                                // Ottieni la directory che contiene il file
+                                string directory = Path.GetDirectoryName(file);
+                                // Prendi solo il nome dell'ultima cartella
+                                string folderName = Path.GetFileName(directory);
+                                vid.Categoria = folderName;
+                                vid.Specifica = folderName;
+                                vid.File = Path.GetFileName(file);
+                                string tipoFile = Path.GetExtension(file);
+                                dirVideo = file.Substring(0, file.Length - vid.File.Length - 1);
+                                vid.Titolo = vid.File.Substring(0, vid.File.Length - tipoFile.Length);
+                                vid.Saved = false;
+                                index++;
+                                vid.ID = index;
+
+                                _VIDs.Add(vid);
+                            }
+                        }
+                        if (_VIDs.Count > 0)
+                        {
+                            if (VIDs.Count > 0)
+                            {
+                                if (PRG.MsgBoxYesNo("Esistono alcuni brani nella play list, li vuoi cancellare?"))
+                                {
+                                    VIDs = new List<VideoFile>();
+                                    _VIDs = new List<VideoFile>();
+                                    foreach (VideoFile vid in _VIDs)
+                                    {
+                                        VIDs.Add(vid);
+                                    }
+                                    Index = 0;
+                                    Totale = VIDs.Count;
+                                }
+                                else
+                                {
+                                    Totale = VIDs.Count;
+                                    Index = VIDs.Count - 1;
+                                    foreach (VideoFile vid in _VIDs)
+                                    {
+                                        VIDs.Add(vid);
+                                    }
+                                    index++;
+                                    Totale += _VIDs.Count;
+                                }
+
+
+                            }
+                            else
+                            {
+                                foreach (VideoFile vid in _VIDs)
+                                {
+                                    VIDs.Add(vid);
+                                }
+                                Index = 0;
+                                Totale = VIDs.Count;
+                            }
+
+
+                            AggiornaBranoSuovato();
+                        }
+
+                        dirVideo = selectedPath;
+                        config.SetValue("//appDIR//add[@key='DIR_VIDEO']", dirVideo);
+                    }
+                    else
+                    {
+                        PRG.MsgBoxWarning("la cartella selezionata, non esiste o non è più raggiungibile!");
+                        return;
+                    }
+                }
+
+ */
 
 
             }

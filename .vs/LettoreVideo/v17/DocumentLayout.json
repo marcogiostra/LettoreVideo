@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\lettorevideo\\frmvideonew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|solutionrelative:lettorevideo\\frmvideonew.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|LettoreVideo||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
@@ -10,12 +14,12 @@
       "RelativeMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|solutionrelative:lettorevideo\\changes.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|d:\\svil_giosh\\005_lettorevideo\\lettorevideo\\lettorevideo\\overlaytop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|solutionrelative:lettorevideo\\overlaytop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|d:\\svil_giosh\\005_lettorevideo\\lettorevideo\\lettorevideo\\formfolderpicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|solutionrelative:lettorevideo\\formfolderpicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|d:\\svil_giosh\\005_lettorevideo\\lettorevideo\\lettorevideo\\overlaytop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|solutionrelative:lettorevideo\\overlaytop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\lettorevideo\\formfolderpicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|solutionrelative:lettorevideo\\formfolderpicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{706A1BB4-14E6-476F-AE19-230828406393}|LettoreVideo\\LettoreVideo.csproj|D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\lettorevideo\\da_fare.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
@@ -32,61 +36,74 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OverlayTop.cs",
-              "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\OverlayTop.cs",
-              "RelativeDocumentMoniker": "LettoreVideo\\OverlayTop.cs",
-              "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\OverlayTop.cs",
-              "RelativeToolTip": "LettoreVideo\\OverlayTop.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAgwH4AAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T20:46:56.014Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OverlayTop.cs [Progettazione]",
-              "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\OverlayTop.cs",
-              "RelativeDocumentMoniker": "LettoreVideo\\OverlayTop.cs",
-              "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\OverlayTop.cs [Progettazione]",
-              "RelativeToolTip": "LettoreVideo\\OverlayTop.cs [Progettazione]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T20:46:42.699Z",
-              "EditorCaption": " [Progettazione]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "LettoreVideo",
               "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\LettoreVideo.csproj",
               "RelativeDocumentMoniker": "LettoreVideo\\LettoreVideo.csproj",
               "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\LettoreVideo.csproj*",
               "RelativeToolTip": "LettoreVideo\\LettoreVideo.csproj*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-06T18:58:23.882Z",
+              "WhenOpened": "2025-12-07T10:04:40.871Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "FormFolderPicker.cs",
+              "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\FormFolderPicker.cs",
+              "RelativeDocumentMoniker": "LettoreVideo\\FormFolderPicker.cs",
+              "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\FormFolderPicker.cs",
+              "RelativeToolTip": "LettoreVideo\\FormFolderPicker.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCQAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T06:14:33.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormFolderPicker.cs [Progettazione]",
+              "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\FormFolderPicker.cs",
+              "RelativeDocumentMoniker": "LettoreVideo\\FormFolderPicker.cs",
+              "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\FormFolderPicker.cs [Progettazione]",
+              "RelativeToolTip": "LettoreVideo\\FormFolderPicker.cs [Progettazione]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T05:58:35.877Z",
+              "EditorCaption": " [Progettazione]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmVideoNEW.cs",
+              "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\frmVideoNEW.cs",
+              "RelativeDocumentMoniker": "LettoreVideo\\frmVideoNEW.cs",
+              "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\frmVideoNEW.cs",
+              "RelativeToolTip": "LettoreVideo\\frmVideoNEW.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T04:10:31.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "CHANGES.md",
               "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\CHANGES.md",
               "RelativeDocumentMoniker": "LettoreVideo\\CHANGES.md",
               "ToolTip": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\CHANGES.md",
               "RelativeToolTip": "LettoreVideo\\CHANGES.md",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAB6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-12-02T04:52:10.04Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DA_FARE.md",
               "DocumentMoniker": "D:\\svil_Giosh\\005_LettoreVideo\\LettoreVideo\\LettoreVideo\\DA_FARE.md",
               "RelativeDocumentMoniker": "LettoreVideo\\DA_FARE.md",
@@ -94,7 +111,8 @@
               "RelativeToolTip": "LettoreVideo\\DA_FARE.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-12-05T17:07:21.365Z"
+              "WhenOpened": "2025-12-05T17:07:21.365Z",
+              "EditorCaption": ""
             }
           ]
         }
