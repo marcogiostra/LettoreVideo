@@ -124,7 +124,7 @@ namespace LettoreVideo
             picShowList.Location = new Point(picOpenDirectory.Right + spazio, picOpenFile.Top);
             picClear.Location = new Point(picShowList.Right + spazio, picOpenFile.Top);
             picSave.Location = new Point(picClear.Right + spazio, picOpenFile.Top);
-            picScegliFromArchivio.Location = new Point(picClear.Right + spazio, picOpenFile.Top);
+            picScegliFromArchivio.Location = new Point(picSave.Right + spazio, picOpenFile.Top);
             picCategory.Location = new Point(picScegliFromArchivio.Right + spazio, picOpenFile.Top);
 
 
