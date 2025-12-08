@@ -10,11 +10,10 @@ Nuove Implementazioni
 ---------------------
 -- nuova funzionalità di salvataggio di una video multi traccia, per salvare la traccia corrente
 -- gestione miniatura in un posto ben preciso?
--- ridisegnare la manopola della velocità
 -- poter creare dei segnalibro da salvare
--- rifare layout maschere secondarie
+-- ri-fare layout maschere secondarie
 -- migliorare le icone
--- mettere qualcosa per cambio veloce nella play-list. gestirlo nelal playlist o in un altro controllo?
+-- mettere la possibilità di modificare il volume!!!
 
 
 

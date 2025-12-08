@@ -35,6 +35,7 @@ namespace LettoreVideo
             this.lblContaBrani = new System.Windows.Forms.Label();
             this.lblElapsedTime = new System.Windows.Forms.Label();
             this.cmbAudio = new System.Windows.Forms.ComboBox();
+            this.picTitle = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picToMax = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picFromMax = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picPhoto = new LettoreVideo.Controlli.ExtendedPictureBox();
@@ -52,10 +53,9 @@ namespace LettoreVideo
             this.picMusicaleAvanti10 = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picMusicaleAvanti5 = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picMusicalePlay = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.knobVelocita = new LettoreVideo.Controlli.KnobGioshControl();
             this.mediaSeekBar1 = new LettoreVideo.Controlli.MediaSeekBar();
             this.picMusicalePause = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.picTitle = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.speedVideo = new LettoreVideo.Controlli.SpeedRangeSelector();
             this.SuspendLayout();
             // 
             // lblTotalTime
@@ -75,7 +75,7 @@ namespace LettoreVideo
             this.lblContaBrani.BackColor = System.Drawing.Color.Black;
             this.lblContaBrani.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContaBrani.ForeColor = System.Drawing.Color.White;
-            this.lblContaBrani.Location = new System.Drawing.Point(716, 69);
+            this.lblContaBrani.Location = new System.Drawing.Point(750, 75);
             this.lblContaBrani.Name = "lblContaBrani";
             this.lblContaBrani.Size = new System.Drawing.Size(74, 15);
             this.lblContaBrani.TabIndex = 178;
@@ -109,6 +109,22 @@ namespace LettoreVideo
             this.cmbAudio.SelectionChangeCommitted += new System.EventHandler(this.cmbAudio_SelectionChangeCommitted);
             this.cmbAudio.DropDownClosed += new System.EventHandler(this.cmbAudio_DropDownClosed);
             this.cmbAudio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAudio_KeyDown);
+            // 
+            // picTitle
+            // 
+            this.picTitle.AutoResize = true;
+            this.picTitle.BackColor = System.Drawing.Color.Black;
+            this.picTitle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picTitle.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picTitle.ImageClick = global::LettoreVideo.Properties.Resources.b32_title_click;
+            this.picTitle.ImageHover = global::LettoreVideo.Properties.Resources.b32_title_hover;
+            this.picTitle.ImageNormal = global::LettoreVideo.Properties.Resources.b32_title_normal;
+            this.picTitle.Location = new System.Drawing.Point(408, 23);
+            this.picTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.picTitle.Name = "picTitle";
+            this.picTitle.Size = new System.Drawing.Size(32, 32);
+            this.picTitle.TabIndex = 186;
+            this.picTitle.TabStop = false;
             // 
             // picToMax
             // 
@@ -217,7 +233,7 @@ namespace LettoreVideo
             this.picMusicaleDaCapo.ImageClick = global::LettoreVideo.Properties.Resources.b32_dacapo_click;
             this.picMusicaleDaCapo.ImageHover = global::LettoreVideo.Properties.Resources.b32_dacapo_hover;
             this.picMusicaleDaCapo.ImageNormal = global::LettoreVideo.Properties.Resources.b32_dacapo_normal;
-            this.picMusicaleDaCapo.Location = new System.Drawing.Point(291, 68);
+            this.picMusicaleDaCapo.Location = new System.Drawing.Point(421, 65);
             this.picMusicaleDaCapo.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicaleDaCapo.Name = "picMusicaleDaCapo";
             this.picMusicaleDaCapo.Size = new System.Drawing.Size(32, 32);
@@ -233,7 +249,7 @@ namespace LettoreVideo
             this.picMusicaleStop.ImageClick = global::LettoreVideo.Properties.Resources.b32_stop_click;
             this.picMusicaleStop.ImageHover = global::LettoreVideo.Properties.Resources.b32_stop_hover;
             this.picMusicaleStop.ImageNormal = global::LettoreVideo.Properties.Resources.b32_stop_normal;
-            this.picMusicaleStop.Location = new System.Drawing.Point(177, 62);
+            this.picMusicaleStop.Location = new System.Drawing.Point(301, 63);
             this.picMusicaleStop.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicaleStop.Name = "picMusicaleStop";
             this.picMusicaleStop.Size = new System.Drawing.Size(32, 32);
@@ -249,7 +265,7 @@ namespace LettoreVideo
             this.picMusicaleNext.ImageClick = global::LettoreVideo.Properties.Resources.b32_next_click;
             this.picMusicaleNext.ImageHover = global::LettoreVideo.Properties.Resources.b32_next_hover;
             this.picMusicaleNext.ImageNormal = global::LettoreVideo.Properties.Resources.b32_next_normal;
-            this.picMusicaleNext.Location = new System.Drawing.Point(253, 65);
+            this.picMusicaleNext.Location = new System.Drawing.Point(381, 65);
             this.picMusicaleNext.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicaleNext.Name = "picMusicaleNext";
             this.picMusicaleNext.Size = new System.Drawing.Size(32, 32);
@@ -265,7 +281,7 @@ namespace LettoreVideo
             this.picMusicalePrecedente.ImageClick = global::LettoreVideo.Properties.Resources.b32_previous_click;
             this.picMusicalePrecedente.ImageHover = global::LettoreVideo.Properties.Resources.b32_previous_hover;
             this.picMusicalePrecedente.ImageNormal = global::LettoreVideo.Properties.Resources.b32_previous_normal;
-            this.picMusicalePrecedente.Location = new System.Drawing.Point(215, 63);
+            this.picMusicalePrecedente.Location = new System.Drawing.Point(341, 61);
             this.picMusicalePrecedente.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicalePrecedente.Name = "picMusicalePrecedente";
             this.picMusicalePrecedente.Size = new System.Drawing.Size(32, 32);
@@ -281,7 +297,7 @@ namespace LettoreVideo
             this.picMusicaleIndietro30.ImageClick = global::LettoreVideo.Properties.Resources.b32_anti30_click;
             this.picMusicaleIndietro30.ImageHover = global::LettoreVideo.Properties.Resources.b32_anti30_hover;
             this.picMusicaleIndietro30.ImageNormal = global::LettoreVideo.Properties.Resources.b32_anti30_normal;
-            this.picMusicaleIndietro30.Location = new System.Drawing.Point(331, 64);
+            this.picMusicaleIndietro30.Location = new System.Drawing.Point(588, 26);
             this.picMusicaleIndietro30.Margin = new System.Windows.Forms.Padding(4);
             this.picMusicaleIndietro30.Name = "picMusicaleIndietro30";
             this.picMusicaleIndietro30.Size = new System.Drawing.Size(32, 32);
@@ -384,33 +400,6 @@ namespace LettoreVideo
             this.picMusicalePlay.TabIndex = 154;
             this.picMusicalePlay.TabStop = false;
             // 
-            // knobVelocita
-            // 
-            this.knobVelocita.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.knobVelocita.BackColor = System.Drawing.Color.Transparent;
-            this.knobVelocita.EndAngle = 405F;
-            this.knobVelocita.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.knobVelocita.KnobBackColor = System.Drawing.Color.White;
-            this.knobVelocita.KnobPointerStyle = LettoreVideo.Controlli.KnobGioshControl.KnobPointerStyles.line;
-            this.knobVelocita.LargeChange = 1;
-            this.knobVelocita.Location = new System.Drawing.Point(133, 70);
-            this.knobVelocita.Margin = new System.Windows.Forms.Padding(5);
-            this.knobVelocita.Maximum = 7;
-            this.knobVelocita.Minimum = -7;
-            this.knobVelocita.Name = "knobVelocita";
-            this.knobVelocita.PointerColor = System.Drawing.Color.SlateBlue;
-            this.knobVelocita.ScaleColor = System.Drawing.Color.Black;
-            this.knobVelocita.ScaleDivisions = 11;
-            this.knobVelocita.ScaleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.knobVelocita.ScaleSubDivisions = 4;
-            this.knobVelocita.ShowLargeScale = false;
-            this.knobVelocita.ShowSmallScale = false;
-            this.knobVelocita.Size = new System.Drawing.Size(35, 35);
-            this.knobVelocita.SmallChange = 1;
-            this.knobVelocita.StartAngle = 135F;
-            this.knobVelocita.TabIndex = 153;
-            this.knobVelocita.Value = 0;
-            // 
             // mediaSeekBar1
             // 
             this.mediaSeekBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -439,21 +428,16 @@ namespace LettoreVideo
             this.picMusicalePause.TabIndex = 155;
             this.picMusicalePause.TabStop = false;
             // 
-            // picTitle
+            // speedVideo
             // 
-            this.picTitle.AutoResize = true;
-            this.picTitle.BackColor = System.Drawing.Color.Black;
-            this.picTitle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picTitle.CustomCursor = System.Windows.Forms.Cursors.Hand;
-            this.picTitle.ImageClick = global::LettoreVideo.Properties.Resources.b32_title_click;
-            this.picTitle.ImageHover = global::LettoreVideo.Properties.Resources.b32_title_hover;
-            this.picTitle.ImageNormal = global::LettoreVideo.Properties.Resources.b32_title_normal;
-            this.picTitle.Location = new System.Drawing.Point(408, 23);
-            this.picTitle.Margin = new System.Windows.Forms.Padding(4);
-            this.picTitle.Name = "picTitle";
-            this.picTitle.Size = new System.Drawing.Size(32, 32);
-            this.picTitle.TabIndex = 186;
-            this.picTitle.TabStop = false;
+            this.speedVideo.BackColor = System.Drawing.Color.Transparent;
+            this.speedVideo.Location = new System.Drawing.Point(69, 63);
+            this.speedVideo.Maximum = 5;
+            this.speedVideo.Minimum = -5;
+            this.speedVideo.Name = "speedVideo";
+            this.speedVideo.SelectedValue = 0;
+            this.speedVideo.Size = new System.Drawing.Size(234, 28);
+            this.speedVideo.TabIndex = 187;
             // 
             // OverlayBottom
             // 
@@ -461,6 +445,7 @@ namespace LettoreVideo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(903, 110);
+            this.Controls.Add(this.speedVideo);
             this.Controls.Add(this.picTitle);
             this.Controls.Add(this.picToMax);
             this.Controls.Add(this.picFromMax);
@@ -483,7 +468,6 @@ namespace LettoreVideo
             this.Controls.Add(this.picMusicaleAvanti10);
             this.Controls.Add(this.picMusicaleAvanti5);
             this.Controls.Add(this.picMusicalePlay);
-            this.Controls.Add(this.knobVelocita);
             this.Controls.Add(this.mediaSeekBar1);
             this.Controls.Add(this.picMusicalePause);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -501,7 +485,6 @@ namespace LettoreVideo
 
         #endregion
         private Controlli.MediaSeekBar mediaSeekBar1;
-        private Controlli.KnobGioshControl knobVelocita;
         private Controlli.ExtendedPictureBox picMusicalePlay;
         private Controlli.ExtendedPictureBox picMusicalePause;
         private Controlli.ExtendedPictureBox picMusicaleAvanti5;
@@ -525,5 +508,6 @@ namespace LettoreVideo
         private Controlli.ExtendedPictureBox picToMax;
         private Controlli.ExtendedPictureBox picFromMax;
         private Controlli.ExtendedPictureBox picTitle;
+        private Controlli.SpeedRangeSelector speedVideo;
     }
 }

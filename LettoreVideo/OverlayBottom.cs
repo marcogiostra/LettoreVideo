@@ -167,6 +167,17 @@ namespace LettoreVideo
                     main.External_MUTE(IsMute);
                 }
             };
+            lblContaBrani.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                {
+                    if (lblContaBrani.Text != "0 video")
+                    {
+                        main.External_CHOOSE_INDEX_CURRENT();
+                    }
+                }
+            };
 
             mediaSeekBar1.ValueChanged += (s, e) =>
             {
@@ -183,27 +194,27 @@ namespace LettoreVideo
                     }
                 }
             };
-
-            knobVelocita.ValueChanged += (s, e) =>
+            
+            speedVideo.ValueChanged += (s, e) =>
             {
                 // chiama un metodo nel form principale
                 if (this.Owner is frmVideoNEW main)
                 {
                     float _value = 0;
 
-                    switch (knobVelocita.Value)
+                    switch (speedVideo.SelectedValue)
                     {
                         case 0:
                             _value = 1;
                             break;
 
                         case int n when n > 0:
-                            _value = 1 * knobVelocita.Value;
+                            _value = 1 * speedVideo.SelectedValue;
                             Application.DoEvents();
                             break;
 
                         case int n when n < 0:
-                            int newValue = 10 + knobVelocita.Value;
+                            int newValue = 10 + speedVideo.SelectedValue;
                             _value = (float)Decimal.Divide(1, Decimal.Divide(10, newValue));
                             Application.DoEvents(); break;
                     }
@@ -212,6 +223,7 @@ namespace LettoreVideo
                    
                 }
             };
+            
             #endregion LETTOREVIDEO
 
 
@@ -287,12 +299,12 @@ namespace LettoreVideo
             cmbAudio.Visible = pAUDIOs.Count > 1;
         }
 
-        /*
+        
         public void SetComboAudioItem(int  pValue)
         {
             cmbAudio.Items.Add(pValue);
         }
-        */
+        
         public void SetOwner(Form owner)
         {
             if (owner != null)
@@ -347,7 +359,7 @@ namespace LettoreVideo
 
         public int GetVelocita()
         {
-            return knobVelocita.Value;
+            return 0; // speedVideo.SelectedValue;
         }
         #endregion f()
 
@@ -375,6 +387,7 @@ namespace LettoreVideo
             //
             picVolume.Location = new Point(lblElapsedTime.Left + ((lblElapsedTime.Width - picVolume.Width ) / 2), lblElapsedTime.Top + lblElapsedTime.Height + spazio);
             lblContaBrani.Location = new Point(picMusicaleIndietro10.Left, picMusicalePrecedente.Top + (picMusicalePrecedente.Height - lblContaBrani.Height) / 2);
+            speedVideo.Location = new Point(picVolume.Right + spazio + spazio, picVolume.Top + 2);
             //
             picToMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);
             picFromMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);

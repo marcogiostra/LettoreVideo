@@ -31,7 +31,8 @@ namespace LettoreVideo
 
         Previous = 5,
         Next = 6,
-        DaCapo = 7
+        DaCapo = 7,
+        Salta2Index = 8
 
 
     }
@@ -228,6 +229,7 @@ namespace LettoreVideo
             Application.DoEvents();
             _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
             Application.DoEvents();
+    
 
             /* da usare se bisogno anizializzar epiù velocemente
              * var media = new Media(_vlc, "fakevideo.mp4", FromType.FromPath);
@@ -253,7 +255,7 @@ _mp.Stop();
 
         }
 
-        private void AggiornaBranoSuovato()
+        private void AggiornaBranoSuonato()
         {
             string tempValue = string.Empty;
 
@@ -339,6 +341,39 @@ _mp.Stop();
                         _mp.Time += 30000;
                         break;
 
+                    case VideoPlayAction.Salta2Index:
+                        if (Index > -1)
+                        {
+                            AUDIOs = new List<Traccia>();
+                            overlayButtonBottom.ComboClear();
+                            if (File.Exists(VIDs[Index].Filename))
+                            {
+                                _mp.Dispose();
+                                isPlaying = false;
+                                AggiornaBranoSuonato();
+                                _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
+                                videoView1.MediaPlayer = _mp;
+                                ot.ShowTitolo(VIDs[Index].Titolo);
+                                //_videoTitle = VIDs[Index].Titolo;
+                                PlayFile(VIDs[Index].Filename);
+                                Application.DoEvents();
+
+                            }
+                            else
+                            {
+                                if (VIDs.Count > 1)
+                                {
+                                    PRG.MsgBox("Questo video non è disponibile.\r\nPassa ad un altro file!");
+                                }
+                                else
+                                {
+                                    PRG.MsgBox("Questo video non è disponibil1!");
+                                }
+                                return;
+                            }
+                        }
+                        break;
+
                     case VideoPlayAction.Previous:
                         if (Index == 0)
                         {
@@ -353,7 +388,7 @@ _mp.Stop();
                             {
                                 _mp.Dispose();
                                 isPlaying = false;
-                                AggiornaBranoSuovato();
+                                AggiornaBranoSuonato();
                                 _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
                                 videoView1.MediaPlayer = _mp;
                                 ot.ShowTitolo(VIDs[Index].Titolo);
@@ -388,7 +423,7 @@ _mp.Stop();
                             {
                                 _mp.Dispose();
                                 isPlaying = false;
-                                AggiornaBranoSuovato();
+                                AggiornaBranoSuonato();
                                 _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
                                 videoView1.MediaPlayer = _mp;
                                 ot.ShowTitolo(VIDs[Index].Titolo);
@@ -431,6 +466,7 @@ _mp.Stop();
             int velocita = overlayButtonBottom.GetVelocita();
 
             //_mp.SetRate((float)Decimal.Divide(1, Decimal.Divide(10, updw.Value)));
+            _mp.Play(new Media(_libVLC, file));
             switch (velocita)
             {
                 case 0:
@@ -449,7 +485,6 @@ _mp.Stop();
                     Application.DoEvents();
                     break;
             }
-            _mp.Play(new Media(_libVLC, file));
             isPlaying = true;
             Application.DoEvents();
 
@@ -532,11 +567,10 @@ _mp.Stop();
                 {
                     if (File.Exists(VIDs[Index].Filename))
                     {
-                        AggiornaBranoSuovato();
+                        AggiornaBranoSuonato();
                         //
                         timer1.Enabled = true;
                         //
-                        _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
                         videoView1.MediaPlayer = _mp;
                         ot.ShowTitolo(VIDs[Index].Titolo);
                         //_videoTitle = VIDs[Index].Titolo;
@@ -595,6 +629,12 @@ _mp.Stop();
             }
         }
 
+        private void VIDEO_SALTA_2_INDEX()
+        {
+            if (isPlaying)
+                VideoAction(VideoPlayAction.Salta2Index);
+            
+        }
         private void VIDEO_NEXT()
         {
             if (isPlaying)
@@ -1080,7 +1120,7 @@ _mp.Stop();
                         }
 
 
-                        AggiornaBranoSuovato();
+                        AggiornaBranoSuonato();
                     }
 
 
@@ -1205,7 +1245,7 @@ _mp.Stop();
                                 }
 
 
-                                AggiornaBranoSuovato();
+                                AggiornaBranoSuonato();
                             }
 
                             dirVideo = selectedPath;
@@ -1317,7 +1357,7 @@ _mp.Stop();
                             }
 
 
-                            AggiornaBranoSuovato();
+                            AggiornaBranoSuonato();
                         }
 
                         dirVideo = selectedPath;
@@ -1363,7 +1403,7 @@ _mp.Stop();
                 Totale = VIDs.Count;
                 Index = Totale > 0 ? 0 : -1;
 
-                AggiornaBranoSuovato();
+                AggiornaBranoSuonato();
             }    
             f.Close();
         }
@@ -1374,7 +1414,7 @@ _mp.Stop();
             Index = -1;
             VIDs = new List<VideoFile>();
             Totale = VIDs.Count();
-            AggiornaBranoSuovato();
+            AggiornaBranoSuonato();
         }
         public void External_SAVE()
         {
@@ -1429,7 +1469,7 @@ _mp.Stop();
                 Index = -1;
                 VIDs = new List<VideoFile>();
                 Totale = VIDs.Count();
-                AggiornaBranoSuovato();
+                AggiornaBranoSuonato();
             }
             else
             {
@@ -1473,7 +1513,7 @@ _mp.Stop();
                     Index = -1;
                 }
                 Totale = VIDs.Count();
-                AggiornaBranoSuovato();
+                AggiornaBranoSuonato();
             }
             else if (f.Tag.ToString() == "OK+PLAY")
             {
@@ -1490,7 +1530,7 @@ _mp.Stop();
                     Index = -1;
                 }
                 Totale = VIDs.Count();
-                AggiornaBranoSuovato();
+                AggiornaBranoSuonato();
                 if (VIDs.Count > 0)
                     VIDEO_PLAY();
             }
@@ -1569,6 +1609,32 @@ _mp.Stop();
         public void External_SELECT_AUDIO_TRACK(int pIndex)
         {
             _mp.SetAudioTrack(pIndex);
+        }
+
+        public void External_CHOOSE_INDEX_CURRENT()
+        {
+            using (var frm = new frmListaVideoPerCambioCorrente(VIDs, Index))
+            {
+                DialogResult result = frm.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    Index = frm.rIndiceCorrente;
+                    AggiornaBranoSuonato();
+                    VIDEO_SALTA_2_INDEX();
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    //non fa nulla
+                }
+                else
+                {
+                    //non fa nulla
+                }
+            }
+
+           
+           
         }
         public long GetLenght()
         {

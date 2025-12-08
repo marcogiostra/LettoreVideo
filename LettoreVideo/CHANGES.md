@@ -9,7 +9,8 @@ Changelog
 -------------------
 VERSIONI e FIX
 -------------------
-v.14.3 - 08/12/2025
+v.14.3 + v.14.4 - 08/12/2025
+-----------------------------------------------
 - con l'opeazione di savataggio di nuovi filmati in archivio, pulisce la play list.
 - la maschera di inputbox è stata sistemata.
 - risolto il problema di selzionrare e manipolare lo satto di pregressione del video che con l'ultima modifica della comparsa del overly botton,
@@ -19,6 +20,9 @@ v.14.3 - 08/12/2025
 - aggiunto un promi step per velocizzare.
           NB: è possibile un secondo, ma aspetto per vedere se sia effettivamente necessario ,o basta il primo
 - creato nuovp pulsante per mostrare nuovamente il titolo del video (posto nell'overlat bottom)
+- preata procedura per scegliere il vidoe corrente dalla playlist, e se c'è un altro video in esecuzione, il nuovo viene subito eseguito
+- modifica su VIDEO_PLAY per eliminare una linea diu codice che impediva la selezione di una nuova play-list all'inizio dell'app con il diretto esecuzione
+- sostituito il controllo per la velocità del video. Quello nuovo è tropppo elementare e forse dovrò cambiarlo in seguito
 
 
 v1.4.2 - 07/12/2025

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LettoreVideo", "LettoreVideo\LettoreVideo.csproj", "{706A1BB4-14E6-476F-AE19-230828406393}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LettoreVideo2", "LettoreVideo\LettoreVideo.csproj", "{706A1BB4-14E6-476F-AE19-230828406393}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

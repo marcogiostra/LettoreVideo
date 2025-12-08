@@ -3910,4 +3910,5 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\System.Resources.Extensions.dll
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\System.Resources.Extensions.xml
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.FormFolderPicker.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmListaVideoPerCambioCorrente.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVIdeoMG.exe.config
