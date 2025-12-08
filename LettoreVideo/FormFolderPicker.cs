@@ -12,10 +12,12 @@ namespace LettoreVideo
         private readonly string[] videoExtensions = new[] { ".mp4", ".mkv", ".avi", ".divx" };
 
         // Ultima cartella selezionata (puoi salvare nei Settings)
-        public string ultimaCartella = @"C:\";
+        private string ultimaCartella = @"C:\";
 
         // Cartella selezionata dall'utente
         public string CartellaSelezionata { get; private set; }
+
+        public string PathIniziale { get; set; }
 
         #region DICHIARAZIONI
         private string _Title = "Seleziona una cartella";
@@ -52,7 +54,80 @@ namespace LettoreVideo
             }
 
             treeFolders.BeforeExpand += TreeFolders_BeforeExpand;
+
+            // === SELEZIONA IL PERCORSO INIZIALE ===
+            if (Directory.Exists(PathIniziale))
+            {
+                SelezionaPercorsoIniziale(PathIniziale);
+            }
         }
+
+        private void SelezionaPercorsoIniziale(string fullPath)
+        {
+            fullPath = Path.GetFullPath(fullPath).TrimEnd('\\');
+
+            string root = Directory.GetDirectoryRoot(fullPath).TrimEnd('\\');
+            string relative = fullPath.Substring(root.Length).TrimStart('\\');
+
+            // 1️⃣ trova il nodo del drive corretto (C:, D:, ecc.)
+            TreeNode driveNode = treeFolders.Nodes
+                .Cast<TreeNode>()
+                .FirstOrDefault(n =>
+                    string.Equals(
+                        n.Tag.ToString().TrimEnd('\\'),
+                        root,
+                        StringComparison.OrdinalIgnoreCase)
+                );
+
+            if (driveNode == null)
+                return;
+
+            // espandi il nodo del drive
+            ExpandNode(driveNode);
+            driveNode.Expand();
+
+            TreeNode currentNode = driveNode;
+
+            // 2️⃣ percorri ogni sottocartella
+            if (!string.IsNullOrEmpty(relative))
+            {
+                string[] parts = relative.Split('\\');
+
+                foreach (string part in parts)
+                {
+                    // Forza l'espansione
+                    ExpandNode(currentNode);
+
+                    currentNode.Expand();
+
+                    currentNode = currentNode.Nodes
+                        .Cast<TreeNode>()
+                        .FirstOrDefault(n =>
+                            string.Equals(n.Text, part, StringComparison.OrdinalIgnoreCase)
+                        );
+
+                    if (currentNode == null)
+                        return; // cartella non trovata
+                }
+            }
+
+            // 3️⃣ seleziona la cartella trovata
+            treeFolders.SelectedNode = currentNode;
+            currentNode.EnsureVisible();
+
+            // mostra i file
+            LoadFiles(fullPath);
+        }
+
+        private void ExpandNode(TreeNode node)
+        {
+            if (node.Nodes.Count == 1 && node.Nodes[0].Text == "...")
+            {
+                TreeFolders_BeforeExpand(treeFolders,
+                    new TreeViewCancelEventArgs(node, false, TreeViewAction.Expand));
+            }
+        }
+
         private void LoadFiles(string folderPath)
         {
             listFiles.Items.Clear();

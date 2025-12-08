@@ -993,6 +993,36 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap b32_title_click {
+            get {
+                object obj = ResourceManager.GetObject("b32_title_click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_title_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_title_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_title_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_title_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap b32_to_max_click {
             get {
                 object obj = ResourceManager.GetObject("b32_to_max_click", resourceCulture);

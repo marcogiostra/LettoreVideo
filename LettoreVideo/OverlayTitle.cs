@@ -19,6 +19,13 @@ namespace LettoreVideo
         public void ShowTitolo(string pTitolo)
         {
             lblTitle.Text = pTitolo;
+            timer1.Interval = 2000;
+            timer1.Enabled = true;
+        }
+
+        public void ShowAgain()
+        {
+            timer1.Interval = 100;
             timer1.Enabled = true;
         }
 

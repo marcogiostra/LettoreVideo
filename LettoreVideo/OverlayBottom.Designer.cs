@@ -55,6 +55,7 @@ namespace LettoreVideo
             this.knobVelocita = new LettoreVideo.Controlli.KnobGioshControl();
             this.mediaSeekBar1 = new LettoreVideo.Controlli.MediaSeekBar();
             this.picMusicalePause = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.picTitle = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.SuspendLayout();
             // 
             // lblTotalTime
@@ -134,7 +135,7 @@ namespace LettoreVideo
             this.picFromMax.ImageClick = global::LettoreVideo.Properties.Resources.b32_from_max_click;
             this.picFromMax.ImageHover = global::LettoreVideo.Properties.Resources.b32_from_max_hover;
             this.picFromMax.ImageNormal = global::LettoreVideo.Properties.Resources.b32_from_max_normal;
-            this.picFromMax.Location = new System.Drawing.Point(568, 23);
+            this.picFromMax.Location = new System.Drawing.Point(488, 23);
             this.picFromMax.Margin = new System.Windows.Forms.Padding(4);
             this.picFromMax.Name = "picFromMax";
             this.picFromMax.Size = new System.Drawing.Size(32, 32);
@@ -150,7 +151,7 @@ namespace LettoreVideo
             this.picPhoto.ImageClick = global::LettoreVideo.Properties.Resources.b32_photo_chick;
             this.picPhoto.ImageHover = global::LettoreVideo.Properties.Resources.b32_photo_hover;
             this.picPhoto.ImageNormal = global::LettoreVideo.Properties.Resources.b32_photo_normal;
-            this.picPhoto.Location = new System.Drawing.Point(618, 25);
+            this.picPhoto.Location = new System.Drawing.Point(528, 25);
             this.picPhoto.Margin = new System.Windows.Forms.Padding(4);
             this.picPhoto.Name = "picPhoto";
             this.picPhoto.Size = new System.Drawing.Size(32, 32);
@@ -438,12 +439,29 @@ namespace LettoreVideo
             this.picMusicalePause.TabIndex = 155;
             this.picMusicalePause.TabStop = false;
             // 
+            // picTitle
+            // 
+            this.picTitle.AutoResize = true;
+            this.picTitle.BackColor = System.Drawing.Color.Black;
+            this.picTitle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picTitle.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picTitle.ImageClick = global::LettoreVideo.Properties.Resources.b32_title_click;
+            this.picTitle.ImageHover = global::LettoreVideo.Properties.Resources.b32_title_hover;
+            this.picTitle.ImageNormal = global::LettoreVideo.Properties.Resources.b32_title_normal;
+            this.picTitle.Location = new System.Drawing.Point(408, 23);
+            this.picTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.picTitle.Name = "picTitle";
+            this.picTitle.Size = new System.Drawing.Size(32, 32);
+            this.picTitle.TabIndex = 186;
+            this.picTitle.TabStop = false;
+            // 
             // OverlayBottom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(903, 110);
+            this.Controls.Add(this.picTitle);
             this.Controls.Add(this.picToMax);
             this.Controls.Add(this.picFromMax);
             this.Controls.Add(this.picPhoto);
@@ -506,5 +524,6 @@ namespace LettoreVideo
         private Controlli.ExtendedPictureBox picPhoto;
         private Controlli.ExtendedPictureBox picToMax;
         private Controlli.ExtendedPictureBox picFromMax;
+        private Controlli.ExtendedPictureBox picTitle;
     }
 }

@@ -110,12 +110,17 @@ namespace LettoreVideo
         {
             InitializeComponent();
 
+            //prima parte dell'inizializzazione VLC
+            Task.Run(() => PreloadVLC());
 
             InizializzaLista();
 
-            //Inizializzazione VLC
-            InizializzaVLC();
-
+            //seconda parte dell'inizializzazione VLC (post)
+            oldVideoSize = videoView1.Size;
+            oldFormSize = this.Size;
+            oldVideoLocation = videoView1.Location;
+            videoView1.MediaPlayer = _mp;
+            Application.DoEvents();
 
             //Inizializza la lettura del file di configurazione
             config.cfgFile = "MyConfig.config";
@@ -211,15 +216,28 @@ namespace LettoreVideo
 
 
         }
-
-
-
-
-
-
         #endregion Class
 
         #region f()
+
+        private void PreloadVLC()
+        {
+            Core.Initialize();
+
+            _libVLC = new LibVLC("--no-video-title-show", "--vout=directx", "--no-overlay");
+            Application.DoEvents();
+            _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
+            Application.DoEvents();
+
+            /* da usare se bisogno anizializzar epiù velocemente
+             * var media = new Media(_vlc, "fakevideo.mp4", FromType.FromPath);
+_mp.Play(media);
+Thread.Sleep(200);
+_mp.Stop();
+             */
+
+        }
+
 
         public int VideoControlWidth()
         {
@@ -265,24 +283,7 @@ namespace LettoreVideo
 
 
         #region f()_VIDEO
-        private void InizializzaVLC()
-        {
-            Core.Initialize();
-
-
-
-            oldVideoSize = videoView1.Size;
-            oldFormSize = this.Size;
-            oldVideoLocation = videoView1.Location;
-            //VLC stuff
-            //_libVLC = new LibVLC();
-            _libVLC = new LibVLC("--no-video-title-show", "--vout=directx", "--no-overlay");
-            Application.DoEvents();
-            _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
-            Application.DoEvents();
-            videoView1.MediaPlayer = _mp;
-            Application.DoEvents();
-        }
+ 
 
         public void VideoAction(VideoPlayAction pVPA)
         {
@@ -327,15 +328,15 @@ namespace LettoreVideo
 
 
                     case VideoPlayAction.FastNext5:
-                        _mp.Time -= 5000;
+                        _mp.Time += 5000;
                         break;
 
                     case VideoPlayAction.FastNext10:
-                        _mp.Time -= 10000;
+                        _mp.Time += 10000;
                         break;
 
                     case VideoPlayAction.FastNext30:
-                        _mp.Time -= 30000;
+                        _mp.Time += 30000;
                         break;
 
                     case VideoPlayAction.Previous:
@@ -879,7 +880,7 @@ namespace LettoreVideo
             int overlayBottomHeight = overlayButtonBottom.Height;
 
             int triggerTop = formTop + 50;
-            int triggerBottom = formBottom - 80;
+            int triggerBottom = formBottom - 100;
 
 
             // LOGICA
@@ -969,6 +970,11 @@ namespace LettoreVideo
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.Title = "Seleziona i video da metteer in lista per la riproduzione";
+
+                    Config config = new Config();
+                    config.cfgFile = "MyConfig.config";
+                    string dirVideo = config.GetValue("//appDir//add[@key='DIR_VIDEO']");
+
                     if (string.IsNullOrEmpty(dirVideo))
                         openFileDialog.InitialDirectory = "C:\\";
                     else
@@ -1105,6 +1111,12 @@ namespace LettoreVideo
 
             try
             {
+                Config config = new Config();
+                config.cfgFile = "MyConfig.config";
+                string dirVideo = config.GetValue("//appDir//add[@key='DIR_VIDEO']");
+
+
+
 
                 //prepara la cartella iniziale
                 if (string.IsNullOrEmpty(dirVideo))
@@ -1119,7 +1131,7 @@ namespace LettoreVideo
 
                 using (var form = new FormFolderPicker())
                 {
-                    form.ultimaCartella = dirVideo;
+                    form.PathIniziale = dirVideo;
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         string selectedPath = form.CartellaSelezionata;
@@ -1413,6 +1425,11 @@ namespace LettoreVideo
                     PRG.MsgBoxERR(ex, "Errore salvataggio nuovi video in archivio:\r\n\r\n");
                     return;
                 }
+
+                Index = -1;
+                VIDs = new List<VideoFile>();
+                Totale = VIDs.Count();
+                AggiornaBranoSuovato();
             }
             else
             {
@@ -1595,6 +1612,10 @@ namespace LettoreVideo
             HideFloatingFormBelowScreen(); // sempre
         }
 
+        public void External_SHOW_TITLE_AGAIN()
+        {
+            ot.ShowAgain();
+        }
         #endregion EXTERNAL_FUNCTIONS
 
         #endregion EXTERNAL

@@ -40,21 +40,21 @@ namespace LettoreVideo
             // labelPrompt
             // 
             this.labelPrompt.AutoSize = true;
-            this.labelPrompt.Location = new System.Drawing.Point(23, 77);
+            this.labelPrompt.Location = new System.Drawing.Point(23, 87);
             this.labelPrompt.Name = "labelPrompt";
             this.labelPrompt.Size = new System.Drawing.Size(0, 13);
             this.labelPrompt.TabIndex = 0;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(263, 74);
+            this.textBox1.Location = new System.Drawing.Point(252, 87);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 22);
+            this.textBox1.Size = new System.Drawing.Size(374, 22);
             this.textBox1.TabIndex = 1;
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(348, 115);
+            this.btnOk.Location = new System.Drawing.Point(454, 126);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 2;
@@ -63,7 +63,7 @@ namespace LettoreVideo
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(438, 115);
+            this.btnCancel.Location = new System.Drawing.Point(551, 126);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -72,12 +72,14 @@ namespace LettoreVideo
             // 
             // InputBoxForm
             // 
-            this.ClientSize = new System.Drawing.Size(543, 161);
+            this.ClientSize = new System.Drawing.Size(638, 161);
             this.Controls.Add(this.labelPrompt);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "InputBoxForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);

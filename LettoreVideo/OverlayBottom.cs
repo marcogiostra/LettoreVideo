@@ -238,9 +238,17 @@ namespace LettoreVideo
                 if (this.Owner is frmVideoNEW main)
                     main.External_FROM_MAX();
             };
+
+            picTitle.Click += (s, e) =>
+            {
+                picToMax.Visible = false;
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_SHOW_TITLE_AGAIN();
+            };
             #endregion FUNCTIONS
 
-       
+
 
         }
 
@@ -371,6 +379,7 @@ namespace LettoreVideo
             picToMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);
             picFromMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);
             picPhoto.Location = new Point(picToMax.Left - spazio - picPhoto.Width, picMusicalePlay.Top);
+            picTitle.Location = new Point(picPhoto.Left - spazio - picTitle.Width, picMusicalePlay.Top);
             //
             cmbAudio.Location = new Point(lblTotalTime.Right - cmbAudio.Width, picMusicaleNext.Top + (picMusicaleNext.Height - cmbAudio.Height) / 2);
         }

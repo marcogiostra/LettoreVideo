@@ -300,6 +300,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Magazzion_Immagini\b32_title_normal.png" />
+    <None Include="Magazzion_Immagini\b32_title_hover.png" />
+    <None Include="Magazzion_Immagini\b32_title_click.png" />
     <None Include="Magazzion_Immagini\b32_download_verde_normal.png" />
     <None Include="Magazzion_Immagini\b32_download_verde_hover.png" />
     <None Include="Magazzion_Immagini\b32_download_verde_click.png" />
