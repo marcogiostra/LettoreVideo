@@ -9,6 +9,17 @@ Changelog
 -------------------
 VERSIONI e FIX
 -------------------
+v.14.3 - 08/12/2025
+- con l'opeazione di savataggio di nuovi filmati in archivio, pulisce la play list.
+- la maschera di inputbox è stata sistemata.
+- risolto il problema di selzionrare e manipolare lo satto di pregressione del video che con l'ultima modifica della comparsa del overly botton,
+          non era può utilizzabile.
+- i tre pulsanti per aumentare di 5, 10 e 30 secondi sono stati corretti
+- corretto la gestione del path iniziale nel browser dialog
+- aggiunto un promi step per velocizzare.
+          NB: è possibile un secondo, ma aspetto per vedere se sia effettivamente necessario ,o basta il primo
+- creato nuovp pulsante per mostrare nuovamente il titolo del video (posto nell'overlat bottom)
+
 
 v1.4.2 - 07/12/2025
 -----------------------------------------------
