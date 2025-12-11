@@ -149,6 +149,7 @@ namespace LettoreVideo
                         v.File = vid.File;
                         v.Titolo = vid.Titolo;
                         v.Visto = vid.Visto;
+                        v.Bookmarks = vid.Bookmarks;    
 
                         _items.Add(v);
                         lblTotale.Text = _items.Count.ToString();

@@ -3,6 +3,7 @@ using LettoreVideo.Controlli;
 using LettoreVideo.Utility;
 using LibVLCSharp.Shared;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,9 +11,12 @@ using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+//using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace LettoreVideo
 {
@@ -162,6 +166,7 @@ namespace LettoreVideo
 
         private void frmVideoNEW_Load(object sender, EventArgs e)
         {
+
             VID_DBs = JsonOperation.Laod_DB(DataFolder);
 
             timer2.Enabled = true;
@@ -219,26 +224,31 @@ namespace LettoreVideo
         }
         #endregion Class
 
+
         #region f()
 
-        private void PreloadVLC()
+        private async Task PreloadVLC()
         {
             Core.Initialize();
 
-            _libVLC = new LibVLC("--no-video-title-show", "--vout=directx", "--no-overlay");
+            //_libVLC = new LibVLC("--no-video-title-show", "--vout=directx", "--no-overlay");
+            _libVLC = new LibVLC("--no-video-title-show", "--vout=dummy", "--no-overlay");
             Application.DoEvents();
+
             _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
             Application.DoEvents();
-    
 
-            /* da usare se bisogno anizializzar epiù velocemente
-             * var media = new Media(_vlc, "fakevideo.mp4", FromType.FromPath);
-_mp.Play(media);
-Thread.Sleep(200);
-_mp.Stop();
-             */
+            using (var media = new Media(_libVLC, "video_vuoto.mp4", FromType.FromPath))
+            {
+                _mp.Play(media);
 
+                await Task.Delay(200);
+
+                _mp.Stop();
+            }
         }
+
+
 
 
         public int VideoControlWidth()
@@ -394,6 +404,7 @@ _mp.Stop();
                                 ot.ShowTitolo(VIDs[Index].Titolo);
                                 //_videoTitle = VIDs[Index].Titolo;
                                 PlayFile(VIDs[Index].Filename);
+                                SetNextVideoBookMarks(Index);
                                 Application.DoEvents();
 
                             }
@@ -429,6 +440,7 @@ _mp.Stop();
                                 ot.ShowTitolo(VIDs[Index].Titolo);
                                 //_videoTitle = VIDs[Index].Titolo;
                                 PlayFile(VIDs[Index].Filename);
+                                SetNextVideoBookMarks(Index);
                                 Application.DoEvents();
 
 
@@ -465,8 +477,15 @@ _mp.Stop();
         {
             int velocita = overlayButtonBottom.GetVelocita();
 
+
+            while (_libVLC == null)
+            {
+                // Attendi che LibVLC sia inizializzato
+            }
+
             //_mp.SetRate((float)Decimal.Divide(1, Decimal.Divide(10, updw.Value)));
             _mp.Play(new Media(_libVLC, file));
+          
             switch (velocita)
             {
                 case 0:
@@ -575,6 +594,7 @@ _mp.Stop();
                         ot.ShowTitolo(VIDs[Index].Titolo);
                         //_videoTitle = VIDs[Index].Titolo;
                         PlayFile(VIDs[Index].Filename);
+                        SetNextVideoBookMarks(Index);
                         Application.DoEvents();
 
                     }
@@ -709,8 +729,6 @@ _mp.Stop();
             return current + (distance / 4); // (5) più grande → più veloce
         }
         #endregion f()_OVERLAY
-
-
 
         #region f()_SCREEN
 
@@ -857,36 +875,125 @@ _mp.Stop();
         }
 
         #endregion f()_SCREEN
+
+        #region f()_Bookmarks
+        public int GetSeekbarPosition(long pTime)
+        {
+            try
+            {
+
+                long total = _mp.Length;
+
+                if (pTime <= 0)
+                    return 0;
+
+                return (int)(pTime * 1000 / total);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public void SalvaBookmarks(string pFilenameOriginale, List<Bookmark> pBookmarks)
+        {
+
+
+            for (int i = 0; i < VID_DBs.Count; i++)
+            {
+                if (VID_DBs[i].FilenameOriginale == pFilenameOriginale)
+                {
+                    VID_DBs[i].Bookmarks = pBookmarks;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < VIDs.Count; i++)
+            {
+                if (VIDs[i].FilenameOriginale == pFilenameOriginale)
+                {
+                    VIDs[i].Bookmarks = pBookmarks;
+                    break;
+                }
+            }
+
+            try
+            {
+                JsonOperation.Save_DB(VID_DBs, DataFolder);
+            }
+            catch (Exception ex)
+            {
+                PRG.MsgBoxERR(ex, "Errore salvataggio bookmarks video in archivio:\r\n\r\n");
+                return;
+            }
+
+
+            overlayButtonBottom.SetBookMarks(pBookmarks);
+        }
+
+        private void SetNextVideoBookMarks(int pIndex)
+        {
+            try
+            {
+                if (VIDs[pIndex].Bookmarks == null)
+                {
+                    overlayButtonBottom.ClearBookMarks();
+
+                }
+                else
+                {
+                    overlayButtonBottom.SetBookMarksPlaList(VIDs[pIndex].Bookmarks);
+                }
+            }
+            catch (Exception)
+            {
+                overlayButtonBottom.ClearBookMarks();
+            }
+
+        }
+
+        public int GetTimeINT()
+        {
+            long total = _mp.Length;
+            return (int)(_mp.Time * 1000 / total);
+        }
+        #endregion f()_Bookmarks
+
         #endregion f()
 
         #region TIMER
         private void timer1_Tick(object sender, EventArgs e)
         {
-            overlayButtonBottom.SetSeekBarMinimum(0);
-            overlayButtonBottom.SetSeekBarMaximum(1000);
-
-
-            // Time restituisce millisecondi trascorsi
-            long current = _mp.Time;
-            long total = _mp.Length;
-
-
-            if (current > 0 && total >= 0)
+            try
             {
-                TimeSpan durata = TimeSpan.FromMilliseconds(current);
-                overlayButtonBottom.SetElapsedTime(durata.ToString(@"hh\:mm\:ss"));
-                //
-                TimeSpan ts = TimeSpan.FromMilliseconds(total);
-                string testo = ts.ToString(@"hh\:mm\:ss");
-                overlayButtonBottom.SetTotalTime(testo);
-                Application.DoEvents();
-           
-                if (_mp.Length > 0 && !overlayButtonBottom.GetSeekBarIsDragging())
+                overlayButtonBottom.SetSeekBarMinimum(0);
+                overlayButtonBottom.SetSeekBarMaximum(1000);
+
+
+                // Time restituisce millisecondi trascorsi
+                long current = _mp.Time;
+                long total = _mp.Length;
+
+
+                if (current > 0 && total >= 0)
                 {
-                    overlayButtonBottom.SetSeekBarValue((int)(_mp.Time * overlayButtonBottom.GetSeekBarMaximum() / _mp.Length));
+                    TimeSpan durata = TimeSpan.FromMilliseconds(current);
+                    overlayButtonBottom.SetElapsedTime(durata.ToString(@"hh\:mm\:ss"));
+                    //
+                    TimeSpan ts = TimeSpan.FromMilliseconds(total);
+                    string testo = ts.ToString(@"hh\:mm\:ss");
+                    overlayButtonBottom.SetTotalTime(testo);
                     Application.DoEvents();
+
+                    if (_mp.Length > 0 && !overlayButtonBottom.GetSeekBarIsDragging())
+                    {
+                        overlayButtonBottom.SetSeekBarValue((int)(_mp.Time * overlayButtonBottom.GetSeekBarMaximum() / _mp.Length));
+                        Application.DoEvents();
+                    }
                 }
+
             }
+            catch (Exception) { }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -1275,104 +1382,6 @@ _mp.Stop();
                     }
                 }
 
-
-
-
-                /*
-
-                var dialog = new VistaFolderBrowserDialog();
-                dialog.Description = "Seleziona una cartella dove ci siano video da riprodurre";                
-                dialog.UseDescriptionForTitle = true;
-                dialog.SelectedPath = dirVideo;                
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    string selectedPath = dialog.SelectedPath;
-                    if (Directory.Exists(selectedPath))
-                    {
-                        string[] files = Directory.GetFiles(selectedPath);
-
-                        foreach (string file in files)
-                        {
-                            string estensione = Path.GetExtension(file);
-                            string veraEstensione = estensione.Substring(1, estensione.Length - 1);
-                            if (veraEstensione.ToLower() == "mp4" || veraEstensione.ToLower() == "mkv" || veraEstensione.ToLower() == "dvix" || veraEstensione.ToLower() == "avi")
-                            {
-                                VideoFile vid = new VideoFile();
-                                vid.Filename = file;
-                                vid.FilenameOriginale = PathHelper.GetRelativeOrDriveTrimmed(vid.Filename);
-                                // Ottieni la directory che contiene il file
-                                string directory = Path.GetDirectoryName(file);
-                                // Prendi solo il nome dell'ultima cartella
-                                string folderName = Path.GetFileName(directory);
-                                vid.Categoria = folderName;
-                                vid.Specifica = folderName;
-                                vid.File = Path.GetFileName(file);
-                                string tipoFile = Path.GetExtension(file);
-                                dirVideo = file.Substring(0, file.Length - vid.File.Length - 1);
-                                vid.Titolo = vid.File.Substring(0, vid.File.Length - tipoFile.Length);
-                                vid.Saved = false;
-                                index++;
-                                vid.ID = index;
-
-                                _VIDs.Add(vid);
-                            }
-                        }
-                        if (_VIDs.Count > 0)
-                        {
-                            if (VIDs.Count > 0)
-                            {
-                                if (PRG.MsgBoxYesNo("Esistono alcuni brani nella play list, li vuoi cancellare?"))
-                                {
-                                    VIDs = new List<VideoFile>();
-                                    _VIDs = new List<VideoFile>();
-                                    foreach (VideoFile vid in _VIDs)
-                                    {
-                                        VIDs.Add(vid);
-                                    }
-                                    Index = 0;
-                                    Totale = VIDs.Count;
-                                }
-                                else
-                                {
-                                    Totale = VIDs.Count;
-                                    Index = VIDs.Count - 1;
-                                    foreach (VideoFile vid in _VIDs)
-                                    {
-                                        VIDs.Add(vid);
-                                    }
-                                    index++;
-                                    Totale += _VIDs.Count;
-                                }
-
-
-                            }
-                            else
-                            {
-                                foreach (VideoFile vid in _VIDs)
-                                {
-                                    VIDs.Add(vid);
-                                }
-                                Index = 0;
-                                Totale = VIDs.Count;
-                            }
-
-
-                            AggiornaBranoSuonato();
-                        }
-
-                        dirVideo = selectedPath;
-                        config.SetValue("//appDIR//add[@key='DIR_VIDEO']", dirVideo);
-                    }
-                    else
-                    {
-                        PRG.MsgBoxWarning("la cartella selezionata, non esiste o non è più raggiungibile!");
-                        return;
-                    }
-                }
-
- */
-
-
             }
             catch (Exception ex)
             {
@@ -1478,8 +1487,7 @@ _mp.Stop();
                 else
                     PRG.MsgBoxWarning("Tutti i nuovi file esistono in archivio!");
             }
-        }
- 
+        } 
         public void External_SCEGLI_VIDEO_DA_ARCHIVIO()
         {
             VIDEO_STOP();
@@ -1551,6 +1559,37 @@ _mp.Stop();
             f.Close();
 
         }
+        public void External_GESTIONE_BOOKMARKS()
+        {
+            try
+            {
+                if (VIDs[Index].Saved)
+                {
+
+                    if (_mp.State == VLCState.Playing)
+                    {
+                        timerGestoreBookmarks.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Questa procedura è applicabile solamente se il video è attivo!", "Bookmarks");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Questa procedura è applicabile solamente ad un video salvato in archivio!", "Bookmarks");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Questa procedura è applicabile solamente con un video selezionato!", "Bookmarks");
+
+            }
+
+
+
+
+        }
         #endregion EXTERNAL_TOP
 
         #region EXTERNAL_BOTTOM
@@ -1602,8 +1641,12 @@ _mp.Stop();
         }
         public void External_IMPOSTSA_VELOCITA(float pValue)
         {
-            _mp.SetRate(pValue);
-            Application.DoEvents();
+            try
+            {
+                _mp.SetRate(pValue);
+                Application.DoEvents();
+            }
+            catch (Exception) { }
 
         }
         public void External_SELECT_AUDIO_TRACK(int pIndex)
@@ -1635,6 +1678,11 @@ _mp.Stop();
 
            
            
+        }
+        public void EXTERNAL_GO_TO_BOOKMARK(int pPos)
+        {
+            long total = _mp.Length;
+            _mp.Time = (long)(pPos * total / 1000);
         }
         public long GetLenght()
         {
@@ -1682,11 +1730,31 @@ _mp.Stop();
         {
             ot.ShowAgain();
         }
+
+
+
+
+
+
         #endregion EXTERNAL_FUNCTIONS
 
         #endregion EXTERNAL
+
         #endregion EXTERNAL_BOTTOM
 
+        private void timerGestoreBookmarks_Tick(object sender, EventArgs e)
+        {
+            timerGestoreBookmarks.Enabled = false;
+            frmBookmarkStudio f = new frmBookmarkStudio(this, _mp, VIDs[Index].Bookmarks, VIDs[Index].FilenameOriginale);
+            f.Owner = this;
+            f.SetOwner(this);
+            f.ShowInTaskbar = false;            
+            f.ShowDialog();
+            f.Close();
+
+
+
+        }
     }
 }
 

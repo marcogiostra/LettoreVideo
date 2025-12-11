@@ -36,6 +36,7 @@
             this.picClear = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picCategory = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picClose = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.picGestioneBookmark = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.SuspendLayout();
             // 
             // picOpenFile
@@ -166,12 +167,29 @@
             this.picClose.TabIndex = 185;
             this.picClose.TabStop = false;
             // 
+            // picGestioneBookmark
+            // 
+            this.picGestioneBookmark.AutoResize = true;
+            this.picGestioneBookmark.BackColor = System.Drawing.Color.Black;
+            this.picGestioneBookmark.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picGestioneBookmark.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picGestioneBookmark.ImageClick = global::LettoreVideo.Properties.Resources.b32_boookmark_click;
+            this.picGestioneBookmark.ImageHover = global::LettoreVideo.Properties.Resources.b32_boookmark_hover;
+            this.picGestioneBookmark.ImageNormal = global::LettoreVideo.Properties.Resources.b32_boookmark_normal;
+            this.picGestioneBookmark.Location = new System.Drawing.Point(366, 7);
+            this.picGestioneBookmark.Margin = new System.Windows.Forms.Padding(4);
+            this.picGestioneBookmark.Name = "picGestioneBookmark";
+            this.picGestioneBookmark.Size = new System.Drawing.Size(32, 32);
+            this.picGestioneBookmark.TabIndex = 191;
+            this.picGestioneBookmark.TabStop = false;
+            // 
             // OverlayTop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1039, 52);
+            this.Controls.Add(this.picGestioneBookmark);
             this.Controls.Add(this.picClose);
             this.Controls.Add(this.picCategory);
             this.Controls.Add(this.picClear);
@@ -199,5 +217,6 @@
         private Controlli.ExtendedPictureBox picClear;
         private Controlli.ExtendedPictureBox picCategory;
         private Controlli.ExtendedPictureBox picClose;
+        private Controlli.ExtendedPictureBox picGestioneBookmark;
     }
 }

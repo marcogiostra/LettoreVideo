@@ -90,6 +90,13 @@ namespace LettoreVideo
 
             };
 
+            picGestioneBookmark.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                    main.External_GESTIONE_BOOKMARKS();
+            };
+
             #endregion GESTORE
 
             // Create the ToolTip and associate with the Form container.
@@ -107,6 +114,7 @@ namespace LettoreVideo
             toolTip1.SetToolTip(this.picClear, "Cancella la lista dei video da vedere");
             toolTip1.SetToolTip(this.picScegliFromArchivio, "Aggiungi video dall'archivio alla play-list");
             toolTip1.SetToolTip(this.picShowList, "Gestione play-list");
+            toolTip1.SetToolTip(this.picGestioneBookmark, "Gestione bookmarks");
         }
 
         private void OVerlayBottom_Resize(object sender, EventArgs e)
@@ -126,6 +134,10 @@ namespace LettoreVideo
             picSave.Location = new Point(picClear.Right + spazio, picOpenFile.Top);
             picScegliFromArchivio.Location = new Point(picSave.Right + spazio, picOpenFile.Top);
             picCategory.Location = new Point(picScegliFromArchivio.Right + spazio, picOpenFile.Top);
+            picGestioneBookmark.Location = new Point(picCategory.Right + spazio, picOpenFile.Top);
+
+
+            
 
 
             picClose.Location = new Point(_width - 10 - picClose.Width, picOpenFile.Top);

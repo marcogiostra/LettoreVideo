@@ -50,33 +50,30 @@ namespace LettoreVideo.Classi
             }
         }
 
-        public static List<VideoFileDB> Laod_DB(string pDB_Folder)
+        public static List<VideoFileDB> Laod_DB (string pDB_Folder)
         {
-            List<VideoFileDB> returnLIST = new List<VideoFileDB>();
-            try
-            {
-                // Controllo e creazione se non esiste
-                if (!Directory.Exists(pDB_Folder))
-                {
-                    Directory.CreateDirectory(pDB_Folder);
-                }
-                string DbFile = Path.Combine(pDB_Folder, "db.json");
-                if (File.Exists(DbFile))
-                {
-                    string json = File.ReadAllText(DbFile);
-                    Export exportObj = JsonConvert.DeserializeObject<Export>(json);
-                    returnLIST = exportObj.Data;
+            string DbFile = Path.Combine(pDB_Folder, "db.json");
 
-                }
-            }
-            catch (Exception ex)
-            {
-                PRG.MsgBoxERR(ex, "Errore nella procedura di lettura dei file dall'archivio:\r\n\r\n");
-                returnLIST = new List<VideoFileDB>();
+            if (!File.Exists(DbFile))
+                return new List<VideoFileDB>();
 
+            string json = File.ReadAllText(DbFile);
+
+            Export export = JsonConvert.DeserializeObject<Export>(json);
+
+            if (export == null || export.Data == null)
+                return new List<VideoFileDB>();
+
+            // Inizializza le liste Bookmarks che sono null
+            foreach (VideoFileDB v in export.Data)
+            {
+                if (v.Bookmarks == null)
+                    v.Bookmarks = new List<Bookmark>();
             }
 
-            return returnLIST;
+            return export.Data;
         }
-}
+
+ 
+    }
 }

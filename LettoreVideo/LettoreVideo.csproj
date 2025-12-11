@@ -124,6 +124,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classi\Bookmark.cs" />
     <Compile Include="Classi\JsonOperation.cs" />
     <Compile Include="Classi\MyInputBox.cs" />
     <Compile Include="Classi\PathHelper.cs" />
@@ -161,6 +162,12 @@
     </Compile>
     <Compile Include="FormFolderPicker.Designer.cs">
       <DependentUpon>FormFolderPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBookmarkStudio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBookmarkStudio.Designer.cs">
+      <DependentUpon>frmBookmarkStudio.cs</DependentUpon>
     </Compile>
     <Compile Include="frmGestioneFiles.cs">
       <SubType>Form</SubType>
@@ -242,6 +249,9 @@
     <EmbeddedResource Include="FormFolderPicker.resx">
       <DependentUpon>FormFolderPicker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBookmarkStudio.resx">
+      <DependentUpon>frmBookmarkStudio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGestioneFiles.resx">
       <DependentUpon>frmGestioneFiles.cs</DependentUpon>
     </EmbeddedResource>
@@ -315,6 +325,21 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="video_vuoto.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Magazzion_Immagini\b32_bookmarkprevios_normal.png" />
+    <None Include="Magazzion_Immagini\b32_bookmarkprevios_hover.png" />
+    <None Include="Magazzion_Immagini\b32_bookmarkprevios_click.png" />
+    <None Include="Magazzion_Immagini\b32_bookmarknext_normal.png" />
+    <None Include="Magazzion_Immagini\b32_bookmarknext_hover.png" />
+    <None Include="Magazzion_Immagini\b32_bookmarknext_click.png" />
+    <None Include="Magazzion_Immagini\b32_cestino_normal.png" />
+    <None Include="Magazzion_Immagini\b32_cestino_hover.png" />
+    <None Include="Magazzion_Immagini\b32_cestino_click.png" />
+    <None Include="Magazzion_Immagini\b32_boookmark_normal.png" />
+    <None Include="Magazzion_Immagini\b32_boookmark_hover.png" />
+    <None Include="Magazzion_Immagini\b32_boookmark_click.png" />
     <None Include="Magazzion_Immagini\b32_title_normal.png" />
     <None Include="Magazzion_Immagini\b32_title_hover.png" />
     <None Include="Magazzion_Immagini\b32_title_click.png" />

@@ -5,15 +5,21 @@ Changelog
  On Development
 -------------------
 
-
 -------------------
 VERSIONI e FIX
 -------------------
-v.14.3 + v.14.4 - 08/12/2025
+v.2.0.0 -11/12/2025  
+-----------------------------------------------
+- perfezionato i bookmark sui video (in realtà sono sulla media seeker)
+- completato l'inizializzazione del media con un video vuoto per evitare problemi di inizializzazione
+- risolto baco che si verificava sporadicamente sul CLOSE dell'applicativo, quanjdo eravamo nel ciuclo del timer che determinava il tempo passato
+- risolto baco sul posizionamento della maschera di gestione dei bookmark
+
+v.1.4.3 + v.1.4.4 - 08/12/2025
 -----------------------------------------------
 - con l'opeazione di savataggio di nuovi filmati in archivio, pulisce la play list.
 - la maschera di inputbox è stata sistemata.
-- risolto il problema di selzionrare e manipolare lo satto di pregressione del video che con l'ultima modifica della comparsa del overly botton,
+- risolto il problema di selezionrare e manipolare lo scatto di pregressione del video che con l'ultima modifica della comparsa del overly botton,
           non era può utilizzabile.
 - i tre pulsanti per aumentare di 5, 10 e 30 secondi sono stati corretti
 - corretto la gestione del path iniziale nel browser dialog
@@ -21,9 +27,9 @@ v.14.3 + v.14.4 - 08/12/2025
           NB: è possibile un secondo, ma aspetto per vedere se sia effettivamente necessario ,o basta il primo
 - creato nuovp pulsante per mostrare nuovamente il titolo del video (posto nell'overlat bottom)
 - preata procedura per scegliere il vidoe corrente dalla playlist, e se c'è un altro video in esecuzione, il nuovo viene subito eseguito
-- modifica su VIDEO_PLAY per eliminare una linea diu codice che impediva la selezione di una nuova play-list all'inizio dell'app con il diretto esecuzione
+- modifica su VIDEO_PLAY per eliminare una linea di codice che impediva la selezione di una nuova play-list all'inizio dell'app con il diretto esecuzione
 - sostituito il controllo per la velocità del video. Quello nuovo è tropppo elementare e forse dovrò cambiarlo in seguito
-
+- creato sistema per creare ed utilizzarfe i bookmarks nei video
 
 v1.4.2 - 07/12/2025
 -----------------------------------------------

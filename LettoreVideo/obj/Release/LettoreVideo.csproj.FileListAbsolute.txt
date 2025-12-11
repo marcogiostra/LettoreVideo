@@ -982,3 +982,5 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\System.Reso
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\System.Resources.Extensions.xml
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.FormFolderPicker.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmListaVideoPerCambioCorrente.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Release\video_vuoto.mp4
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Release\LettoreVideo.frmBookmarkStudio.resources

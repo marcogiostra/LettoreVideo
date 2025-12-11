@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Media.Animation;
+using Xamarin.Forms.PlatformConfiguration;
 
 
 namespace LettoreVideo
@@ -31,6 +33,9 @@ namespace LettoreVideo
         Form _owner = new Form();
         bool IsMute = false;
         bool isPopolatingCombo = false;
+
+        private List<Bookmark> _Bs;
+
         public OverlayBottom()
         {
             InitializeComponent();
@@ -167,6 +172,9 @@ namespace LettoreVideo
                     main.External_MUTE(IsMute);
                 }
             };
+
+      
+
             lblContaBrani.Click += (s, e) =>
             {
                 // chiama un metodo nel form principale
@@ -194,7 +202,45 @@ namespace LettoreVideo
                     }
                 }
             };
-            
+
+            picNextBookmark.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                {
+                    // Trova il primo maggiore della posizione corrente
+                    long currentTime = main.GetTimeINT();
+
+                    var next = mediaSeekBar1.Bookmarks.FirstOrDefault(b => b > currentTime);
+
+                    if (next > 0)
+                    {
+                        main.EXTERNAL_GO_TO_BOOKMARK(next);
+                    }
+                }
+            };
+
+            picPreviousBookmark.Click += (s, e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                {
+                    // Trova il primo maggiore della posizione corrente
+                    long currentTime = main.GetTimeINT();
+
+                    var next = mediaSeekBar1.Bookmarks.Where(x => x < currentTime).DefaultIfEmpty().Max(); ;
+
+
+
+
+                    if (next > 0)
+                    {
+                        main.EXTERNAL_GO_TO_BOOKMARK(next);
+                    }
+                }
+            };
+
+
             speedVideo.ValueChanged += (s, e) =>
             {
                 // chiama un metodo nel form principale
@@ -361,6 +407,39 @@ namespace LettoreVideo
         {
             return 0; // speedVideo.SelectedValue;
         }
+
+
+        public void SetBookMarks(List<Bookmark> Bs)
+        {
+            mediaSeekBar1.ClearBookMarks();
+            foreach (Bookmark b in Bs)
+            {
+                if (this.Owner is frmVideoNEW main)
+                {
+                    int newPosition = main.GetSeekbarPosition(b.Time);
+                    mediaSeekBar1.AddBookmark(newPosition);
+                    Application.DoEvents();
+                    picNextBookmark.Visible = true;
+                    picPreviousBookmark.Visible = true;
+
+                }
+            }
+        }
+
+        public void SetBookMarksPlaList(List<Bookmark> Bs)
+        {
+            _Bs = Bs;
+            timer1.Enabled = true;
+        }
+
+        public void ClearBookMarks()
+        {
+            mediaSeekBar1.ClearBookMarks();
+            picNextBookmark.Visible = false;
+            picPreviousBookmark.Visible = false;
+
+
+        }
         #endregion f()
 
 
@@ -379,8 +458,12 @@ namespace LettoreVideo
             picMusicaleIndietro30.Location = new Point(picMusicaleIndietro10.Left - spazio - picMusicaleIndietro30.Width, picMusicalePlay.Top);
             picMusicalePrecedente.Location = new Point(picMusicaleIndietro30.Left , picMusicaleIndietro30.Top + picMusicaleIndietro30.Width + spazio);
             picMusicaleNext.Location = new Point(picMusicaleAvanti30.Left, picMusicaleAvanti30.Top + picMusicaleAvanti30.Width + spazio);
+            picNextBookmark.Location = new Point(picMusicaleNext.Right + spazio, picMusicaleNext.Top );
             picMusicaleDaCapo.Location = new Point(picMusicalePlay.Left, picMusicalePlay.Top + picMusicalePlay.Width + spazio);
             picMusicaleStop.Location = new Point(picMusicalePause.Left, picMusicalePause.Top + picMusicalePause.Width + spazio);
+            picPreviousBookmark.Location = new Point(picMusicalePrecedente.Left - spazio - picPreviousBookmark.Width, picMusicaleNext.Top);
+
+            
             //
             lblElapsedTime.Location = new Point(mediaSeekBar1.Left, picMusicalePlay.Top);
             lblTotalTime.Location = new Point(mediaSeekBar1.Right - lblTotalTime.Width, picMusicalePlay.Top);
@@ -392,7 +475,7 @@ namespace LettoreVideo
             picToMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);
             picFromMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);
             picPhoto.Location = new Point(picToMax.Left - spazio - picPhoto.Width, picMusicalePlay.Top);
-            picTitle.Location = new Point(picPhoto.Left - spazio - picTitle.Width, picMusicalePlay.Top);
+            picTitle.Location = new Point(picPhoto.Left - spazio - picTitle.Width, picMusicalePlay.Top);            
             //
             cmbAudio.Location = new Point(lblTotalTime.Right - cmbAudio.Width, picMusicaleNext.Top + (picMusicaleNext.Height - cmbAudio.Height) / 2);
         }
@@ -441,6 +524,26 @@ namespace LettoreVideo
             this.TopMost = false; // opzionale, se non vuoi che rimanga sempre davanti
             this.Activate();
             this.BringToFront();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+
+            mediaSeekBar1.ClearBookMarks();
+            foreach (Bookmark b in _Bs)
+            {
+                if (this.Owner is frmVideoNEW main)
+                {
+                    int newPosition = main.GetSeekbarPosition(b.Time);
+                    mediaSeekBar1.AddBookmark(newPosition);
+                    Application.DoEvents();
+
+                    picNextBookmark.Visible = true;
+                    picPreviousBookmark.Visible = true;
+
+                }
+            }
         }
     }
 }

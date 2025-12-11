@@ -31,10 +31,17 @@ namespace LettoreVideo
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTotalTime = new System.Windows.Forms.Label();
             this.lblContaBrani = new System.Windows.Forms.Label();
             this.lblElapsedTime = new System.Windows.Forms.Label();
             this.cmbAudio = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.picPreviousBookmark = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.picNextBookmark = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.speedVideo = new LettoreVideo.Controlli.SpeedRangeSelector();
             this.picTitle = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picToMax = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picFromMax = new LettoreVideo.Controlli.ExtendedPictureBox();
@@ -55,7 +62,6 @@ namespace LettoreVideo
             this.picMusicalePlay = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.mediaSeekBar1 = new LettoreVideo.Controlli.MediaSeekBar();
             this.picMusicalePause = new LettoreVideo.Controlli.ExtendedPictureBox();
-            this.speedVideo = new LettoreVideo.Controlli.SpeedRangeSelector();
             this.SuspendLayout();
             // 
             // lblTotalTime
@@ -109,6 +115,74 @@ namespace LettoreVideo
             this.cmbAudio.SelectionChangeCommitted += new System.EventHandler(this.cmbAudio_SelectionChangeCommitted);
             this.cmbAudio.DropDownClosed += new System.EventHandler(this.cmbAudio_DropDownClosed);
             this.cmbAudio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAudio_KeyDown);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(128, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 188;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(209, 29);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 189;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // picPreviousBookmark
+            // 
+            this.picPreviousBookmark.AutoResize = true;
+            this.picPreviousBookmark.BackColor = System.Drawing.Color.Black;
+            this.picPreviousBookmark.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picPreviousBookmark.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picPreviousBookmark.ImageClick = global::LettoreVideo.Properties.Resources.b32_bookmarkprevios_click;
+            this.picPreviousBookmark.ImageHover = global::LettoreVideo.Properties.Resources.b32_bookmarkprevios_hover;
+            this.picPreviousBookmark.ImageNormal = global::LettoreVideo.Properties.Resources.b32_bookmarkprevios_normal;
+            this.picPreviousBookmark.Location = new System.Drawing.Point(328, 58);
+            this.picPreviousBookmark.Margin = new System.Windows.Forms.Padding(4);
+            this.picPreviousBookmark.Name = "picPreviousBookmark";
+            this.picPreviousBookmark.Size = new System.Drawing.Size(32, 32);
+            this.picPreviousBookmark.TabIndex = 191;
+            this.picPreviousBookmark.TabStop = false;
+            this.picPreviousBookmark.Visible = false;
+            // 
+            // picNextBookmark
+            // 
+            this.picNextBookmark.AutoResize = true;
+            this.picNextBookmark.BackColor = System.Drawing.Color.Black;
+            this.picNextBookmark.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picNextBookmark.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picNextBookmark.ImageClick = global::LettoreVideo.Properties.Resources.b32_bookmarknext_click;
+            this.picNextBookmark.ImageHover = global::LettoreVideo.Properties.Resources.b32_bookmarknext_hover;
+            this.picNextBookmark.ImageNormal = global::LettoreVideo.Properties.Resources.b32_bookmarknext_normal;
+            this.picNextBookmark.Location = new System.Drawing.Point(368, 25);
+            this.picNextBookmark.Margin = new System.Windows.Forms.Padding(4);
+            this.picNextBookmark.Name = "picNextBookmark";
+            this.picNextBookmark.Size = new System.Drawing.Size(32, 32);
+            this.picNextBookmark.TabIndex = 190;
+            this.picNextBookmark.TabStop = false;
+            this.picNextBookmark.Visible = false;
+            // 
+            // speedVideo
+            // 
+            this.speedVideo.BackColor = System.Drawing.Color.Transparent;
+            this.speedVideo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.speedVideo.Location = new System.Drawing.Point(69, 63);
+            this.speedVideo.Maximum = 5;
+            this.speedVideo.Minimum = -5;
+            this.speedVideo.Name = "speedVideo";
+            this.speedVideo.SelectedValue = 0;
+            this.speedVideo.Size = new System.Drawing.Size(234, 28);
+            this.speedVideo.TabIndex = 187;
             // 
             // picTitle
             // 
@@ -428,23 +502,16 @@ namespace LettoreVideo
             this.picMusicalePause.TabIndex = 155;
             this.picMusicalePause.TabStop = false;
             // 
-            // speedVideo
-            // 
-            this.speedVideo.BackColor = System.Drawing.Color.Transparent;
-            this.speedVideo.Location = new System.Drawing.Point(69, 63);
-            this.speedVideo.Maximum = 5;
-            this.speedVideo.Minimum = -5;
-            this.speedVideo.Name = "speedVideo";
-            this.speedVideo.SelectedValue = 0;
-            this.speedVideo.Size = new System.Drawing.Size(234, 28);
-            this.speedVideo.TabIndex = 187;
-            // 
             // OverlayBottom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(903, 110);
+            this.Controls.Add(this.picPreviousBookmark);
+            this.Controls.Add(this.picNextBookmark);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.speedVideo);
             this.Controls.Add(this.picTitle);
             this.Controls.Add(this.picToMax);
@@ -509,5 +576,10 @@ namespace LettoreVideo
         private Controlli.ExtendedPictureBox picFromMax;
         private Controlli.ExtendedPictureBox picTitle;
         private Controlli.SpeedRangeSelector speedVideo;
+        private Button button1;
+        private Button button2;
+        private Timer timer1;
+        private Controlli.ExtendedPictureBox picNextBookmark;
+        private Controlli.ExtendedPictureBox picPreviousBookmark;
     }
 }

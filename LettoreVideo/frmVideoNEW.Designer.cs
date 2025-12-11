@@ -33,6 +33,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timerOT = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timerGestoreBookmarks = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.videoView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,9 +43,10 @@
             this.videoView1.BackColor = System.Drawing.Color.Black;
             this.videoView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.videoView1.Location = new System.Drawing.Point(0, 0);
+            this.videoView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.videoView1.MediaPlayer = null;
             this.videoView1.Name = "videoView1";
-            this.videoView1.Size = new System.Drawing.Size(1168, 450);
+            this.videoView1.Size = new System.Drawing.Size(1557, 554);
             this.videoView1.TabIndex = 3;
             this.videoView1.Text = "videoView1";
             // 
@@ -59,14 +62,19 @@
             // 
             this.timerOT.Tick += new System.EventHandler(this.timerOT_Tick);
             // 
+            // timerGestoreBookmarks
+            // 
+            this.timerGestoreBookmarks.Tick += new System.EventHandler(this.timerGestoreBookmarks_Tick);
+            // 
             // frmVideoNEW
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1168, 450);
+            this.ClientSize = new System.Drawing.Size(1557, 554);
             this.Controls.Add(this.videoView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmVideoNEW";
@@ -87,5 +95,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timerOT;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Timer timerGestoreBookmarks;
     }
 }

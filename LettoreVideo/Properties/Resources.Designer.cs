@@ -153,6 +153,96 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap b32_bookmarknext_click {
+            get {
+                object obj = ResourceManager.GetObject("b32_bookmarknext_click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_bookmarknext_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_bookmarknext_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_bookmarknext_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_bookmarknext_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_bookmarkprevios_click {
+            get {
+                object obj = ResourceManager.GetObject("b32_bookmarkprevios_click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_bookmarkprevios_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_bookmarkprevios_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_bookmarkprevios_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_bookmarkprevios_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_boookmark_click {
+            get {
+                object obj = ResourceManager.GetObject("b32_boookmark_click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_boookmark_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_boookmark_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_boookmark_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_boookmark_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap b32_cartella_click {
             get {
                 object obj = ResourceManager.GetObject("b32_cartella_click", resourceCulture);
@@ -206,6 +296,36 @@ namespace LettoreVideo.Properties {
         internal static System.Drawing.Bitmap b32_category_normal {
             get {
                 object obj = ResourceManager.GetObject("b32_category_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_cestino_click {
+            get {
+                object obj = ResourceManager.GetObject("b32_cestino_click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_cestino_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_cestino_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_cestino_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_cestino_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
