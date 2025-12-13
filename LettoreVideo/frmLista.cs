@@ -16,18 +16,18 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LettoreVideo
 {
-    public partial class frmLista : MaterialForm
+    public partial class frmLista : Form
     {
 
         #region DICHIARAZIONI
         #region PARAMETRI
         private List<VideoFile> _VIDs = new List<VideoFile>();
+        private int _CurrentIndex { get; set; }
         #endregion PARAMATRI
 
-        private readonly MaterialSkinManager materialSkinManager;
         private System.Windows.Forms.ToolTip toolTip1 = new System.Windows.Forms.ToolTip();
         private int lastIndex = -1;
-
+        string filenameOriginale = string.Empty;
         #region RETURN
         public List<VideoFile> rListaFinale { get; private set; }
         public int rIndiceCorrente { get; private set; } = -1;
@@ -35,24 +35,16 @@ namespace LettoreVideo
         #endregion DICHIARAZIONI
 
         #region Class
-        public frmLista(List<VideoFile> pVIDs)
+        public frmLista(List<VideoFile> pVIDs, int pCurrentIndex)
         {
             _VIDs = pVIDs;
+            _CurrentIndex = pCurrentIndex;
 
             InitializeComponent();
 
-            //Configuro MaterialSkin
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK; // Dark Mode
-            materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.BlueGrey800, Primary.BlueGrey900,
-                Primary.BlueGrey500, Accent.Orange200, TextShade.WHITE
-            );
-
-            bool isDark = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK;
-            checkedListBox1.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
-            checkedListBox1.ForeColor = isDark ? Color.White : Color.Black;
+            if (pCurrentIndex > -1)
+                filenameOriginale = _VIDs[pCurrentIndex].FilenameOriginale;
+           
         }
 
         private void frmLista_Load(object sender, EventArgs e)
@@ -70,20 +62,43 @@ namespace LettoreVideo
         }
         private void picSave_Click(object sender, EventArgs e)
         {
-            rListaFinale = _VIDs;  
+            int lastIndex = -1;
+            if (!string.IsNullOrEmpty(filenameOriginale))
+            {
+               
+                for (int i = 0; i < _VIDs.Count; i++)
+                {
+                    if (_VIDs[i].FilenameOriginale == filenameOriginale)
+                    {
+                        lastIndex = i;
+                        break;
+                    }
+                }
+
+                
+              
+            }
+            rIndiceCorrente = lastIndex;
+
+            rListaFinale = _VIDs; 
+            /*
             if (_VIDs.Count > 0)
                 rIndiceCorrente = checkedListBox1.SelectedIndex; // indice corrente
             else
                 rIndiceCorrente = -1;
+            */
             this.Tag = "OK";
             this.Close();
         }
 
         private void picDown_Click(object sender, EventArgs e)
         {
+
             int index = checkedListBox1.SelectedIndex;
             if (index >= 0 && index < _VIDs.Count - 1)
             {
+              
+
                 // swap nella lista
                 var tmp = _VIDs[index];
                 _VIDs[index] = _VIDs[index + 1];
@@ -99,6 +114,8 @@ namespace LettoreVideo
             int index = checkedListBox1.SelectedIndex;
             if (index > 0)
             {
+              ;
+
                 // swap nella lista
                 var tmp = _VIDs[index];
                 _VIDs[index] = _VIDs[index - 1];
@@ -117,7 +134,7 @@ namespace LettoreVideo
             if (daEliminare.Count == 0)
                 return;
 
-            // Rimuovo dalla lista originale
+            // Rimuovo dalla lista originale            
             foreach (var item in daEliminare)
             {
                 _VIDs.Remove(item);
@@ -162,8 +179,12 @@ namespace LettoreVideo
 
 
 
+
         #endregion f()
 
-   
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

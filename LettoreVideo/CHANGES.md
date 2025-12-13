@@ -8,7 +8,18 @@ Changelog
 -------------------
 VERSIONI e FIX
 -------------------
-v.2.0.0 -11/12/2025  
+v2.5.0 - 12/12/2025 
+-----------------------------------------------
+- aggiunto la funzionalità di salvataggio di un vidoe estraendo con una sola traccia audio (ovviamente deve aver più di una traccia audio in origine)
+- sistemata la maschera di gestione dei file di archivio che adesso è trasparente e non viude il video proiettato
+- aggiunto alla maschera overlay buttom il controllo del volume e il gestore della velocita spostato a destra
+- sistemata la maschera della gestione play-list; adesso non ferma più i video, e se cancelli il video corrente, ristema la play-list e 
+                 si posiziona al primo brano stoppando il play, ma pronto per essere eseguito.
+                In effetti è stato resettata la memoria del precedente video.
+- risolto in alcuni casi il baco che si bloccava all'avvio per memoria bloccata o altro.
+
+
+v.2.0.0 - 11/12/2025  
 -----------------------------------------------
 - perfezionato i bookmark sui video (in realtà sono sulla media seeker)
 - completato l'inizializzazione del media con un video vuoto per evitare problemi di inizializzazione

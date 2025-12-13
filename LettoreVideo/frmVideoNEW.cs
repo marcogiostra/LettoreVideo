@@ -2,6 +2,7 @@
 using LettoreVideo.Controlli;
 using LettoreVideo.Utility;
 using LibVLCSharp.Shared;
+using LibVLCSharp.WinForms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -10,6 +11,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 //using System.Threading;
 using System.Threading.Tasks;
@@ -40,13 +42,21 @@ namespace LettoreVideo
 
 
     }
-
     public enum ScreenMode
     {
         Normal = 0,
         Full = 1,
         Minimize = 2
     }
+    public enum TipoUpdateItem
+    { 
+        Titolo = 0,
+        Categoria = 1,
+        SottoCateogria = 2,
+        FlagVisto = 3,
+        Deleteting = 4
+    }
+
 
     public partial class frmVideoNEW : Form
     {
@@ -98,6 +108,7 @@ namespace LettoreVideo
 
         private OverlayBottom overlayButtonBottom;
         private bool bottonVisibile = false;
+        public bool OverlayButtonBottomFreeze { get; set; } = false;
 
         private OverlayTitle ot;
 
@@ -108,6 +119,7 @@ namespace LettoreVideo
         private Rectangle lastBounds;
         #endregion VIDEO_SCREEN_MODE
 
+        private frmGestioneFiles fGEST;
         #endregion DICHIARAZIONI
 
         #region Class
@@ -170,7 +182,7 @@ namespace LettoreVideo
             VID_DBs = JsonOperation.Laod_DB(DataFolder);
 
             timer2.Enabled = true;
-      
+
 
         }
 
@@ -192,7 +204,7 @@ namespace LettoreVideo
 
         private void frmVideoNEW_Resize(object sender, EventArgs e)
         {
-     
+
 
             try
             {
@@ -295,7 +307,7 @@ namespace LettoreVideo
 
 
         #region f()_VIDEO
- 
+
 
         public void VideoAction(VideoPlayAction pVPA)
         {
@@ -478,14 +490,28 @@ namespace LettoreVideo
             int velocita = overlayButtonBottom.GetVelocita();
 
 
-            while (_libVLC == null)
-            {
-                // Attendi che LibVLC sia inizializzato
-            }
+         
 
-            //_mp.SetRate((float)Decimal.Divide(1, Decimal.Divide(10, updw.Value)));
-            _mp.Play(new Media(_libVLC, file));
-          
+            //@@@da verificare
+            //_mp.Play(new Media(_libVLC, file));
+
+
+
+            if (media != null)
+                media.Dispose();
+
+            _mp.Dispose();
+            isPlaying = false;
+            AggiornaBranoSuonato();
+            _mp = new LibVLCSharp.Shared.MediaPlayer(_libVLC);
+            videoView1.MediaPlayer = _mp;
+            ot.ShowTitolo(VIDs[Index].Titolo);
+            SetNextVideoBookMarks(Index);
+            Application.DoEvents();
+
+            media = new Media(_libVLC, file, FromType.FromPath);
+            _mp.Play(media);
+
             switch (velocita)
             {
                 case 0:
@@ -653,7 +679,7 @@ namespace LettoreVideo
         {
             if (isPlaying)
                 VideoAction(VideoPlayAction.Salta2Index);
-            
+
         }
         private void VIDEO_NEXT()
         {
@@ -1006,7 +1032,7 @@ namespace LettoreVideo
             overlayButtonTop.Width = this.Width;
             overlayButtonTop.BringToFront();
             overlayButtonTop.Show();
-      
+
 
             overlayButtonBottom.Show();
             frmVideoNEW_Resize(null, null);
@@ -1017,7 +1043,13 @@ namespace LettoreVideo
         }
 
         private void timerMouse_Tick(object sender, EventArgs e)
-        { 
+        {
+            if (OverlayButtonBottomFreeze)
+            {
+                return;
+
+            }
+
             Point mouse = Cursor.Position;
 
             int formTop = this.Bounds.Top;
@@ -1066,9 +1098,9 @@ namespace LettoreVideo
             // ----------------------
             UpdateClickThrough(overlayButtonTop);
             UpdateClickThrough(overlayButtonBottom);
-            
 
-    
+
+
         }
 
         private void timerOT_Tick(object sender, EventArgs e)
@@ -1082,6 +1114,19 @@ namespace LettoreVideo
 
         }
 
+        private void timerGestoreBookmarks_Tick(object sender, EventArgs e)
+        {
+            timerGestoreBookmarks.Enabled = false;
+            frmBookmarkStudio f = new frmBookmarkStudio(this, _mp, VIDs[Index].Bookmarks, VIDs[Index].FilenameOriginale);
+            f.Owner = this;
+            f.SetOwner(this);
+            f.ShowInTaskbar = false;
+            f.ShowDialog();
+            f.Close();
+
+
+
+        }
         #endregion TIMER
 
         #region EXTERNAL
@@ -1390,7 +1435,6 @@ namespace LettoreVideo
         }
         public void External_SHOW_LIST()
         {
-            VIDEO_STOP();
 
             Form frmLista = Application.OpenForms
                           .OfType<frmLista>()
@@ -1404,16 +1448,35 @@ namespace LettoreVideo
                 return;
             }
 
-            frmLista f = new frmLista(VIDs);
+            bool isPlaying_TEMP = isPlaying;
+            int index_TEMP = Index;
+            frmLista f = new frmLista(VIDs, Index);
             f.ShowDialog(this);
             if (f.Tag.ToString() == "OK")
             {
                 VIDs = f.rListaFinale;
                 Totale = VIDs.Count;
-                Index = Totale > 0 ? 0 : -1;
+                Index = f.rIndiceCorrente; 
+                if (Index == -1)
+                    VIDEO_STOP();
+
+                if (Index == -1 && Totale > 0)
+                {
+                    Index = 0;     
+                }
+                
+                else if (Index > -1 && Totale > 0 && index_TEMP != Index)
+                {
+                    // cambia il riferimentomento 
+                    //Non deve fare nulla forse!!!!
+                }              
+                else
+                    External_CLEAR();
+
+         
 
                 AggiornaBranoSuonato();
-            }    
+            }
             f.Close();
         }
         public void External_CLEAR()
@@ -1487,7 +1550,7 @@ namespace LettoreVideo
                 else
                     PRG.MsgBoxWarning("Tutti i nuovi file esistono in archivio!");
             }
-        } 
+        }
         public void External_SCEGLI_VIDEO_DA_ARCHIVIO()
         {
             VIDEO_STOP();
@@ -1546,18 +1609,9 @@ namespace LettoreVideo
         }
         public void External_GESTIONE_CATEGORIE()
         {
-            VIDEO_STOP();
-
-            VIDs = new List<VideoFile>();
-
-            frmGestioneFiles f = new frmGestioneFiles(ref VID_DBs);
-            f.ShowDialog(this);
-            if (f.Tag.ToString() == "OK")
-            {
-
-            }
-            f.Close();
-
+            fGEST = new frmGestioneFiles(this, ref VID_DBs);
+            fGEST.ShowDialog(this);
+            fGEST.Dispose();
         }
         public void External_GESTIONE_BOOKMARKS()
         {
@@ -1587,6 +1641,97 @@ namespace LettoreVideo
             }
 
 
+
+
+        }
+
+        public void External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem pTipo, string pFilenameOriginale, string pNewValue)
+        {
+            string campoDaCampbiare = string.Empty;
+
+            foreach (var vid in VID_DBs)
+            {
+                if (vid.FilenameOriginale == pFilenameOriginale)
+                {
+                    switch (pTipo)
+                    {
+                        case TipoUpdateItem.Titolo:
+                            vid.Titolo = pNewValue;
+                            break;
+                        case TipoUpdateItem.Categoria:
+                            vid.Categoria = pNewValue;
+                            break;
+                        case TipoUpdateItem.SottoCateogria:
+                            vid.Specifica = pNewValue;
+                            break;
+                        case TipoUpdateItem.FlagVisto:
+                            vid.Visto = pNewValue == "SI" ? false : true;
+                            break;
+                        case TipoUpdateItem.Deleteting:
+                            bool deletingFile = false;
+                            deletingFile = (MessageBox.Show("Vuoi eliminare fisicamente questo video?", "Conferma eliminazione", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes);
+                            if (deletingFile)
+                            {
+                                foreach (var vid2 in VIDs)
+                                {
+                                    if (vid2.FilenameOriginale == pFilenameOriginale)
+                                    {
+                                        if (MessageBox.Show("Il file è attualmente nella play-list, impossibile l'eliminazione fisica! Vuoi comunque escluderlo dall'arcihvio?", "Lettore Video", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                                        {
+                                            deletingFile = false;
+                                        }
+                                        else
+                                            return;
+                                    }
+                                }
+                            }
+                            string fileNameToDelete = PathHelper.RestoreFullPath(vid.FilenameOriginale);
+                            string filePath = Path.Combine(DataFolder, vid.FilenameOriginale);
+                            VID_DBs.Remove(vid);
+                            if (deletingFile)
+                            {
+                                try
+                                {
+                                    File.Delete(fileNameToDelete);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Errore durante l'eliminazione del file: " + ex.Message, "Lettore Video", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                }
+            }
+            foreach (var vid in VIDs)
+            {
+                if (vid.FilenameOriginale == pFilenameOriginale)
+                {
+                    switch (pTipo)
+                    {
+                        case TipoUpdateItem.Titolo:
+                            vid.Titolo = pNewValue;
+                            break;
+                        case TipoUpdateItem.Categoria:
+                            vid.Categoria = pNewValue;
+                            break;
+                        case TipoUpdateItem.SottoCateogria:
+                            vid.Specifica = pNewValue;
+                            break;
+                        case TipoUpdateItem.FlagVisto:
+                            vid.Visto = pNewValue == "SI" ? false : true;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                }
+            }
+            JsonOperation.Save_DB(VID_DBs, DataFolder);
+            fGEST.UpdateListView();
 
 
         }
@@ -1632,7 +1777,7 @@ namespace LettoreVideo
         }
         public void External_POSITION_MOVIE(long pNewTime)
         {
-   
+
             if (_mp.Length > 0 && overlayButtonBottom.GetSeekBarIsDragging())
             {
                 long newTime = overlayButtonBottom.GetSeekBarValue() * _mp.Length / overlayButtonBottom.GetSeekBarMaximum();
@@ -1676,8 +1821,8 @@ namespace LettoreVideo
                 }
             }
 
-           
-           
+
+
         }
         public void EXTERNAL_GO_TO_BOOKMARK(int pPos)
         {
@@ -1731,7 +1876,14 @@ namespace LettoreVideo
             ot.ShowAgain();
         }
 
+        public void External_MAKE_VIDEO_ONE_TRACK(string pSourceFileName, List<Traccia> pAUDIOs, int pSelectedAUDIOIndex)
+        {
+            frmMakeVideoOneTrack f = new frmMakeVideoOneTrack(pSourceFileName, pAUDIOs, pSelectedAUDIOIndex);
+            f.ShowInTaskbar = false;
+            f.ShowDialog(this);
+            f.Dispose();
 
+        }
 
 
 
@@ -1742,19 +1894,19 @@ namespace LettoreVideo
 
         #endregion EXTERNAL_BOTTOM
 
-        private void timerGestoreBookmarks_Tick(object sender, EventArgs e)
+        public string FileNameCurrentVideo()
         {
-            timerGestoreBookmarks.Enabled = false;
-            frmBookmarkStudio f = new frmBookmarkStudio(this, _mp, VIDs[Index].Bookmarks, VIDs[Index].FilenameOriginale);
-            f.Owner = this;
-            f.SetOwner(this);
-            f.ShowInTaskbar = false;            
-            f.ShowDialog();
-            f.Close();
-
-
+            try
+            {
+                return VIDs[Index].Filename;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
 
         }
     }
+
 }
 

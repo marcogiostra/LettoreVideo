@@ -36,9 +36,9 @@ namespace LettoreVideo
             this.lblContaBrani = new System.Windows.Forms.Label();
             this.lblElapsedTime = new System.Windows.Forms.Label();
             this.cmbAudio = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.picMakeVideoOneTracck = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picPreviousBookmark = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.picNextBookmark = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.speedVideo = new LettoreVideo.Controlli.SpeedRangeSelector();
@@ -62,6 +62,7 @@ namespace LettoreVideo
             this.picMusicalePlay = new LettoreVideo.Controlli.ExtendedPictureBox();
             this.mediaSeekBar1 = new LettoreVideo.Controlli.MediaSeekBar();
             this.picMusicalePause = new LettoreVideo.Controlli.ExtendedPictureBox();
+            this.myVolume = new LettoreVideo.Controlli.VolumeControl();
             this.SuspendLayout();
             // 
             // lblTotalTime
@@ -116,27 +117,30 @@ namespace LettoreVideo
             this.cmbAudio.DropDownClosed += new System.EventHandler(this.cmbAudio_DropDownClosed);
             this.cmbAudio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAudio_KeyDown);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(128, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 188;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(209, 29);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 189;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // picMakeVideoOneTracck
+            // 
+            this.picMakeVideoOneTracck.AutoResize = true;
+            this.picMakeVideoOneTracck.BackColor = System.Drawing.Color.Black;
+            this.picMakeVideoOneTracck.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picMakeVideoOneTracck.CustomCursor = System.Windows.Forms.Cursors.Hand;
+            this.picMakeVideoOneTracck.ImageClick = global::LettoreVideo.Properties.Resources.b32_makevidieo_clickr;
+            this.picMakeVideoOneTracck.ImageHover = global::LettoreVideo.Properties.Resources.b32_makevidieo_hover;
+            this.picMakeVideoOneTracck.ImageNormal = global::LettoreVideo.Properties.Resources.b32_makevidieo_normal;
+            this.picMakeVideoOneTracck.Location = new System.Drawing.Point(656, 25);
+            this.picMakeVideoOneTracck.Margin = new System.Windows.Forms.Padding(4);
+            this.picMakeVideoOneTracck.Name = "picMakeVideoOneTracck";
+            this.picMakeVideoOneTracck.Size = new System.Drawing.Size(32, 32);
+            this.picMakeVideoOneTracck.TabIndex = 192;
+            this.picMakeVideoOneTracck.TabStop = false;
+            this.picMakeVideoOneTracck.Visible = false;
             // 
             // picPreviousBookmark
             // 
@@ -176,7 +180,7 @@ namespace LettoreVideo
             // 
             this.speedVideo.BackColor = System.Drawing.Color.Transparent;
             this.speedVideo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.speedVideo.Location = new System.Drawing.Point(69, 63);
+            this.speedVideo.Location = new System.Drawing.Point(69, 65);
             this.speedVideo.Maximum = 5;
             this.speedVideo.Minimum = -5;
             this.speedVideo.Name = "speedVideo";
@@ -502,16 +506,26 @@ namespace LettoreVideo
             this.picMusicalePause.TabIndex = 155;
             this.picMusicalePause.TabStop = false;
             // 
+            // myVolume
+            // 
+            this.myVolume.BackColor = System.Drawing.Color.Black;
+            this.myVolume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.myVolume.ForeColor = System.Drawing.Color.White;
+            this.myVolume.Location = new System.Drawing.Point(97, 47);
+            this.myVolume.Name = "myVolume";
+            this.myVolume.Size = new System.Drawing.Size(236, 46);
+            this.myVolume.TabIndex = 193;
+            // 
             // OverlayBottom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(903, 110);
+            this.Controls.Add(this.myVolume);
+            this.Controls.Add(this.picMakeVideoOneTracck);
             this.Controls.Add(this.picPreviousBookmark);
             this.Controls.Add(this.picNextBookmark);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.speedVideo);
             this.Controls.Add(this.picTitle);
             this.Controls.Add(this.picToMax);
@@ -576,10 +590,11 @@ namespace LettoreVideo
         private Controlli.ExtendedPictureBox picFromMax;
         private Controlli.ExtendedPictureBox picTitle;
         private Controlli.SpeedRangeSelector speedVideo;
-        private Button button1;
-        private Button button2;
         private Timer timer1;
         private Controlli.ExtendedPictureBox picNextBookmark;
         private Controlli.ExtendedPictureBox picPreviousBookmark;
+        private Controlli.ExtendedPictureBox picMakeVideoOneTracck;
+        private Timer timer2;
+        private Controlli.VolumeControl myVolume;
     }
 }

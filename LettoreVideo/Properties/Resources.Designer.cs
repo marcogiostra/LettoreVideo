@@ -723,6 +723,36 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap b32_makevidieo_clickr {
+            get {
+                object obj = ResourceManager.GetObject("b32_makevidieo_clickr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_makevidieo_hover {
+            get {
+                object obj = ResourceManager.GetObject("b32_makevidieo_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b32_makevidieo_normal {
+            get {
+                object obj = ResourceManager.GetObject("b32_makevidieo_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap b32_next_click {
             get {
                 object obj = ResourceManager.GetObject("b32_next_click", resourceCulture);
@@ -1263,6 +1293,16 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bm_StopRosso {
+            get {
+                object obj = ResourceManager.GetObject("bm_StopRosso", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cestino_stilizzato {
             get {
                 object obj = ResourceManager.GetObject("cestino_stilizzato", resourceCulture);
@@ -1293,16 +1333,6 @@ namespace LettoreVideo.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap check_list_false1 {
-            get {
-                object obj = ResourceManager.GetObject("check_list_false1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap check_list_true {
             get {
                 object obj = ResourceManager.GetObject("check_list_true", resourceCulture);
@@ -1316,16 +1346,6 @@ namespace LettoreVideo.Properties {
         internal static System.Drawing.Bitmap check_list_true_With {
             get {
                 object obj = ResourceManager.GetObject("check_list_true_With", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap check_list_true1 {
-            get {
-                object obj = ResourceManager.GetObject("check_list_true1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1376,6 +1396,16 @@ namespace LettoreVideo.Properties {
         internal static System.Drawing.Bitmap organize_list {
             get {
                 object obj = ResourceManager.GetObject("organize_list", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pause_hoverr {
+            get {
+                object obj = ResourceManager.GetObject("pause_hoverr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

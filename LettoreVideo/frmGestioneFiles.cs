@@ -16,10 +16,11 @@ using System.Windows.Forms;
 
 namespace LettoreVideo
 {
-    public partial class frmGestioneFiles : MaterialForm
+    public partial class frmGestioneFiles : Form
     {
         #region DICHIARAZIONI
         #region PARAMETRI
+        private frmVideoNEW _owner;
         private List<VideoFileDB> _VID_DBs = new List<VideoFileDB>();
         #endregion PARAMATRI
 
@@ -42,36 +43,18 @@ namespace LettoreVideo
         #endregion LISTAVIDEO_DB
 
         private bool isLoading = true;
+
         #endregion DICHIARAZIONI
 
         #region Class
+    
 
-        public frmGestioneFiles(ref List<VideoFileDB> pVID_DBs)
+        public frmGestioneFiles(frmVideoNEW pOwner, ref List<VideoFileDB> pVID_DBs )
         {
+            _owner = pOwner;
             _VID_DBs = pVID_DBs;
 
             InitializeComponent();
-
-            //Configuro MaterialSkin
-            materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK; // Dark Mode
-            materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.BlueGrey800, Primary.BlueGrey900,
-                Primary.BlueGrey500, Accent.Orange200, TextShade.WHITE
-            );
-
-            isDark = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK;
-            lstFiles.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
-            lstFiles.ForeColor = isDark ? Color.White : Color.Black;
-            cms.BackColor = isDark ? Color.FromArgb(48, 48, 48) : Color.White;
-            cms.ForeColor = isDark ? Color.White : Color.Black;
-            rbtnALL.BackColor = isDark ? Color.FromArgb(55, 71, 79) : Color.White;
-            rbtnALL.ForeColor = isDark ? Color.White : Color.Black;
-            rbtnOnlySI.BackColor = isDark ? Color.FromArgb(55, 71, 79) : Color.White;
-            rbtnOnlySI.ForeColor = isDark ? Color.White : Color.Black;
-            rbtnOnlyNO.BackColor = isDark ? Color.FromArgb(55, 71, 79) : Color.White;
-            rbtnOnlyNO.ForeColor = isDark ? Color.White : Color.Black;
 
             lstFiles.ContextMenuStrip = cms;
         }
@@ -86,6 +69,11 @@ namespace LettoreVideo
 
         #region f()
 
+ 
+        public void UpdateListView()
+        {
+            PopateListView();
+        }
         private void PopateListView()
         {
             lstFiles.Items.Clear();
@@ -217,30 +205,12 @@ namespace LettoreVideo
                 string answer = MyInputBox.Show("Aggiorna la categoria:", "Modifica dati", categoria).Trim();
                 if (answer != string.Empty && answer  != categoria)
                 {
-                    foreach (var vid in _VID_DBs)
-                    {
-                        if (vid.FilenameOriginale == filenameOriginale)
-                        {
-                            vid.Categoria = answer;
-                            break;
-                        }
-                    }
-                    foreach (var vid in filteredVIDs)
-                    {
-                        if (vid.FilenameOriginale == filenameOriginale)
-                        {
-                            vid.Categoria = answer;
-                            break;
-                        }
-                    }
-                    JsonOperation.Save_DB(_VID_DBs,DataFolder);
-                    PopateListView();
 
+                    _owner.External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem.Categoria, filenameOriginale, answer);
                 }
 
             }
 
-            
         }
         private void tsmiUpdateSpecifica_Click(object sender, EventArgs e)
         {
@@ -255,25 +225,7 @@ namespace LettoreVideo
                 string answer = MyInputBox.Show("Aggiorna la sottocategoria:", "Modifica dati", specifica).Trim();
                 if (answer != string.Empty && answer != specifica)
                 {
-                    foreach (var vid in _VID_DBs)
-                    {
-                        if (vid.FilenameOriginale == filenameOriginale)
-                        {
-                            vid.Specifica = answer;
-                            break;
-                        }
-                    }
-                    foreach (var vid in filteredVIDs)
-                    {
-                        if (vid.FilenameOriginale == filenameOriginale)
-                        {
-                            vid.Specifica = answer;
-                            break;
-                        }
-                    }
-                    JsonOperation.Save_DB(_VID_DBs, DataFolder);
-                    PopateListView();
-
+                    _owner.External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem.SottoCateogria, filenameOriginale, answer);
                 }
 
             }
@@ -282,42 +234,11 @@ namespace LettoreVideo
         {
             if (MessageBox.Show("Sei sicuro di voler escludere il filmato selezionato dall'archivio?", "Conferma esclusione", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2 ) == DialogResult.Yes)
             {
-                bool deletingFile = false;
-                deletingFile = (MessageBox.Show("Vuoi eliminare fisicamente anche il file del filmato?", "Conferma eliminazione", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes);
-               
-                string fileNameToDelete = string.Empty;
+                int selectedIndex = lstFiles.SelectedIndices[0];
+                string filenameOriginale = lstFiles.SelectedItems[0].SubItems[3].Text;
+                _owner.External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem.Deleteting, filenameOriginale, string.Empty);
 
-                if (lstFiles.SelectedItems.Count > 0)
-                {
-                    int selectedIndex = lstFiles.SelectedIndices[0];
-                    foreach (var vid in _VID_DBs)
-                    {
-                        if (vid.FilenameOriginale == lstFiles.SelectedItems[0].SubItems[3].Text)
-                        {
-                            fileNameToDelete = PathHelper.RestoreFullPath(vid.FilenameOriginale);
 
-                            // Elimina il file fisico se esiste
-                            string filePath = Path.Combine(DataFolder, vid.FilenameOriginale);
-                            _VID_DBs.Remove(vid);
-                            break;
-                        }
-                    }
-
-                    JsonOperation.Save_DB(_VID_DBs, DataFolder);
-                    PopateListView();
-                    if (deletingFile)
-                    {
-                        try
-                        {
-                            File.Delete(fileNameToDelete);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Errore durante l'eliminazione del file: " + ex.Message, "Lettore Video", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-
-                }
             }
         }
         private void tsmiUpdateVisto_Click(object sender, EventArgs e)
@@ -326,36 +247,9 @@ namespace LettoreVideo
             {
                 int selectedIndex = lstFiles.SelectedIndices[0];
 
-                bool isVisto = lstFiles.SelectedItems[0].SubItems[4].Text == "SI";
-
                 string filenameOriginale = lstFiles.SelectedItems[0].SubItems[3].Text;
-
-                foreach (var vid in _VID_DBs)
-                {
-                    if (vid.FilenameOriginale == filenameOriginale)
-                    {
-                        vid.Visto = !isVisto;
-                        break;
-                    }
-                }
-
-                foreach (var vid in filteredVIDs)
-                {
-                    if (vid.FilenameOriginale == filenameOriginale)
-                    {
-                        vid.Visto = !isVisto;
-                        break;
-                    }
-                }
-
-
-                
-                JsonOperation.Save_DB(_VID_DBs, DataFolder);
-                PopateListView();
-               
-
-
-
+                string answer = lstFiles.SelectedItems[0].SubItems[4].Text;
+                _owner.External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem.FlagVisto, filenameOriginale, answer);
             }
         }
         private void tsmiUpdateTitolo_Click(object sender, EventArgs e)
@@ -371,29 +265,7 @@ namespace LettoreVideo
                 string answer = MyInputBox.Show("Aggiorna il titolo categoria:", "Modifica dati", titolo).Trim();
                 if (answer != string.Empty && answer != titolo)
                 {
-                    foreach (var vid in _VID_DBs)
-                    {
-                        if (vid.FilenameOriginale == filenameOriginale)
-                        {
-                            vid.Titolo = answer;
-                            break;
-                        }
-                    }
-
-                    foreach (var vid in filteredVIDs)
-                    {
-                        if (vid.FilenameOriginale == filenameOriginale)
-                        {
-                            vid.Titolo = answer;
-                            break;
-                        }
-                    }
-
-
-
-                    JsonOperation.Save_DB(_VID_DBs, DataFolder);
-                    PopateListView();
-
+                    _owner.External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem.Titolo, filenameOriginale, answer);
                 }
 
             }
@@ -417,5 +289,11 @@ namespace LettoreVideo
         }
         #endregion ZONA_FILTRO
 
+        #region PULSANTERIA
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion PULSANTERIA
     }
 }

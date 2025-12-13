@@ -4,18 +4,13 @@ DA FARE: lista degli aggiornamenti da fare
 
 Bachi da risolvere
 ------------------
--- come posizionare la maschera Bookmark Studio????
-
-
 
 Nuove Implementazioni
 ---------------------
--- nuova funzionalità di salvataggio di una video multi traccia, per salvare la traccia corrente
 -- gestione miniatura in un posto ben preciso?
--- ri-fare layout maschere secondarie
--- migliorare le icone
--- mettere la possibilità di modificare il volume!!!
--- non si vede il tempo nella seek come se fosse tooltip
+-- ri-fare layout sella selzione dei file da aggiungere alla play-list
+-- eliminare skin
+-- mettere al post del seve diretto, una mascher aper gestire i file (possibile visualizzaqzione). DUBLICATO PLAYLIST. penso di no
 
 
 

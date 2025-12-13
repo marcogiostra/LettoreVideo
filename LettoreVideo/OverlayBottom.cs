@@ -36,6 +36,8 @@ namespace LettoreVideo
 
         private List<Bookmark> _Bs;
 
+        private List<Traccia> _AUDIOs = new List<Traccia>();
+
         public OverlayBottom()
         {
             InitializeComponent();
@@ -304,15 +306,37 @@ namespace LettoreVideo
                 if (this.Owner is frmVideoNEW main)
                     main.External_SHOW_TITLE_AGAIN();
             };
+
+            picMakeVideoOneTracck.Click += (s,e) =>
+            {
+                // chiama un metodo nel form principale
+                if (this.Owner is frmVideoNEW main)
+                {
+                    string fileName = main.FileNameCurrentVideo();
+                    if (string.IsNullOrEmpty(fileName))
+                        return;
+                    int selectIndex = cmbAudio.SelectedIndex;
+                    main.External_MAKE_VIDEO_ONE_TRACK(fileName,_AUDIOs,selectIndex);
+                }
+            };
             #endregion FUNCTIONS
 
 
+                
 
+           
+
+        }
+
+        private void PicMakeVideoOneTracck_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void OverlayForm_Load(object sender, EventArgs e)
         {
-          
+            timer2.Enabled = true;
+
         }
 
         #region f()
@@ -323,6 +347,7 @@ namespace LettoreVideo
             cmbAudio.SelectedIndex =  - 1;
             cmbAudio.Items.Clear();
             cmbAudio.Visible = false;
+            picMakeVideoOneTracck.Visible = cmbAudio.Visible;
             isPopolatingCombo = false;
         }
         public void ComboSelelectIndex(int pIndex)
@@ -334,6 +359,7 @@ namespace LettoreVideo
 
         public void ComboLoadTracce(List<Traccia> pAUDIOs)
         {
+            _AUDIOs = pAUDIOs;
             isPopolatingCombo = true;
             cmbAudio.Items.Clear();
             foreach (Traccia t in pAUDIOs)
@@ -343,9 +369,11 @@ namespace LettoreVideo
             cmbAudio.SelectedIndex = -1;
             isPopolatingCombo = false;
             cmbAudio.Visible = pAUDIOs.Count > 1;
+            picMakeVideoOneTracck.Visible = cmbAudio.Visible;
+
         }
 
-        
+
         public void SetComboAudioItem(int  pValue)
         {
             cmbAudio.Items.Add(pValue);
@@ -411,6 +439,8 @@ namespace LettoreVideo
 
         public void SetBookMarks(List<Bookmark> Bs)
         {
+          
+
             mediaSeekBar1.ClearBookMarks();
             foreach (Bookmark b in Bs)
             {
@@ -423,6 +453,12 @@ namespace LettoreVideo
                     picPreviousBookmark.Visible = true;
 
                 }
+            }
+
+            if (Bs.Count == 0)
+            {
+                picNextBookmark.Visible = false;
+                picPreviousBookmark.Visible = false;
             }
         }
 
@@ -462,22 +498,25 @@ namespace LettoreVideo
             picMusicaleDaCapo.Location = new Point(picMusicalePlay.Left, picMusicalePlay.Top + picMusicalePlay.Width + spazio);
             picMusicaleStop.Location = new Point(picMusicalePause.Left, picMusicalePause.Top + picMusicalePause.Width + spazio);
             picPreviousBookmark.Location = new Point(picMusicalePrecedente.Left - spazio - picPreviousBookmark.Width, picMusicaleNext.Top);
-
-            
             //
             lblElapsedTime.Location = new Point(mediaSeekBar1.Left, picMusicalePlay.Top);
             lblTotalTime.Location = new Point(mediaSeekBar1.Right - lblTotalTime.Width, picMusicalePlay.Top);
             //
             picVolume.Location = new Point(lblElapsedTime.Left + ((lblElapsedTime.Width - picVolume.Width ) / 2), lblElapsedTime.Top + lblElapsedTime.Height + spazio);
             lblContaBrani.Location = new Point(picMusicaleIndietro10.Left, picMusicalePrecedente.Top + (picMusicalePrecedente.Height - lblContaBrani.Height) / 2);
-            speedVideo.Location = new Point(picVolume.Right + spazio + spazio, picVolume.Top + 2);
             //
             picToMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);
             picFromMax.Location = new Point(lblTotalTime.Left - spazio - picToMax.Width, picMusicalePlay.Top);
             picPhoto.Location = new Point(picToMax.Left - spazio - picPhoto.Width, picMusicalePlay.Top);
-            picTitle.Location = new Point(picPhoto.Left - spazio - picTitle.Width, picMusicalePlay.Top);            
+            picTitle.Location = new Point(picPhoto.Left - spazio - picTitle.Width, picMusicalePlay.Top);
+            picMakeVideoOneTracck.Location = new Point(picTitle.Left - spazio - picMakeVideoOneTracck.Width, picTitle.Top);
+            speedVideo.Location = new Point(picMusicaleAvanti30.Right + 6 * spazio , picMakeVideoOneTracck.Top + (picMakeVideoOneTracck.Height - speedVideo.Height) / 2);
             //
             cmbAudio.Location = new Point(lblTotalTime.Right - cmbAudio.Width, picMusicaleNext.Top + (picMusicaleNext.Height - cmbAudio.Height) / 2);
+            myVolume.Location = new Point(picVolume.Right + 2 * spazio, picVolume.Top + (picVolume.Height - myVolume.Height) / 2);
+
+
+
         }
 
         private void cmbAudio_KeyDown(object sender, KeyEventArgs e)
@@ -539,10 +578,27 @@ namespace LettoreVideo
                     mediaSeekBar1.AddBookmark(newPosition);
                     Application.DoEvents();
 
+
                     picNextBookmark.Visible = true;
                     picPreviousBookmark.Visible = true;
 
                 }
+            }
+            if (_Bs.Count == 0)
+            {
+                picNextBookmark.Visible = false;
+                picPreviousBookmark.Visible = false;
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timer2.Enabled = false;
+
+            if (this.Owner is frmVideoNEW main)
+            {
+                cmbAudio.DropDown += (s, e2) => main.OverlayButtonBottomFreeze = true;
+                cmbAudio.DropDownClosed += (s, e2) => main.OverlayButtonBottomFreeze = false;
             }
         }
     }

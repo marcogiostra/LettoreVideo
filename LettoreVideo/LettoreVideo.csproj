@@ -68,6 +68,30 @@
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.2.2.1\lib\net472\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Asio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Asio.2.2.1\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Core.2.2.1\lib\netstandard2.0\NAudio.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Midi, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Midi.2.2.1\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Wasapi, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.Wasapi.2.2.1\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinForms, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.WinForms.2.2.1\lib\net472\NAudio.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinMM, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.WinMM.2.2.1\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -79,6 +103,7 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -95,11 +120,27 @@
     <Reference Include="System.Resources.Extensions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Resources.Extensions.6.0.0\lib\net461\System.Resources.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -124,6 +165,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classi\AudioManager.cs" />
     <Compile Include="Classi\Bookmark.cs" />
     <Compile Include="Classi\JsonOperation.cs" />
     <Compile Include="Classi\MyInputBox.cs" />
@@ -157,6 +199,12 @@
     <Compile Include="Controlli\SpeedRangeSelector.Designer.cs">
       <DependentUpon>SpeedRangeSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controlli\VolumeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controlli\VolumeControl.Designer.cs">
+      <DependentUpon>VolumeControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormFolderPicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +234,12 @@
     </Compile>
     <Compile Include="frmListaVideoPerCambioCorrente.Designer.cs">
       <DependentUpon>frmListaVideoPerCambioCorrente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMakeVideoOneTrack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMakeVideoOneTrack.Designer.cs">
+      <DependentUpon>frmMakeVideoOneTrack.cs</DependentUpon>
     </Compile>
     <Compile Include="frmScegliFiles.cs">
       <SubType>Form</SubType>
@@ -246,6 +300,9 @@
     <EmbeddedResource Include="Controlli\ExtendedPictureBox.resx">
       <DependentUpon>ExtendedPictureBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controlli\VolumeControl.resx">
+      <DependentUpon>VolumeControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFolderPicker.resx">
       <DependentUpon>FormFolderPicker.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListaVideoPerCambioCorrente.resx">
       <DependentUpon>frmListaVideoPerCambioCorrente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMakeVideoOneTrack.resx">
+      <DependentUpon>frmMakeVideoOneTrack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmScegliFiles.resx">
       <DependentUpon>frmScegliFiles.cs</DependentUpon>
@@ -285,7 +345,6 @@
     <EmbeddedResource Include="OverlayTitle.resx">
       <DependentUpon>OverlayTitle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -325,6 +384,21 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Magazzion_Immagini\b32_makevidieo_clickr.png" />
+    <None Include="Magazzion_Immagini\b32_makevidieo_hover.png" />
+    <None Include="Magazzion_Immagini\b32_makevidieo_normal.png" />
+    <Content Include="ffmpeg\ffmpeg.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Magazzion_Immagini\b22_minus_click.png" />
+    <None Include="Magazzion_Immagini\b22_minus_hover.png" />
+    <None Include="Magazzion_Immagini\b22_minus_normal.png" />
+    <None Include="Magazzion_Immagini\b22_plus_click.png" />
+    <None Include="Magazzion_Immagini\b22_plus_hover.png" />
+    <None Include="Magazzion_Immagini\b22_plus_normal.png" />
+    <None Include="Magazzion_Immagini\b22_refresh_click.png" />
+    <None Include="Magazzion_Immagini\b22_refresh_hover.png" />
+    <None Include="Magazzion_Immagini\b22_refresh_normal.png" />
     <Content Include="video_vuoto.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
