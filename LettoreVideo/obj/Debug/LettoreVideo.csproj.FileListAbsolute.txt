@@ -3935,3 +3935,4 @@ D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\System.Securi
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\bin\Debug\System.Security.Principal.Windows.xml
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.Controlli.VolumeControl.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmMakeVideoOneTrack.resources
+D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVIdeoMG.exe.config
