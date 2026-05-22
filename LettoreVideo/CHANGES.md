@@ -8,9 +8,14 @@ Changelog
 -------------------
 VERSIONI e FIX
 -------------------
+v2.5.1 - 21/05/2026
+-----------------------------------------------
+- sostituite alcune gridview al posto di listview
+- corretot baco sull'importazione e salvataggio di fiel fuori patrh, ma stesso drive
+
 v2.5.0 - 12/12/2025 
 -----------------------------------------------
-- aggiunto la funzionalità di salvataggio di un vidoe estraendo con una sola traccia audio (ovviamente deve aver più di una traccia audio in origine)
+- aggiunto la funzionalità di salvataggio di un video estraendo con una sola traccia audio (ovviamente deve aver più di una traccia audio in origine)
 - sistemata la maschera di gestione dei file di archivio che adesso è trasparente e non viude il video proiettato
 - aggiunto alla maschera overlay buttom il controllo del volume e il gestore della velocita spostato a destra
 - sistemata la maschera della gestione play-list; adesso non ferma più i video, e se cancelli il video corrente, ristema la play-list e 

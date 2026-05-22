@@ -59,6 +59,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CustomMarshalers" />
+    <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="LibVLCSharp, Version=3.8.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LibVLCSharp.3.8.2\lib\net471\LibVLCSharp.dll</HintPath>
     </Reference>
@@ -175,6 +184,7 @@
     <Compile Include="Classi\Traccia.cs" />
     <Compile Include="Classi\VideoFile.cs" />
     <Compile Include="Classi\VideoFileDB.cs" />
+    <Compile Include="Classi\VideoFileDBCheck .cs" />
     <Compile Include="Controlli\ExtendedPictureBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -241,11 +251,11 @@
     <Compile Include="frmMakeVideoOneTrack.Designer.cs">
       <DependentUpon>frmMakeVideoOneTrack.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmScegliFiles.cs">
+    <Compile Include="frmScegliFileNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmScegliFiles.Designer.cs">
-      <DependentUpon>frmScegliFiles.cs</DependentUpon>
+    <Compile Include="frmScegliFileNew.Designer.cs">
+      <DependentUpon>frmScegliFileNew.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVideoNEW.cs">
       <SubType>Form</SubType>
@@ -321,8 +331,8 @@
     <EmbeddedResource Include="frmMakeVideoOneTrack.resx">
       <DependentUpon>frmMakeVideoOneTrack.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmScegliFiles.resx">
-      <DependentUpon>frmScegliFiles.cs</DependentUpon>
+    <EmbeddedResource Include="frmScegliFileNew.resx">
+      <DependentUpon>frmScegliFileNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVideoNEW.resx">
       <DependentUpon>frmVideoNEW.cs</DependentUpon>
@@ -345,6 +355,7 @@
     <EmbeddedResource Include="OverlayTitle.resx">
       <DependentUpon>OverlayTitle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

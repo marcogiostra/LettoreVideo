@@ -178,8 +178,25 @@ namespace LettoreVideo
 
         private void frmVideoNEW_Load(object sender, EventArgs e)
         {
+            List<VideoFileDB> _tempVID_DBs = new List<VideoFileDB>();
+            _tempVID_DBs = JsonOperation.Laod_DB(DataFolder);
+            VID_DBs = new List<VideoFileDB>();
 
-            VID_DBs = JsonOperation.Laod_DB(DataFolder);
+            //sistema il filename
+            foreach (VideoFileDB db in _tempVID_DBs)
+            {
+                string _f = db.FilenameOriginale;
+                if (_f[1] == ':')
+                {
+                    db.Filename = db.FilenameOriginale;
+                }
+                else
+                {
+                    string path = Application.StartupPath;
+                    db.Filename = path + "\\" + db.FilenameOriginale;
+                }
+                VID_DBs.Add(db);
+            }
 
             timer2.Enabled = true;
 
@@ -1555,6 +1572,7 @@ namespace LettoreVideo
         {
             VIDEO_STOP();
 
+            /*
             Form frmScegliFiles = Application.OpenForms
                          .OfType<frmScegliFiles>()
                          .FirstOrDefault();
@@ -1566,8 +1584,9 @@ namespace LettoreVideo
                 frmScegliFiles.Focus();
                 return;
             }
+            */
 
-            frmScegliFiles f = new frmScegliFiles(VID_DBs);
+            frmScegliFileNew f = new frmScegliFileNew(this,ref VID_DBs);
             f.ShowDialog(this);
             if (f.Tag.ToString() == "OK")
             {
@@ -1644,14 +1663,15 @@ namespace LettoreVideo
 
 
         }
+ 
 
-        public void External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem pTipo, string pFilenameOriginale, string pNewValue)
+        public void External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem pTipo, string pKey, string pNewValue)
         {
             string campoDaCampbiare = string.Empty;
 
             foreach (var vid in VID_DBs)
             {
-                if (vid.FilenameOriginale == pFilenameOriginale)
+                if (vid.FilenameOriginale == pKey)
                 {
                     switch (pTipo)
                     {
@@ -1665,7 +1685,7 @@ namespace LettoreVideo
                             vid.Specifica = pNewValue;
                             break;
                         case TipoUpdateItem.FlagVisto:
-                            vid.Visto = pNewValue == "SI" ? false : true;
+                            vid.Visto = pNewValue == "SI" ? true : false;
                             break;
                         case TipoUpdateItem.Deleteting:
                             bool deletingFile = false;
@@ -1674,7 +1694,7 @@ namespace LettoreVideo
                             {
                                 foreach (var vid2 in VIDs)
                                 {
-                                    if (vid2.FilenameOriginale == pFilenameOriginale)
+                                    if (vid2.FilenameOriginale == pKey)
                                     {
                                         if (MessageBox.Show("Il file è attualmente nella play-list, impossibile l'eliminazione fisica! Vuoi comunque escluderlo dall'arcihvio?", "Lettore Video", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                                         {
@@ -1708,7 +1728,7 @@ namespace LettoreVideo
             }
             foreach (var vid in VIDs)
             {
-                if (vid.FilenameOriginale == pFilenameOriginale)
+                if (vid.FilenameOriginale == pKey)
                 {
                     switch (pTipo)
                     {
@@ -1731,7 +1751,7 @@ namespace LettoreVideo
                 }
             }
             JsonOperation.Save_DB(VID_DBs, DataFolder);
-            fGEST.UpdateListView();
+            fGEST.Populate(VID_DBs);
 
 
         }

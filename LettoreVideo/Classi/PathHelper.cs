@@ -43,7 +43,7 @@ namespace LettoreVideo.Classi
 
             // CASE 1: same drive but OUTSIDE app path
             // return relative to drive root (no prefix)
-            return foundPath.Substring(foundRoot.Length).TrimStart('\\');
+            return foundPath; //.Substring(foundRoot.Length).TrimStart('\\');
         }
 
 

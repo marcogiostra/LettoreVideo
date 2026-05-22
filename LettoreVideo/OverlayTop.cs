@@ -109,7 +109,7 @@ namespace LettoreVideo
             // Set up the ToolTip text for the Button and Checkbox.
             toolTip1.SetToolTip(this.picSave, "Salva i nuovi filmati in archivio");
             toolTip1.SetToolTip(this.picOpenFile, "Seleziona nuovi video");
-            toolTip1.SetToolTip(this.picOpenDirectory, "Selziona tutti i video di una cartella");
+            toolTip1.SetToolTip(this.picOpenDirectory, "Seleziona tutti i video di una cartella");
             toolTip1.SetToolTip(this.picCategory, "Gestione arcihvio");
             toolTip1.SetToolTip(this.picClear, "Cancella la lista dei video da vedere");
             toolTip1.SetToolTip(this.picScegliFromArchivio, "Aggiungi video dall'archivio alla play-list");
@@ -151,6 +151,8 @@ namespace LettoreVideo
                 _owner.Owner = owner;
             }
         }
+
+     
     }
 
 
