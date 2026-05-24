@@ -53,8 +53,9 @@ namespace LettoreVideo
         Titolo = 0,
         Categoria = 1,
         SottoCateogria = 2,
-        FlagVisto = 3,
-        Deleteting = 4
+        Descrizione = 3,
+        FlagVisto = 4,
+        Deleteting = 5
     }
 
 
@@ -1684,6 +1685,9 @@ namespace LettoreVideo
                         case TipoUpdateItem.SottoCateogria:
                             vid.Specifica = pNewValue;
                             break;
+                        case TipoUpdateItem.Descrizione:
+                            vid.Descrizione = pNewValue;
+                            break;
                         case TipoUpdateItem.FlagVisto:
                             vid.Visto = pNewValue == "SI" ? true : false;
                             break;
@@ -1751,7 +1755,7 @@ namespace LettoreVideo
                 }
             }
             JsonOperation.Save_DB(VID_DBs, DataFolder);
-            fGEST.Populate(VID_DBs);
+            //@@@fGEST.Populate(VID_DBs);
 
 
         }

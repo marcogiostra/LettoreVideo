@@ -2929,7 +2929,6 @@ D:\svil_Giosh\005_LettoreVideo_@@@\LettoreVideo\LettoreVideo\obj\Debug\LettoreVi
 D:\svil_Giosh\005_LettoreVideo_@@@\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.exe.config
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.csproj.AssemblyReference.cache
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmLista.resources
-D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmScegliFiles.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.frmVideoNEW.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.Controlli.KnobGioshControl.resources
 D:\svil_Giosh\005_LettoreVideo\LettoreVideo\LettoreVideo\obj\Debug\LettoreVideo.GlobalMouseMoveFilter.resources

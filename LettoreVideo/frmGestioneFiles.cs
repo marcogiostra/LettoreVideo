@@ -58,6 +58,7 @@ namespace LettoreVideo
         GridColumn col_FilenName;
         GridColumn col_FilenNameOriginale;
         GridColumn col_Visto;
+        GridColumn col_Descrizione;
         #endregion DICHIARAZIONI
 
         #region Class
@@ -98,6 +99,9 @@ namespace LettoreVideo
             gridView1.Columns.AddVisible("Specifica", "Specifica");
             col_Specifica = gridView1.Columns["Specifica"];
 
+            gridView1.Columns.AddVisible("Descrizione", "Descrizione");
+            col_Descrizione = gridView1.Columns["Descrizione"];
+
             gridView1.Columns.AddVisible("Filename", "Filename");
             col_FilenName = gridView1.Columns["Filename"];
             col_FilenName.Visible = false;
@@ -130,6 +134,7 @@ namespace LettoreVideo
                 Titolo = x.Titolo,
                 Categoria = x.Categoria,
                 Specifica = x.Specifica,
+                Descrizione = x.Descrizione,
                 Filename = x.Filename,
                 FilenameOriginale = x.FilenameOriginale,
                 Visto = x.Visto,
@@ -218,6 +223,12 @@ namespace LettoreVideo
                     {
                         item.Specifica = riga.Specifica;
                         _owner.External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem.SottoCateogria, riga.FilenameOriginale, item.Specifica);
+                    }
+
+                    if (item.Descrizione != riga.Specifica)
+                    {
+                        item.Descrizione = riga.Descrizione;
+                        _owner.External_UPDATE_ITEM_ARCHIVIO(TipoUpdateItem.Descrizione, riga.FilenameOriginale, item.Descrizione);
                     }
 
                     if (item.Visto != riga.Visto )

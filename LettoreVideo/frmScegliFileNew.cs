@@ -39,6 +39,7 @@ namespace LettoreVideo
         GridColumn col_FilenName;
         GridColumn col_FilenNameOriginale;
         GridColumn col_Visto;
+        GridColumn col_Descrizione;
 
         private BindingList<VideoFileDBCheck> _items = new BindingList<VideoFileDBCheck>();
 
@@ -69,6 +70,7 @@ namespace LettoreVideo
                 Titolo = x.Titolo,
                 Categoria = x.Categoria,
                 Specifica = x.Specifica,
+                Descrizione = x.Descrizione,
                 Filename = x.Filename,
                 FilenameOriginale = x.FilenameOriginale,
                 Visto = x.Visto,
@@ -82,6 +84,7 @@ namespace LettoreVideo
                 Titolo = x.Titolo,
                 Categoria = x.Categoria,
                 Specifica = x.Specifica,
+                Descrizione = x.Descrizione,
                 Filename = x.Filename,
                 FilenameOriginale = x.FilenameOriginale,
                 Visto = x.Visto,
@@ -130,6 +133,10 @@ namespace LettoreVideo
             col_Specifica = gridView1.Columns["Specifica"];
             col_Specifica.OptionsColumn.ReadOnly = true;
 
+            gridView1.Columns.AddVisible("Descrizione", "Descrizione");
+            col_Descrizione = gridView1.Columns["Descrizione"];
+            col_Descrizione.OptionsColumn.ReadOnly = true;
+
             gridView1.Columns.AddVisible("Filename", "Filename");
             col_FilenName = gridView1.Columns["Filename"];
             col_FilenName.Visible = false;
@@ -164,7 +171,13 @@ namespace LettoreVideo
                 }
             }
 
-  
+            for (int i = 0; i < gridView1.RowCount; i++)
+            {
+                if (!gridView1.IsDataRow(i))
+                    continue;
+
+                gridView1.SetRowCellValue(i, "Selezionato", false);
+            }
         }
 
         #endregion f()
@@ -175,6 +188,7 @@ namespace LettoreVideo
         {
             AddSelectedItemToList();
             lblTotale.Text = _items.Count.ToString();
+
         }
 
         private void picSave_Click(object sender, EventArgs e)
@@ -192,6 +206,7 @@ namespace LettoreVideo
                    Titolo = x.Titolo,
                    Categoria = x.Categoria,
                    Specifica = x.Specifica,
+                   Descrizione = x.Descrizione,
                    Filename = x.Filename,
                    FilenameOriginale = x.FilenameOriginale,
                    Visto = x.Visto,
@@ -223,6 +238,7 @@ namespace LettoreVideo
                    Titolo = x.Titolo,
                    Categoria = x.Categoria,
                    Specifica = x.Specifica,
+                   Descrizione = x.Descrizione,
                    Filename = x.Filename,
                    FilenameOriginale = x.FilenameOriginale,
                    Visto = x.Visto,

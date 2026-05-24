@@ -8,6 +8,14 @@ Changelog
 -------------------
 VERSIONI e FIX
 -------------------
+
+v2.5.2 - 24/05/2026
+-----------------------------------------------
+- Introdotto nella struttura dati il campo Descirzionme Opzionale (può esser eimposstaot anche a zero
+- il borwerfolder, adesso riordina le subdoirecory correttamente in senso crescente
+- nella maschera di selezione, quando premo il pulsante di aggiunta delle righe selezionate, poi le pulisco
+- migliorato il salvataggio della gestione files
+
 v2.5.1 - 21/05/2026
 -----------------------------------------------
 - sostituite alcune gridview al posto di listview

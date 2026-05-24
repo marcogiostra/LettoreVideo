@@ -14,6 +14,7 @@ namespace LettoreVideo.Classi
         public string Titolo { get; set; }
         public string Categoria { get; set; }
         public string Specifica { get; set; }
+        public string Descrizione { get; set; }
 
         [Browsable(false)]
         [JsonIgnore] 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Emf;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -166,6 +167,7 @@ namespace LettoreVideo
                 {
                     string path = e.Node.Tag.ToString();
                     var directories = Directory.GetDirectories(path);
+                    directories = directories.Reverse().ToArray();
                     foreach (var dir in directories)
                     {
                         TreeNode node = new TreeNode(Path.GetFileName(dir)) { Tag = dir };
